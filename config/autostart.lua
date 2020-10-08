@@ -14,6 +14,7 @@ apps = {
   --  '/usr/bin/barrier',
    'nitrogen --restore',
    'qbittorrent',
+   'mintupdate-launcher',
    'xdman',
   --  'guake',
   --  '~/.local/bin/wallpaper', -- wallpaper-reddit script
