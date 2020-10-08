@@ -207,7 +207,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "Work1", "Work2", "Break1", "Break2" }, s, awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4", "5"}, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -244,7 +244,7 @@ awful.screen.connect_for_each_screen(function(s)
 			layout = wibox.layout.align.horizontal,
 			{ -- Left widgets
 					layout = wibox.layout.fixed.horizontal,
-					mylauncher,
+					-- mylauncher,
 					s.mytaglist,
 					s.mypromptbox,
 			},
@@ -875,12 +875,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 beautiful.useless_gap = 2
 
 -- Autostart apps
-awful.spawn.with_shell("picom --config '~/.config/awesome/picom.config'")
-awful.spawn('nitrogen --restore')
-awful.spawn.once("pnmixer")
-awful.spawn.with_shell("nm-applet --indicator")
-awful.spawn.with_shell("xfce4-power-manager")
-awful.spawn.with_shell('numlockx on') -- enable numlock
-awful.spawn.with_shell("qbittorrent")
-awful.spawn.with_shell("copyq")
-awful.spawn.with_shell("touchpad-indicator")
+require("config.autostart")
