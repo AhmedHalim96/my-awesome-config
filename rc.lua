@@ -261,11 +261,11 @@ end)
 -- }}}
 
 -- {{{ Mouse bindings
-root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
-))
+-- root.buttons(gears.table.join(
+--     awful.button({ }, 3, function () mymainmenu:toggle() end),
+--     awful.button({ }, 4, awful.tag.viewnext),
+--     awful.button({ }, 5, awful.tag.viewprev)
+-- ))
 -- }}}
 
 -- Key bindings
@@ -577,7 +577,7 @@ globalkeys = gears.table.join(
 			{description = 'move window to next screen', group = 'client'}
 		),
 
--- Menubar
+	-- Menubar
 	awful.key(
 	{ modkey }, "p", 
 	function() menubar.show() end,
@@ -586,7 +586,6 @@ globalkeys = gears.table.join(
 )
 
 -- Client Keys
-
 clientkeys = gears.table.join(
 
 	awful.key(
@@ -734,7 +733,7 @@ clientbuttons = gears.table.join(
 		c:emit_signal("request::activate", "mouse_click", {raise = true})
 		awful.mouse.client.move(c)
 	end),
-	awful.button({ modkey }, 3, function (c)
+	awful.button({ modkey, "Control"}, 1, function (c)
 		c:emit_signal("request::activate", "mouse_click", {raise = true})
 		awful.mouse.client.resize(c)
 	end)
@@ -874,5 +873,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Gaps
 beautiful.useless_gap = 2
 
+-- Styling clients
+require('modules.decorate-client')
 -- Autostart apps
 require("modules.autostart")
