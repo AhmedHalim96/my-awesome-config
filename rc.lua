@@ -540,8 +540,7 @@ globalkeys = gears.table.join(
 		awful.key(
 			{},
 			'XF86AudioPrev',
-			function(c)
-				c.play()
+			function()
 				awful.spawn('playerctl previous')
 			end,
 			{description = 'Previous', group = 'hotkeys'}
