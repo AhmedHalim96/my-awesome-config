@@ -8,7 +8,7 @@ local awful = require("awful")
 require("awful.autofocus")
 
 -- collision
-require("collision")()
+-- require("collision")()
 
 -- Widget and layout library
 local wibox = require("wibox")
