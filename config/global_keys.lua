@@ -289,6 +289,7 @@ local globalkeys = gears.table.join(
 		awful.key(
 			{},
 			'XF86PowerDown',
+			
 			function()
 				--
 			end,
@@ -298,9 +299,17 @@ local globalkeys = gears.table.join(
 			{},
 			'XF86PowerOff',
 			function()
-				_G.exit_screen_show()
+				awful.spawn('system-control')
 			end,
 			{description = 'ShutDown Screen', group = 'hotkeys'}
+		),
+		awful.key(
+			{modkey},
+			'l',
+			function()
+				awful.spawn('i3lock-fancy -gp')
+			end,
+			{description = 'lock Screen', group = 'hotkeys'}
 		),
 		-- Screen management
 		awful.key(
