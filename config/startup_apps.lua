@@ -1,4 +1,4 @@
-apps = {
+startup_apps = {
   "picom --config '/home/ahmed/.config/awesome/config/picom.conf'",
   'nm-applet --indicator', -- wifi
   'pnmixer', -- shows an audiocontrol applet in systray when installed.
@@ -24,17 +24,4 @@ apps = {
 
 }
 
-local awful = require('awful')
-
-local function run_once(cmd)
-  local findme = cmd
-  local firstspace = cmd:find(' ')
-  if firstspace then
-    findme = cmd:sub(0, firstspace - 1)
-  end
-  awful.spawn.with_shell(string.format('pgrep -u $USER -x %s > /dev/null || (%s)', findme, cmd))
-end
-
-for _, app in ipairs(apps) do
-  run_once(app)
-end
+return startup_apps

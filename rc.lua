@@ -875,4 +875,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 beautiful.useless_gap = 2
 
 -- Autostart apps
-require("config.autostart")
+require("modules.autostart")
