@@ -792,6 +792,28 @@ awful.rules.rules = {
 			}
 		}, properties = { floating = true }},
 
+			-- OnTop clients.
+		{ rule_any = {
+			instance = {"xdman", "Toolkit"},
+			class = {},
+			name = {
+				-- "Picture-in-Picture" -- Firefox pip mode,
+			},
+			role = {}
+		}, properties = { ontop = true, above = true }},
+
+		-- Not in taskbar clients.
+		{ rule_any = {
+			instance = {},
+			class = {},
+			name = {
+				"Picture-in-Picture" -- Firefox pip mode,
+			},
+			role = {}
+		}, properties = {  skip_taskbar = true }},
+
+
+
 	-- Add titlebars to normal clients and dialogs
 	-- { rule_any = {type = { "normal", "dialog" }
 	--   }, properties = { titlebars_enabled = true }
@@ -871,7 +893,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- awful.util.spawn("bash -c '~/.config/awesome/touchpad.sh'")
 
 -- Gaps
-beautiful.useless_gap = 2
+beautiful.useless_gap = 0
 
 -- Styling clients
 require('modules.decorate-client')
