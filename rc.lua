@@ -60,7 +60,7 @@ end
 
 --Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/home/ahmed/.config/awesome/themes/default/theme.lua")
+beautiful.init("/home/ahmed/.config/awesome/themes/custom/theme.lua")
 
 terminal = "gnome-terminal"
 editor = os.getenv("EDITOR") or "editor"
