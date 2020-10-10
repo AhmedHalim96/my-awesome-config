@@ -27,7 +27,8 @@ awful.rules.rules = {
 				"copyq",  -- Includes session name in class.
 				"pinentry",
 				"xdman",
-				"smplayer"
+				"smplayer",
+				"xviewer"
 			},
 			class = {
 				"Arandr",
@@ -73,6 +74,21 @@ awful.rules.rules = {
 			role = {}
 		}, properties = {  skip_taskbar = true }},
 
+			-- center clients
+			{ rule_any = {
+				instance = {
+					'smplayer', 
+					"polkit-gnome-authentication-agent-1", 
+					"copyq",
+					"xviewer"
+				},
+				class = {},
+				name = {
+					"Picture-in-Picture", -- Firefox pip mode,
+					"Quit and close tabs?" -- Firefox quit dialouge,
+				},
+				role = {}
+			}, properties = { placement = awful.placement.centered}},
 
 
 	-- Add titlebars to normal clients and dialogs
