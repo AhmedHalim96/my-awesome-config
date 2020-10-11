@@ -95,6 +95,14 @@ local globalkeys = gears.table.join(
       end
     end,
     {description = 'Switch to previous window', group = 'client'}
+	),
+	awful.key(
+    {modkey},
+    'Tab',
+    function()
+      awful.spawn('bash -c "~/.config/rofi/rofi_window.sh"')
+    end,
+    {description = 'Open Rofi Window mode', group = 'client'}
   ),
 
 	-- Programs
