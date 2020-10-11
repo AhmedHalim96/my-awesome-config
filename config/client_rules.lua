@@ -16,7 +16,7 @@ awful.rules.rules = {
 			keys = clientkeys,
 			buttons = clientbuttons,
 			screen = awful.screen.preferred,
-			placement = awful.placement.no_overlap+awful.placement.no_offscreen
+			placement = awful.placement.no_overlap+awful.placement.no_offscreen+awful.placement.centered
 		}
 	},
 
@@ -74,21 +74,18 @@ awful.rules.rules = {
 			role = {}
 		}, properties = {  skip_taskbar = true }},
 
-			-- center clients
+			-- uncenter clients
 			{ rule_any = {
 				instance = {
-					'smplayer', 
-					"polkit-gnome-authentication-agent-1", 
-					"copyq",
-					"xviewer"
+					"xdman"
 				},
 				class = {},
-				name = {
-					"Picture-in-Picture", -- Firefox pip mode,
-					"Quit and close tabs?" -- Firefox quit dialouge,
-				},
-				role = {}
-			}, properties = { placement = awful.placement.centered}},
+				name = {},
+				role = {"pop-up",}
+			}, properties = {
+				 placement =awful.placement.no_overlap+awful.placement.no_offscreen
+				}
+			},
 
 
 	-- Add titlebars to normal clients and dialogs
