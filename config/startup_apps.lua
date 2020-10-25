@@ -13,6 +13,7 @@ local startup_apps = {
     'xiccd', -- Applies color profile
    'nitrogen --restore',
    'qbittorrent',
+   'cryptomator',
    'mintupdate-launcher',
    'xdman',
   -- Add applications that need to be killed between reloads
