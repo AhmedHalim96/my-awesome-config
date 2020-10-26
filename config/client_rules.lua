@@ -77,7 +77,8 @@ awful.rules.rules = {
 			-- uncenter clients
 			{ rule_any = {
 				instance = {
-					"xdman"
+					"xdman",
+					"albert"
 				},
 				class = {},
 				name = {},
