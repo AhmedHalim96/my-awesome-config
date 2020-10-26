@@ -23,17 +23,17 @@ local globalkeys = gears.table.join(
 		{description = "view next", group = "tag"}
 	),
 
-	awful.key(
-		{ modkey,}, "d",
-			function () awful.client.focus.byidx( 1) end,
-		{description = "focus next by index", group = "client"}
-	),
+	-- awful.key(
+	-- 	{ modkey,}, "d",
+	-- 		function () awful.client.focus.byidx( 1) end,
+	-- 	{description = "focus next by index", group = "client"}
+	-- ),
 
-	awful.key(
-		{ modkey,}, "a",
-		function () awful.client.focus.byidx(-1) end,
-		{description = "focus previous by index", group = "client"}
-	),
+	-- awful.key(
+	-- 	{ modkey,}, "a",
+	-- 	function () awful.client.focus.byidx(-1) end,
+	-- 	{description = "focus previous by index", group = "client"}
+	-- ),
 
 	-- awful.key(
 	-- 	{ modkey,}, "w", 
@@ -42,29 +42,29 @@ local globalkeys = gears.table.join(
 	-- ),
 
 	-- Layout manipulation
-	awful.key(
-		{ modkey, "Shift"   }, "d", 
-		function () awful.client.swap.byidx(  1)    end,
-		{description = "swap with next client by index", group = "client"}
-	),
+	-- awful.key(
+	-- 	{ modkey, "Shift"   }, "d", 
+	-- 	function () awful.client.swap.byidx(  1)    end,
+	-- 	{description = "swap with next client by index", group = "client"}
+	-- ),
 
-	awful.key(
-		{ modkey, "Shift"   }, "a",
-	 	function () awful.client.swap.byidx( -1)    end,
-		{description = "swap with previous client by index", group = "client"}
-	),
+	-- awful.key(
+	-- 	{ modkey, "Shift"   }, "a",
+	--  	function () awful.client.swap.byidx( -1)    end,
+	-- 	{description = "swap with previous client by index", group = "client"}
+	-- ),
 
-	awful.key(
-		{ modkey, "Control" }, "d", 
-		function () awful.screen.focus_relative( 1) end,
-		{description = "focus the next screen", group = "screen"}
-	),
+	-- awful.key(
+	-- 	{ modkey, "Control" }, "d", 
+	-- 	function () awful.screen.focus_relative( 1) end,
+	-- 	{description = "focus the next screen", group = "screen"}
+	-- ),
 
-	awful.key(
-		{ modkey, "Control" }, "a", 
-		function () awful.screen.focus_relative(-1) end,
-		{description = "focus the previous screen", group = "screen"}
-	),
+	-- awful.key(
+	-- 	{ modkey, "Control" }, "a", 
+	-- 	function () awful.screen.focus_relative(-1) end,
+	-- 	{description = "focus the previous screen", group = "screen"}
+	-- ),
 
 	awful.key(
 		{ modkey,}, "u", 
@@ -330,8 +330,11 @@ local globalkeys = gears.table.join(
 	-- Menubar
 	awful.key(
 	{ modkey }, "p", 
-	function() menubar.show() end,
-	{description = "show the menubar", group = "launcher"}
+	-- function() menubar.show() end,
+	-- {description = "show the menubar", group = "launcher"}
+
+	function() awful.spawn('albert show') end,
+	{description = "show albert", group = "launcher"}
 	)
 )
 
