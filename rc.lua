@@ -281,7 +281,7 @@ require("config.client_rules")
 require("config.client_signals")
 
 -- Gaps
-beautiful.useless_gap = 0
+beautiful.useless_gap = 5
 
 -- Styling clients
 require('modules.decorate-client')
