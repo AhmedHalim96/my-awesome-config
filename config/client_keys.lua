@@ -62,23 +62,50 @@ local clientkeys = gears.table.join(
 		{description = "(un)maximize", group = "client"}
 	),
 
-	awful.key(
-		{ modkey, "Control" }, "m",
-		function (c)
-			c.maximized_vertical = not c.maximized_vertical
-			c:raise()
-		end ,
-		{description = "(un)maximize vertically", group = "client"}
-	),
+	awful.key({ modkey,   }, "d",      
+		function ()
+		
+			for _, cl in ipairs(mouse.screen.selected_tag:clients()) do
 
-	awful.key(
-		{ modkey, "Shift"   }, "m",
-		function (c)
-			c.maximized_horizontal = not c.maximized_horizontal
-			c:raise()
-		end ,
-		{description = "(un)maximize horizontally", group = "client"}
-	)
+				local c = cl
+				if c then
+					c.minimized = true
+				end
+			end
+    end,
+		{description = "minimize all windows in current tag", group = "client"}),
+
+		awful.key({ modkey, "Shift"  }, "d",      
+		function ()
+		
+			for _, cl in ipairs(mouse.screen.selected_tag:clients()) do
+
+				local c = cl
+				if c then
+					c.minimized = false
+				end
+			end
+    end,
+		{description = "unminimize all windows in current tag", group = "client"})
+
+		
+	-- awful.key(
+	-- 	{ modkey, "Control" }, "m",
+	-- 	function (c)
+	-- 		c.maximized_vertical = not c.maximized_vertical
+	-- 		c:raise()
+	-- 	end ,
+	-- 	{description = "(un)maximize vertically", group = "client"}
+	-- ),
+
+	-- awful.key(
+	-- 	{ modkey, "Shift"   }, "m",
+	-- 	function (c)
+	-- 		c.maximized_horizontal = not c.maximized_horizontal
+	-- 		c:raise()
+	-- 	end ,
+	-- 	{description = "(un)maximize horizontally", group = "client"}
+	-- )
 )
 
 return clientkeys
