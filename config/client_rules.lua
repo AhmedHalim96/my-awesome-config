@@ -69,7 +69,8 @@ awful.rules.rules = {
 			instance = {},
 			class = {},
 			name = {
-				"Picture-in-Picture" -- Firefox pip mode,
+				"Picture-in-Picture", -- Firefox pip mode,
+				"JavaEmbeddedFrame"
 			},
 			role = {}
 		}, properties = {  skip_taskbar = true }},
@@ -78,13 +79,25 @@ awful.rules.rules = {
 			{ rule_any = {
 				instance = {
 					"xdman",
-					"albert"
 				},
 				class = {},
 				name = {},
 				role = {"pop-up",}
 			}, properties = {
 				 placement =awful.placement.no_overlap+awful.placement.no_offscreen
+				}
+			},
+
+			-- clients that can overlap other clients
+			{ rule_any = {
+				instance = {
+					"albert"
+				},
+				class = {},
+				name = {},
+				role = {}
+			}, properties = {
+				placement =awful.placement.no_offscreen
 				}
 			},
 
