@@ -315,7 +315,7 @@ local globalkeys = gears.table.join(
 			{modkey},
 			'l',
 			function()
-				awful.spawn('i3lock-fancy -gp')
+				awful.spawn('cinnamon-screensaver-command  -l')
 			end,
 			{description = 'lock Screen', group = 'hotkeys'}
 		),
