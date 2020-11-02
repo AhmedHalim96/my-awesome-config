@@ -9,13 +9,13 @@ local function renderClient(client, mode)
 
   client.rendering_mode = mode
   -- client.floating = false
-  -- client.maximized = false
+  client.maximized = false
   -- client.above = false
   -- client.below = false
   -- client.ontop = false
   -- client.sticky = false
-  -- client.maximized_horizontal = false
-  -- client.maximized_vertical = false
+  client.maximized_horizontal = false
+  client.maximized_vertical = false
 
   if client.rendering_mode == 'maximized' then
     client.border_width = 0
