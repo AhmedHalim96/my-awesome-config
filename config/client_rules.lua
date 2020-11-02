@@ -28,7 +28,8 @@ awful.rules.rules = {
 				"pinentry",
 				"xdman",
 				"smplayer",
-				"xviewer"
+				"xviewer",
+				"megasync"
 			},
 			class = {
 				"Arandr",
@@ -70,7 +71,8 @@ awful.rules.rules = {
 			class = {},
 			name = {
 				"Picture-in-Picture", -- Firefox pip mode,
-				"JavaEmbeddedFrame"
+				"JavaEmbeddedFrame",
+				"MEGAsync"
 			},
 			role = {}
 		}, properties = {  skip_taskbar = true }},
@@ -91,7 +93,8 @@ awful.rules.rules = {
 			-- clients that can overlap other clients
 			{ rule_any = {
 				instance = {
-					"albert"
+					"albert",
+					"megasync"
 				},
 				class = {},
 				name = {},
