@@ -16,6 +16,7 @@ local function renderClient(client, mode)
   -- client.sticky = false
   client.maximized_horizontal = false
   client.maximized_vertical = false
+  awful.client.setslave(client)
 
   if client.rendering_mode == 'maximized' then
     client.border_width = 0
