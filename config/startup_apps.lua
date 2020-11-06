@@ -1,5 +1,6 @@
 local startup_apps = {
   "picom --config '/home/ahmed/.config/awesome/config/picom.conf'",
+  "setxkbmap -layout 'us,ara' -option 'grp:alt_shift_toggle'",
   'nm-applet --indicator', -- wifi
   'pnmixer', -- shows an audiocontrol applet in systray when installed.
   'blueberry-tray', -- Bluetooth tray icon
