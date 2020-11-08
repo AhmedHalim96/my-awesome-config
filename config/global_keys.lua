@@ -65,6 +65,28 @@ local globalkeys = gears.table.join(
 	-- 	function () awful.screen.focus_relative(-1) end,
 	-- 	{description = "focus the previous screen", group = "screen"}
 	-- ),
+	awful.key({ modkey,   }, "d",      
+	function ()
+		local minimize = false
+
+		for _, cl in ipairs(mouse.screen.selected_tag:clients()) do
+			local c = cl
+			if c then
+				if c.minimized==false then
+					minimize = true
+				end
+			end
+		end
+
+		for _, cl in ipairs(mouse.screen.selected_tag:clients()) do
+
+			local c = cl
+			if c then
+				c.minimized = minimize
+			end
+		end
+	end,
+	{description = "(un)minimize all windows in current tag", group = "client"}),
 
 	awful.key(
 		{ modkey,}, "u", 

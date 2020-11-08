@@ -60,33 +60,7 @@ local clientkeys = gears.table.join(
 			c:raise()
 		end ,
 		{description = "(un)maximize", group = "client"}
-	),
-
-	awful.key({ modkey,   }, "d",      
-		function ()
-		
-			for _, cl in ipairs(mouse.screen.selected_tag:clients()) do
-
-				local c = cl
-				if c then
-					c.minimized = true
-				end
-			end
-    end,
-		{description = "minimize all windows in current tag", group = "client"}),
-
-		awful.key({ modkey, "Shift"  }, "d",      
-		function ()
-		
-			for _, cl in ipairs(mouse.screen.selected_tag:clients()) do
-
-				local c = cl
-				if c then
-					c.minimized = false
-				end
-			end
-    end,
-		{description = "unminimize all windows in current tag", group = "client"})
+	)
 
 		
 	-- awful.key(
