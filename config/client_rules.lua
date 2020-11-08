@@ -94,7 +94,8 @@ awful.rules.rules = {
 			{ rule_any = {
 				instance = {
 					"albert",
-					"megasync"
+					"megasync",
+					"xdman"
 				},
 				class = {},
 				name = {},
