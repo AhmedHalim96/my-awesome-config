@@ -53,6 +53,10 @@ local clientkeys = gears.table.join(
 		{description = "minimize", group = "client"}
 	),
 
+	awful.key({ modkey, "Control" }, "m", 
+	function (c) c:swap(awful.client.getmaster()) end,
+	{description = "move to master", group = "client"}),
+
 	awful.key(
 		{ modkey,           }, "m",
 		function (c)
