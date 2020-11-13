@@ -106,6 +106,14 @@ local globalkeys = gears.table.join(
 		function () awful.spawn('gnome-system-monitor') end,
 		{description = "open system monitor", group = "launcher"}
 	),
+	awful.key(
+		{ modkey,}, "`", 
+		function () 
+			awful.spawn('flatpak run com.github.alainm23.planner') 
+		end,
+		{description = "open planner", group = "launcher"}
+	),
+	
 
 	-- Awesome Control 
 	awful.key(
