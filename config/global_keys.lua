@@ -23,48 +23,6 @@ local globalkeys = gears.table.join(
 		{description = "view next", group = "tag"}
 	),
 
-	-- awful.key(
-	-- 	{ modkey,}, "d",
-	-- 		function () awful.client.focus.byidx( 1) end,
-	-- 	{description = "focus next by index", group = "client"}
-	-- ),
-
-	-- awful.key(
-	-- 	{ modkey,}, "a",
-	-- 	function () awful.client.focus.byidx(-1) end,
-	-- 	{description = "focus previous by index", group = "client"}
-	-- ),
-
-	-- awful.key(
-	-- 	{ modkey,}, "w", 
-	-- 	function () mymainmenu:show() end,
-	-- 	{description = "show main menu", group = "awesome"}
-	-- ),
-
-	-- Layout manipulation
-	-- awful.key(
-	-- 	{ modkey, "Shift"   }, "d", 
-	-- 	function () awful.client.swap.byidx(  1)    end,
-	-- 	{description = "swap with next client by index", group = "client"}
-	-- ),
-
-	-- awful.key(
-	-- 	{ modkey, "Shift"   }, "a",
-	--  	function () awful.client.swap.byidx( -1)    end,
-	-- 	{description = "swap with previous client by index", group = "client"}
-	-- ),
-
-	-- awful.key(
-	-- 	{ modkey, "Control" }, "d", 
-	-- 	function () awful.screen.focus_relative( 1) end,
-	-- 	{description = "focus the next screen", group = "screen"}
-	-- ),
-
-	-- awful.key(
-	-- 	{ modkey, "Control" }, "a", 
-	-- 	function () awful.screen.focus_relative(-1) end,
-	-- 	{description = "focus the previous screen", group = "screen"}
-	-- ),
 	awful.key({ modkey,   }, "d",      
 	function ()
 		local minimize = false
@@ -124,7 +82,7 @@ local globalkeys = gears.table.join(
     function()
       awful.spawn('bash -c "~/.config/rofi/rofi_window.sh"')
     end,
-    {description = 'Open Rofi Window mode', group = 'client'}
+    {description = 'Open Rofi Window mode', group = 'launcher'}
   ),
 
 	-- Programs
@@ -144,7 +102,7 @@ local globalkeys = gears.table.join(
 		{description = "open default filemanager", group = "launcher"}
 	),
 	awful.key(
-		{ modkey,}, "s", 
+		{ modkey,}, "Escape", 
 		function () awful.spawn('gnome-system-monitor') end,
 		{description = "open system monitor", group = "launcher"}
 	),
@@ -163,18 +121,18 @@ local globalkeys = gears.table.join(
 	),
 
 	awful.key(
-		{altkey, 'Shift'}, "Right",     
+		{'','Control', 'Shift'}, "Right",     
 		function () awful.tag.incmwfact( 0.05)          end,
 		{description = "increase master width factor", group = "layout"}
 	),
 
 	awful.key(
-		{altkey, 'Shift'}, "Left",     
+		{'','Control', 'Shift'}, "Left",     
 		function () awful.tag.incmwfact(-0.05)          end,
 		{description = "decrease master width factor", group = "layout"}
 	),
 	awful.key(
-    {altkey, 'Shift'},
+    {'','Control', 'Shift'},
     'Down',
     function()
       awful.client.incwfact(0.05)
@@ -182,7 +140,7 @@ local globalkeys = gears.table.join(
     {description = 'decrease master height factor', group = 'layout'}
   ),
   awful.key(
-    {altkey, 'Shift'},
+    {'','Control', 'Shift'},
     'Up',
     function()
       awful.client.incwfact(-0.05)
@@ -379,17 +337,17 @@ for i = 1, 9 do
 		),
 
 		-- Toggle tag display.
-		awful.key(
-			{ modkey, "Control" }, "#" .. i + 9,
-			function ()
-					local screen = awful.screen.focused()
-					local tag = screen.tags[i]
-					if tag then
-							awful.tag.viewtoggle(tag)
-					end
-			end,
-			{description = "toggle tag #" .. i, group = "tag"}
-		),
+		-- awful.key(
+		-- 	{ modkey, "Control" }, "#" .. i + 9,
+		-- 	function ()
+		-- 			local screen = awful.screen.focused()
+		-- 			local tag = screen.tags[i]
+		-- 			if tag then
+		-- 					awful.tag.viewtoggle(tag)
+		-- 			end
+		-- 	end,
+		-- 	{description = "toggle tag #" .. i, group = "tag"}
+		-- ),
 
 		-- Move client to tag.
 		awful.key(
@@ -403,6 +361,22 @@ for i = 1, 9 do
 				end
 			end,
 			{description = "move focused client to tag #"..i, group = "tag"}
+		),
+
+		-- Move client to tag and switch to tag.
+		awful.key(
+			{ modkey, "Control" }, "#" .. i + 9,
+			function ()
+				if client.focus then
+					local tag = client.focus.screen.tags[i]
+					if tag then
+						client.focus:move_to_tag(tag)
+						tag:view_only()
+
+					end
+				end
+			end,
+			{description = "move focused client and switch to tag #"..i, group = "tag"}
 		),
 
 		-- Toggle tag on focused client.
