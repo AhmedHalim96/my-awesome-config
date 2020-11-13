@@ -82,9 +82,9 @@ awful.util.tagnames = { "1", "2", "3", "4", "5" }
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-		-- awful.layout.suit.tile,
-		awful.layout.suit.spiral,
-		awful.layout.suit.floating,
+    awful.layout.suit.tile,
+    -- awful.layout.suit.spiral,
+    awful.layout.suit.floating,
     awful.layout.suit.fair,
     -- awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.bottom,
@@ -165,6 +165,7 @@ lain.layout.cascade.tile.nmaster       = 5
 lain.layout.cascade.tile.ncol          = 2
 
 beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
+
 
 -- }}}
 
