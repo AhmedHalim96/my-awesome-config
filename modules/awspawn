@@ -8,7 +8,8 @@
 
 # List of applications to run
 APPS=(
-    barrier
+    barrier,
+    caffeine
     )
 
 # Some applications start child applications that need to be killed on reload
@@ -19,7 +20,8 @@ KILL=(
 # First kill lingering apps
 for app in "${APPS[@]}"
 do
-    kill -9 $(pidof $app)
+    # kill -9 $(pidof $app)
+    killall -9 $app
 done
 for app in "${KILL[@]}"
 do
