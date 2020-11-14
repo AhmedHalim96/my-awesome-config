@@ -55,7 +55,7 @@ end
 
 
 --Variable definitions]
-aadaddlocal default_apps = require("config.default_apps")
+local default_apps = require("config.default_apps")
 
 local themes = {
 	"blackburn",       -- 1
