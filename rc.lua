@@ -55,6 +55,7 @@ end
 
 
 --Variable definitions]
+aadaddlocal default_apps = require("config.default_apps")
 
 local themes = {
 	"blackburn",       -- 1
@@ -70,13 +71,13 @@ local themes = {
 }
 
  chosen_theme = themes[5]
-terminal = "gnome-terminal"
-editor = os.getenv("EDITOR") or "editor"
+terminal = default_apps.terminal
+editor = default_apps.editor
 editor_cmd = terminal .. " -e " .. editor
 modkey = "Mod4"
 altkey = "Mod1"
-browser = "firefox"
-filemanager = "nemo"
+browser = default_apps.browser
+filemanager = default_apps.filemanager
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5" }
 
