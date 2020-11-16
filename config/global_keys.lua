@@ -102,6 +102,11 @@ local globalkeys = gears.table.join(
 		{description = "open default filemanager", group = "launcher"}
 	),
 	awful.key(
+		{ modkey, "Shift"}, "e", 
+		function () awful.spawn('dmenufm') end,
+		{description = "open dmenufm", group = "launcher"}
+	),
+	awful.key(
 		{ modkey,}, "Escape", 
 		function () awful.spawn('gnome-system-monitor') end,
 		{description = "open system monitor", group = "launcher"}
