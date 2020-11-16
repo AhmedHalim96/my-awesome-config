@@ -57,20 +57,6 @@ end
 --Variable definitions]
 local default_apps = require("config.default_apps")
 
-local themes = {
-	"blackburn",       -- 1
-	"copland",         -- 2
-	"dremora",         -- 3
-	"holo",            -- 4
-	"multicolor",      -- 5
-	"powerarrow",      -- 6
-	"powerarrow-dark", -- 7
-	"rainbow",         -- 8
-	"steamburn",       -- 9
-	"vertex",          -- 10
-}
-
- chosen_theme = themes[5]
 terminal = default_apps.terminal
 editor = default_apps.editor
 editor_cmd = terminal .. " -e " .. editor
@@ -165,7 +151,8 @@ lain.layout.cascade.tile.extra_padding = dpi(5)
 lain.layout.cascade.tile.nmaster       = 5
 lain.layout.cascade.tile.ncol          = 2
 
-beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
+beautiful.init(string.format("%s/.config/awesome/themes/multicolor/theme.lua", os.getenv("HOME")))
+beautiful.wallpaper="/mnt/Data/Pictures/Bacakgrounds/hackerman.jpeg"
 
 
 -- }}}
