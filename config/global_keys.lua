@@ -326,8 +326,8 @@ local globalkeys = gears.table.join(
 	-- function() menubar.show() end,
 	-- {description = "show the menubar", group = "launcher"}
 
-	function() awful.spawn('albert show') end,
-	{description = "show albert", group = "launcher"}
+	function() awful.spawn('albert toggle') end,
+	{description = "toggle albert", group = "launcher"}
 	)
 )
 
