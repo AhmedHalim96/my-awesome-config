@@ -10,7 +10,7 @@ local wibox = require("wibox")
 _G.client.connect_signal("manage", function (c)
   -- Set the windows at the slave,
   -- i.e. put it at the end of others instead of setting it master.
-  -- if not awesome.startup then awful_G..client.setslave(c) end
+  if not awesome.startup then awful.client.setslave(c) end
 
   if _G.awesome.startup
     and not c.size_hints.user_position
@@ -18,7 +18,8 @@ _G.client.connect_signal("manage", function (c)
       -- Prevent clients from being unreachable after screen count changes.
       awful.placement.no_offscreen(c)
   end
-end)
+end
+)
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 _G.client.connect_signal("request::titlebars", function(c)
