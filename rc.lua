@@ -230,7 +230,7 @@ require("config.client_rules")
 require("config.client_signals")
 
 -- Styling clients
--- require('modules.decorate-client')
+require('modules.decorate-client')
 
 -- Autostart apps
 require("modules.autostart")

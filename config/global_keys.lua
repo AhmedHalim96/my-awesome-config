@@ -197,6 +197,30 @@ local globalkeys = gears.table.join(
 		{description = "select previous", group = "layout"}
 	),
 
+	awful.key(
+		{ modkey,   }, "Left", 
+		function () awful.client.swap.bydirection ('left')              end,
+		{description = "Move to the left", group = "layout"}
+	),
+
+	awful.key(
+		{ modkey,   }, "Right", 
+		function () awful.client.swap.bydirection ('right')              end,
+		{description = "Move to the right", group = "layout"}
+	),
+	
+	awful.key(
+		{ modkey,   }, "Up", 
+		function () awful.client.swap.bydirection ('up')              end,
+		{description = "Move up", group = "layout"}
+	),
+	
+	awful.key(
+		{ modkey,   }, "Down", 
+		function () awful.client.swap.bydirection ('down')              end,
+		{description = "Move down", group = "layout"}
+	),
+
 	-- awful.key(
 	-- 	{ modkey, "Shift"}, "f", 
 	-- 	function () awful.layout.set(awful.layout.suit.tile.left)                end,
