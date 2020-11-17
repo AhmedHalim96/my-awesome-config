@@ -112,7 +112,7 @@ local globalkeys = gears.table.join(
 		{description = "open system monitor", group = "launcher"}
 	),
 	awful.key(
-		{ modkey,}, "`", 
+		{ modkey, "Shift"}, "`", 
 		function () 
 			awful.spawn('flatpak run com.github.alainm23.planner') 
 		end,
@@ -196,6 +196,12 @@ local globalkeys = gears.table.join(
 		function () awful.layout.inc(-1)                end,
 		{description = "select previous", group = "layout"}
 	),
+
+	-- awful.key(
+	-- 	{ modkey, "Shift"}, "f", 
+	-- 	function () awful.layout.set(awful.layout.suit.tile.left)                end,
+	-- 	{description = "flip layout", group = "layout"}
+	-- ),
 
 	awful.key(
 		{ modkey, "Control" }, "n",
