@@ -11,7 +11,6 @@ local startup_apps = {
   'xfce4-power-manager', -- Power manager
    'flameshot',
    "albert",
-   "/usr/bin/caffeine",
     'touchpad-indicator',
     '/usr/bin/libinput-gestures',
     'mpd',
