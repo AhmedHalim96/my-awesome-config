@@ -31,7 +31,7 @@ theme.border_width                              = dpi(2)
 theme.border_normal                             = "#b0bec5"
 theme.border_focus                              = "#ff8c00"
 theme.border_marked                             = "#3ca4d8"
-theme.menu_border_width                         = 0
+theme.menu_border_width                         = dpi(2)
 theme.menu_width                                = dpi(130)
 theme.menu_submenu_icon                         = theme.confdir .. "/icons/submenu.png"
 theme.menu_fg_normal                            = "#aaaaaa"
@@ -332,7 +332,7 @@ function theme.at_screen_connect(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(26), bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(26), bg = theme.bg_normal, fg = theme.fg_normal , opacity = 0.75})
 
     -- Add widgets to the wibox 
     s.mywibox:setup {
@@ -357,8 +357,8 @@ function theme.at_screen_connect(s)
             netupinfo.widget,
             -- volicon,
             -- theme.volume.widget,
-            -- memicon,
-            -- memory.widget,
+            memicon,
+            memory.widget,
             cpuicon,
             cpu.widget,
             tempicon,
