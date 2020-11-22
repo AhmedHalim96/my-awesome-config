@@ -149,7 +149,7 @@ local globalkeys = gears.table.join(
     {'','Control', 'Shift'},
     'Down',
     function()
-      awful.client.incwfact(0.05)
+      awful.client.incwfact(-0.05)
     end,
     {description = 'decrease master height factor', group = 'layout'}
   ),
@@ -157,7 +157,7 @@ local globalkeys = gears.table.join(
     {'','Control', 'Shift'},
     'Up',
     function()
-      awful.client.incwfact(-0.05)
+      awful.client.incwfact(0.05)
     end,
     {description = 'increase master height factor', group = 'layout'}
   ),
@@ -245,7 +245,7 @@ local globalkeys = gears.table.join(
 	-- dmenu Run Prompt
 	awful.key(
 		{ modkey },"r",
-		function () awful.util.spawn('dmenu_run') end,
+		function () awful.util.spawn('dmenu_run -h 26') end,
 		{description = "run prompt", group = "launcher"}
 	),
 
