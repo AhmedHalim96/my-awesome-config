@@ -29,8 +29,36 @@ local function renderClient(client, mode)
     client.shape = function(cr, w, h)
       gears.shape.rounded_rect(cr, w, h, dpi(5))
     end
+ 
   end
 end
+
+
+function manage_titlebars(c)
+  --   show titlebars only in floating layout
+
+  if (awful.layout.get(client.screen) ==  awful.layout.suit.floating) 
+  then
+    awful.titlebar.show(c)
+  end
+  if (awful.layout.get(client.screen) ==  awful.layout.suit.tile) 
+  then
+    awful.titlebar.hide(c)
+  end
+  if (awful.layout.get(client.screen) ==  awful.layout.suit.tile.bottom) 
+  then
+    awful.titlebar.hide(c)
+  end
+  if (awful.layout.get(client.screen) ==  awful.layout.suit.fair) 
+  then
+    awful.titlebar.hide(c)
+  end
+  if (awful.layout.get(client.screen) ==  awful.layout.suit.max) 
+  then
+    awful.titlebar.hide(c)
+  end
+end
+
 
 local changesOnScreenCalled = false
 
@@ -52,6 +80,9 @@ local function changesOnScreen(currentScreen)
 
   for _, client in pairs(clientsToManage) do
     renderClient(client, currentScreen.client_mode)
+   if not client.no_titlebar then
+    manage_titlebars(client)
+   end
   end
   changesOnScreenCalled = false
 end
@@ -86,9 +117,12 @@ end
 
 _G.client.connect_signal('manage', clientCallback)
 
+
 _G.client.connect_signal('unmanage', clientCallback)
 
+
 _G.client.connect_signal('property::hidden', clientCallback)
+
 
 _G.client.connect_signal('property::minimized', clientCallback)
 
@@ -104,5 +138,8 @@ _G.client.connect_signal(
 )
 
 _G.tag.connect_signal('property::selected', tagCallback)
+-- _G.tag.connect_signal('property::selected', manage_titlebars) 
+
 
 _G.tag.connect_signal('property::layout', tagCallback)
+

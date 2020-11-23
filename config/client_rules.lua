@@ -16,7 +16,8 @@ awful.rules.rules = {
 			keys = clientkeys,
 			buttons = clientbuttons,
 			screen = awful.screen.preferred,
-			placement = awful.placement.no_overlap+awful.placement.no_offscreen+awful.placement.centered
+			placement = awful.placement.no_overlap+awful.placement.no_offscreen+awful.placement.centered,
+			no_titlebar = false 
 		}
 	},
 
@@ -110,9 +111,21 @@ awful.rules.rules = {
 	-- { rule_any = {type = { "normal", "dialog" }
 	--   }, properties = { titlebars_enabled = true }
 	-- },
+	-- No Title bars
+	{ rule_any = {
+		instance = {
+			"io.github.celluloid_player.Celluloid",
+			"Telegram",
+			"albert"
+		},
+		class = {},
+		name = {},
+		role = {}
+	}, properties = {  no_titlebar = true }}
+
 
 	-- Set Firefox to always map on the tag named "2" on screen 1.
 	-- { rule = { class = "Firefox" },
 	--   properties = { screen = 1, tag = "2" } },
 }
--- }}}
+-- }}}skip_taskbar = true
