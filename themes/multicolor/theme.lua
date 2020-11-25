@@ -129,39 +129,6 @@ theme.weather = lain.widget.weather({
     end
 })
 
--- / fs
---[[ commented because it needs Gio/Glib >= 2.54
-local fsicon = wibox.widget.imagebox(theme.widget_fs)
-theme.fs = lain.widget.fs({
-    notification_preset = { font = "Terminus 10", fg = theme.fg_normal },
-    settings  = function()
-        widget:set_markup(markup.fontfg(theme.font, "#80d9d8", string.format("%.1f", fs_now["/"].used) .. "% "))
-    end
-})
---]]
-
--- Mail IMAP check
---[[ commented because it needs to be set before use
-local mailicon = wibox.widget.imagebox()
-theme.mail = lain.widget.imap({
-    timeout  = 180,
-    server   = "server",
-    mail     = "mail",
-    password = "keyring get mail",
-    settings = function()
-        if mailcount > 0 then
-            mailicon:set_image(theme.widget_mail)
-            widget:set_markup(markup.fontfg(theme.font, "#cccccc", mailcount .. " "))
-        else
-            widget:set_text("")
-            --mailicon:set_image() -- not working in 4.0
-            mailicon._private.image = nil
-            mailicon:emit_signal("widget::redraw_needed")
-            mailicon:emit_signal("widget::layout_changed")
-        end
-    end
-})
---]]
 
 -- CPU
 local cpuicon = wibox.widget.imagebox(theme.widget_cpu)
@@ -257,6 +224,17 @@ theme.mpd = lain.widget.mpd({
         widget:set_markup(markup.fontfg(theme.font, "#e54c62", artist) .. markup.fontfg(theme.font, "#b2b2b2", title))
     end
 })
+
+-- Edit config widget
+local config_widget = wibox.widget.textbox( '🖉')
+config_widget.font="Terminus 20"
+config_widget:buttons(awful.util.table.join(
+    awful.button({"","Control"}, 1, function(  )
+        awful.spawn("awesome-config")
+    end)
+        ))
+
+
 
 function theme.at_screen_connect(s)
     -- Quake application
@@ -376,6 +354,7 @@ function theme.at_screen_connect(s)
             -- theme.weather.widget,
             -- baticon,
             -- bat.widget,
+            config_widget,
             wibox.widget.systray(),
             clockicon,
             mytextclock,
