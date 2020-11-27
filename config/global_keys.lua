@@ -16,7 +16,8 @@ local globalkeys = gears.table.join(
 	awful.key(
 		{ altkey, 'Control'}, "Left",   
 		awful.tag.viewprev,
-		{description = "view previous", group = "tag"}),
+		{description = "view previous", group = "tag"}
+	),
 			
 	awful.key(
 		{ altkey, 'Control'}, "Right",  
@@ -52,6 +53,18 @@ local globalkeys = gears.table.join(
 		awful.client.urgent.jumpto,
 		{description = "jump to urgent client", group = "client"}
 	),
+
+	awful.key(
+    {altkey},
+    '`',
+    function()
+      awful.client.focus.history.previous()
+        if _G.client.focus then
+          _G.client.focus:raise()
+        end
+    end,
+    {description = 'Switch to previous window', group = 'client'}
+  ),
 
   awful.key(
     {altkey},
