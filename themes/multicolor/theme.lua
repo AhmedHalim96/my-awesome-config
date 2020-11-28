@@ -183,11 +183,11 @@ config_widget:buttons(awful.util.table.join(
     end)
         ))
 
-local left_pipe_separator = wibox.widget.textbox( '| ')
-left_pipe_separator.font="Terminus 24"
+local left_task_separator = wibox.widget.textbox( '[ ')
+left_task_separator.font="Terminus 18"
 
-local right_pipe_separator = wibox.widget.textbox( ' |')
-right_pipe_separator.font="Terminus 24"
+local right_task_separator = wibox.widget.textbox( ' ]')
+right_task_separator.font="Terminus 18"
 
 local left_separator = wibox.widget.textbox( '[')
 left_separator.font="Terminus 16"
@@ -317,7 +317,7 @@ function theme.at_screen_connect(s)
             {
                 {
                     {
-                        widget= left_pipe_separator
+                        widget= left_task_separator
                     },
                     {
                         {
@@ -328,7 +328,7 @@ function theme.at_screen_connect(s)
                         widget  = wibox.container.margin,
                     },
                     {
-                        widget= right_pipe_separator
+                        widget= right_task_separator
                     },
                     layout = wibox.layout.fixed.horizontal,
                 },
@@ -349,7 +349,12 @@ function theme.at_screen_connect(s)
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             --s.mylayoutbox,
+            spacer,
+            left_task_separator,
             s.mytaglist,
+            right_task_separator,
+            spacer,
+            
             s.mypromptbox,
             spacer
         },
