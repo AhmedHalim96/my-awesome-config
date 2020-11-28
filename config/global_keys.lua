@@ -373,7 +373,16 @@ local globalkeys = gears.table.join(
 
 	function() awful.spawn('albert toggle') end,
 	{description = "toggle albert", group = "launcher"}
+	), 
+	awful.key(
+		{ modkey }, "=", 
+		function ()
+    	awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
+		end,
+	 {description = "Toggle systray visibility", group = "custom"}
 	)
+
+
 )
 
 -- Bind all key numbers to tags.

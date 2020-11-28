@@ -201,9 +201,6 @@ middle_separator.font="Terminus 16"
 local spacer= wibox.widget.textbox('  ')
 
 
-local systray =  wibox.widget.systray()
--- systray.set_base_size(24)
-
 -- Brightness Widget
 local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
 
@@ -250,6 +247,11 @@ function theme.at_screen_connect(s)
 
     -- Tags
     awful.tag(awful.util.tagnames, s, awful.layout.layouts)
+
+    -- Systray
+    s.systray =  wibox.widget.systray()
+    s.systray.visible = false
+    -- systray.set_base_size(24)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -412,7 +414,7 @@ function theme.at_screen_connect(s)
             right_separator,
             spacer,
 
-            systray,
+            s.systray,
            
             spacer,
             
