@@ -130,14 +130,6 @@ theme.weather = lain.widget.weather({
 })
 
 
--- CPU
-local cpuicon = wibox.widget.imagebox(theme.widget_cpu)
-local cpu = lain.widget.cpu({
-    settings = function()
-        widget:set_markup(markup.fontfg(theme.font, "#e33a6e", cpu_now.usage .. "% "))
-    end
-})
-
 -- Coretemp
 local tempicon = wibox.widget.imagebox(theme.widget_temp)
 local temp = lain.widget.temp({
@@ -212,6 +204,7 @@ local spacer= wibox.widget.textbox('  ')
 local systray =  wibox.widget.systray()
 -- systray.set_base_size(24)
 
+-- Brightness Widget
 local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
 
 -- Volume Widget
@@ -233,6 +226,11 @@ volume_icon:buttons(awful.util.table.join(
         awful.spawn('amixer -D pulse set Master 1+ toggle')
     end)
         ))
+
+-- cpu_widget
+
+local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+
 
 function theme.at_screen_connect(s)
     -- Quake application
@@ -369,16 +367,20 @@ function theme.at_screen_connect(s)
 
             middle_separator,
 
-            cpuicon,
-            cpu.widget,
-
-            middle_separator,
-            
             tempicon,
             temp.widget,
 
             -- weathericon,
             -- theme.weather.widget,
+
+            middle_separator,
+
+            cpu_widget({
+                width = 70,
+                step_width = 2,
+                step_spacing = 0,
+                color = '#434c5e'
+            }),
 
             middle_separator,
 
