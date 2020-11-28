@@ -202,8 +202,9 @@ local spacer= wibox.widget.textbox('  ')
 
 
 local systray =  wibox.widget.systray()
-
 -- systray.set_base_size(24)
+
+local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
 
 
 function theme.at_screen_connect(s)
@@ -348,6 +349,11 @@ function theme.at_screen_connect(s)
             -- theme.weather.widget,
 
             middle_separator,
+
+            brightness_widget(),
+            
+            middle_separator,
+
 
             
             config_widget,
