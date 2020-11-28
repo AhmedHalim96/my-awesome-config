@@ -103,7 +103,7 @@ local markup = lain.util.markup
 -- Textclock
 os.setlocale(os.getenv("LANG")) -- to localize the clock
 local clockicon = wibox.widget.imagebox(theme.widget_clock)
-local mytextclock = wibox.widget.textclock(markup("#7788af", "%A %d %B ") .. markup("#ab7367", ">") .. markup("#de5e1e", " %H:%M "))
+local mytextclock = wibox.widget.textclock(markup("#fff", "%A %d %B ") .. markup("#ab7367", "|") .. markup("#7788af", " %H:%M "))
 mytextclock.font = theme.font
 
 -- Calendar
@@ -232,6 +232,8 @@ local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 -- Battery widget
 
 local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+
+
 
 
 function theme.at_screen_connect(s)
@@ -411,18 +413,25 @@ function theme.at_screen_connect(s)
             show_current_level = true
            }),
 
+           
             right_separator,
             spacer,
 
             s.systray,
            
             spacer,
-            
-        
+
+            left_separator,
             clockicon,
             mytextclock,
+            right_separator,
+
+            spacer,
 
             awful.widget.keyboardlayout:new (),
+            
+            spacer,
+
             s.mylayoutbox,
         },
     }
