@@ -269,7 +269,6 @@ local globalkeys = gears.table.join(
 			function()
 				-- awful.spawn('xbacklight -inc 10')
 				awful.spawn('light -A 10')
-				awful.spawn('brightness-notify')
 
 	
 			end,
@@ -281,7 +280,6 @@ local globalkeys = gears.table.join(
 			function()
 				-- awful.spawn('xbacklight -dec 10')
 				awful.spawn('light -U 10')
-				awful.spawn('brightness-notify')
 			end,
 			{description = '-10%', group = 'hotkeys'}
 		),
