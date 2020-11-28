@@ -214,6 +214,25 @@ local systray =  wibox.widget.systray()
 
 local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
 
+-- Volume Widget
+local volumebar_widget = require("awesome-wm-widgets.volumebar-widget.volumebar")
+
+local volume_icon = wibox.widget {
+    {
+        image = '/usr/share/icons/Arc/status/symbolic/audio-volume-high-symbolic.svg',
+        resize = false,
+        widget = wibox.widget.imagebox,
+    },
+    top = 5,
+    right=5,
+    widget = wibox.container.margin
+}
+
+volume_icon:buttons(awful.util.table.join(
+    awful.button({""}, 1, function( self  )
+        awful.spawn('amixer -D pulse set Master 1+ toggle')
+    end)
+        ))
 
 function theme.at_screen_connect(s)
     -- Quake application
@@ -364,6 +383,15 @@ function theme.at_screen_connect(s)
             middle_separator,
 
             brightness_widget(),
+
+            middle_separator,
+            volume_icon,
+            volumebar_widget(
+                {main_color = '#af13f7',
+                mute_color = theme.bg_urgent,
+                width = 80,
+            }
+            ),
 
             right_separator,
             spacer,
