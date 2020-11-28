@@ -175,8 +175,16 @@ local memory = lain.widget.mem({
 
 
 -- Edit config widget
-local config_widget = wibox.widget.textbox( '🖉')
-config_widget.font="Terminus 20"
+local config_widget = wibox.widget {
+    {
+        image = '/usr/share/icons/Papirus-Dark/symbolic/actions/tool-pencil-symbolic.svg',
+        resize = false,
+        widget = wibox.widget.imagebox,
+    },
+    top = 5,
+    widget = wibox.container.margin
+}
+
 config_widget:buttons(awful.util.table.join(
     awful.button({"","Control"}, 1, function(  )
         awful.spawn("awesome-config")
@@ -325,6 +333,11 @@ function theme.at_screen_connect(s)
             layout = wibox.layout.fixed.horizontal,
 
             left_separator,
+
+            config_widget,
+
+            middle_separator,
+
             netdownicon,
             netdowninfo,
             netupicon,
@@ -351,12 +364,6 @@ function theme.at_screen_connect(s)
             middle_separator,
 
             brightness_widget(),
-            
-            middle_separator,
-
-
-            
-            config_widget,
 
             right_separator,
             spacer,
