@@ -14,13 +14,13 @@ local globalkeys = gears.table.join(
 	
 	-- Workspace shortcut
 	awful.key(
-		{ altkey, 'Control'}, "Left",   
+		{ altkey, 'Control'}, "h",   
 		awful.tag.viewprev,
 		{description = "view previous", group = "tag"}
 	),
 			
 	awful.key(
-		{ altkey, 'Control'}, "Right",  
+		{ altkey, 'Control'}, "l",  
 		awful.tag.viewnext,
 		{description = "view next", group = "tag"}
 	),
@@ -148,27 +148,27 @@ local globalkeys = gears.table.join(
 	),
 
 	awful.key(
-		{'','Control', 'Shift'}, "Right",     
+		{modkey}, "l",     
 		function () awful.tag.incmwfact( 0.05)          end,
 		{description = "increase master width factor", group = "layout"}
 	),
 
 	awful.key(
-		{'','Control', 'Shift'}, "Left",     
+		{modkey}, "h",     
 		function () awful.tag.incmwfact(-0.05)          end,
 		{description = "decrease master width factor", group = "layout"}
 	),
 	awful.key(
-    {'','Control', 'Shift'},
-    'Down',
+    {modkey},
+    'j',
     function()
       awful.client.incwfact(-0.05)
     end,
     {description = 'decrease master height factor', group = 'layout'}
   ),
   awful.key(
-    {'','Control', 'Shift'},
-    'Up',
+    {modkey},
+    'k',
     function()
       awful.client.incwfact(0.05)
     end,
@@ -176,25 +176,25 @@ local globalkeys = gears.table.join(
   ),
 
 	awful.key(
-		{ modkey, "Shift"   }, "Right",     
+		{ modkey, "Control"   }, "l",     
 		function () awful.tag.incnmaster( 1, nil, true) end,
 		{description = "increase the number of master clients", group = "layout"}
 	),
 
 	awful.key(
-		{ modkey, "Shift"   }, "Left",     
+		{ modkey, "Control"   }, "h",     
 		function () awful.tag.incnmaster(-1, nil, true) end,
 		{description = "decrease the number of master clients", group = "layout"}
 	),
 
 	awful.key(
-		{ modkey, "Control" }, "Right",     
+		{ modkey, "Control" }, "k",     
 		function () awful.tag.incncol( 1, nil, true)    end,
 		{description = "increase the number of columns", group = "layout"}
 	),
 
 	awful.key(
-		{ modkey, "Control" }, "Left",     
+		{ modkey, "Control" }, "j",     
 		function () awful.tag.incncol(-1, nil, true)    end,
 		{description = "decrease the number of columns", group = "layout"}
 	),
@@ -212,25 +212,25 @@ local globalkeys = gears.table.join(
 	),
 
 	awful.key(
-		{ modkey,   }, "Left", 
+		{ modkey,"Shift"   }, "h", 
 		function () awful.client.swap.bydirection ('left')              end,
 		{description = "Move to the left", group = "layout"}
 	),
 
 	awful.key(
-		{ modkey,   }, "Right", 
+		{ modkey,"Shift"   }, "l", 
 		function () awful.client.swap.bydirection ('right')              end,
 		{description = "Move to the right", group = "layout"}
 	),
 	
 	awful.key(
-		{ modkey,   }, "Up", 
+		{ modkey,"Shift"   }, "k", 
 		function () awful.client.swap.bydirection ('up')              end,
 		{description = "Move up", group = "layout"}
 	),
 	
 	awful.key(
-		{ modkey,   }, "Down", 
+		{ modkey,"Shift"   }, "j", 
 		function () awful.client.swap.bydirection ('down')              end,
 		{description = "Move down", group = "layout"}
 	),
@@ -352,7 +352,7 @@ local globalkeys = gears.table.join(
 			{description = 'ShutDown Screen', group = 'hotkeys'}
 		),
 		awful.key(
-			{modkey},
+			{modkey, "Control"},
 			'l',
 			function()
 				awful.spawn('cinnamon-screensaver-command  -l')
