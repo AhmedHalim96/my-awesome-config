@@ -232,6 +232,11 @@ volume_icon:buttons(awful.util.table.join(
 local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 
 
+-- Battery widget
+
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+
+
 function theme.at_screen_connect(s)
     -- Quake application
     s.quake = lain.util.quake({ app = awful.util.terminal })
@@ -382,11 +387,9 @@ function theme.at_screen_connect(s)
                 color = '#434c5e'
             }),
 
-            middle_separator,
-
-            brightness_widget(),
 
             middle_separator,
+
             volume_icon,
             volumebar_widget(
                 {main_color = '#af13f7',
@@ -394,6 +397,17 @@ function theme.at_screen_connect(s)
                 width = 80,
             }
             ),
+
+            middle_separator,
+
+            brightness_widget(),
+
+         
+            middle_separator,
+
+           battery_widget({
+            show_current_level = true
+           }),
 
             right_separator,
             spacer,
