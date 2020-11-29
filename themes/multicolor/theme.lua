@@ -275,7 +275,7 @@ function theme.at_screen_connect(s)
         filter  = awful.widget.taglist.filter.all,
         buttons = awful.util.taglist_buttons,
         style   = {
-            shape = gears.shape.circle
+            shape = gears.shape.square
         },
         layout   = {
 
@@ -341,7 +341,7 @@ function theme.at_screen_connect(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(26), bg = theme.bg_normal, fg = theme.fg_normal , opacity = 0.75})
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(26), bg = theme.bg_normal, fg = theme.fg_normal , opacity = 0.7})
 
     -- Add widgets to the wibox 
     s.mywibox:setup {
@@ -429,12 +429,12 @@ function theme.at_screen_connect(s)
             left_separator,
             clockicon,
             mytextclock,
-            right_separator,
-
-            spacer,
+            
+            middle_separator,
 
             awful.widget.keyboardlayout:new (),
-            
+            right_separator,
+
             spacer,
 
             s.mylayoutbox,
