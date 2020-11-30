@@ -48,12 +48,14 @@ awful.rules.rules = {
 			-- and the name shown there might not match defined rules here.
 			name = {
 				"Event Tester",  -- xev.
+				"win0"
 			},
 			role = {
 				"AlarmWindow",  -- Thunderbird's calendar.
 				"ConfigManager",  -- Thunderbird's about:config.
 				"pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
-			}
+			},
+			type = { "splash", "dialog" }
 		}, properties = { floating = true }},
 
 			-- OnTop clients.
@@ -114,9 +116,9 @@ awful.rules.rules = {
 	-- No Title bars
 	{ rule_any = {
 		instance = {
-			"io.github.celluloid_player.Celluloid",
 			"Telegram",
-			"albert"
+			"albert",
+			"xdman"
 		},
 		class = {},
 		name = {},
