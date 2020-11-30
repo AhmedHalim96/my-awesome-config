@@ -349,14 +349,14 @@ local globalkeys = gears.table.join(
 			end,
 			{description = 'ShutDown Screen', group = 'hotkeys'}
 		),
-		awful.key(
-			{modkey, "Control"},
-			'l',
-			function()
-				awful.spawn('cinnamon-screensaver-command  -l')
-			end,
-			{description = 'lock Screen', group = 'hotkeys'}
-		),
+		-- awful.key(
+		-- 	{modkey, "Control"},
+		-- 	'l',
+		-- 	function()
+		-- 		awful.spawn('cinnamon-screensaver-command  -l')
+		-- 	end,
+		-- 	{description = 'lock Screen', group = 'hotkeys'}
+		-- ),
 		-- Screen management
 		awful.key(
 			{modkey},
