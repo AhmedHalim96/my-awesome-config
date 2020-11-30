@@ -1,7 +1,6 @@
 local startup_apps = {
   "picom --config "..string.format("%s/.config/awesome/config/picom.conf", os.getenv("HOME")),
-  "setxkbmap -layout 'us,ara' -option 'grp:alt_shift_toggle'",
-  "setxkbmap -option terminate:ctrl_alt_bksp", --restart Xorg
+  'remap', -- keyboard remaps
   "mintinstall-update-flatpak", -- Apply flatpak updates on startup
   'nm-applet --indicator', -- wifi
   'pnmixer', -- shows an audiocontrol applet in systray when installed.
