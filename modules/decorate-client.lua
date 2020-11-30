@@ -8,6 +8,7 @@ local function renderClient(client, mode)
     return
   end
 
+if awful.layout.get(client.screen) ~=  awful.layout.suit.floating then
   client.rendering_mode = mode
   -- client.floating = false
   client.maximized = false
@@ -17,7 +18,7 @@ local function renderClient(client, mode)
   -- client.sticky = false
   client.maximized_horizontal = false
   client.maximized_vertical = false
-  -- awful.client.setslave(client)
+end
 
   if client.rendering_mode == 'maximized' then
     client.border_width = 0
