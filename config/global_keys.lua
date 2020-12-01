@@ -380,7 +380,15 @@ local globalkeys = gears.table.join(
     	awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
 		end,
 	 {description = "Toggle systray visibility", group = "custom"}
-	)
+	),
+	awful.key(
+			{modkey},
+			'\\',
+			function()
+				awful.spawn('picom-r')
+			end,
+			{description = 'Restart picom', group = 'awesome'}
+		)
 
 
 )
