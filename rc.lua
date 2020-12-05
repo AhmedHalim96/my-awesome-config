@@ -123,7 +123,7 @@ lain.layout.cascade.tile.nmaster       = 5
 lain.layout.cascade.tile.ncol          = 2
 
 beautiful.init(string.format("%s/.config/awesome/themes/multicolor/theme.lua", os.getenv("HOME")))
-beautiful.wallpaper="/mnt/Data/Pictures/Bacakgrounds/hackerman.jpeg"
+beautiful.wallpaper="/mnt/Data/Pictures/Bacakgrounds/2560x1440.png"
 
 
 -- }}}
