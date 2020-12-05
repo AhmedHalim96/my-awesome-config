@@ -15,7 +15,6 @@ local startup_apps = {
     'mpd',
     'copyq',
     'xiccd', -- Applies color profile
-  --  'nitrogen --restore',
    'qbittorrent',
    'cryptomator %F',
    'mintupdate-launcher',

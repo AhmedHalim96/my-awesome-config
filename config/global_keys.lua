@@ -334,15 +334,6 @@ local globalkeys = gears.table.join(
 		),
 		awful.key(
 			{},
-			'XF86PowerDown',
-			
-			function()
-				--
-			end,
-			{description = 'toggle mute', group = 'hotkeys'}
-		),
-		awful.key(
-			{},
 			'XF86PowerOff',
 			function()
 				awful.spawn('system-control')
