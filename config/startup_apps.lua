@@ -1,24 +1,40 @@
 local startup_apps = {
   "picom --config "..string.format("%s/.config/awesome/config/picom.conf", os.getenv("HOME")),
+
   'remap', -- keyboard remaps
+
+  'numlockx on', -- enable numlock
+
   "mintinstall-update-flatpak", -- Apply flatpak updates on startup
+
+  '/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager
+
+  "albert",
+
+  'touchpad-indicator',
+
+  '/usr/bin/libinput-gestures',
+
+  'xiccd', -- Applies color profile
+
+
+  
+
+  --Systray
   'nm-applet --indicator', -- wifi
   'pnmixer', -- shows an audiocontrol applet in systray when installed.
   'blueberry-tray', -- Bluetooth tray icon
-  'numlockx on', -- enable numlock
-  '/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager
   'xfce4-power-manager', -- Power manager
    'flameshot',
-   "albert",
-    'touchpad-indicator',
-    '/usr/bin/libinput-gestures',
-    'mpd',
     'copyq',
-    'xiccd', -- Applies color profile
    'qbittorrent',
    'cryptomator %F',
    'mintupdate-launcher',
    '"/opt/xdman/jre/bin/java" -Xmx1024m -jar "/opt/xdman/xdman.jar" -m', --Xtereme Download Manager
+
+
+  "onedrive --monitor", --OneDrive Sync
+
 
   -- Add applications that need to be killed between reloads
   -- to avoid multipled instances, inside the awspawn script
