@@ -54,6 +54,28 @@ local clientkeys = gears.table.join(
 	),
 
 	awful.key(
+		{ modkey,    "Control"       }, "=",
+		function (c)
+			if  c.opacity < 1 then
+				c.opacity = c.opacity + 0.1
+			end
+			
+		end ,
+		{description = "Increase Opacity", group = "client"}
+	),
+
+	awful.key(
+		{ modkey,     "Control"      }, "-",
+		function (c)
+			if c.opacity > 0.7 then
+				c.opacity = c.opacity - 0.1
+			end
+			
+		end ,
+		{description = "Decrease Opacity", group = "client"}
+	),
+
+	awful.key(
 		{ modkey,           }, "m",
 		function (c)
 			c.maximized = not c.maximized
