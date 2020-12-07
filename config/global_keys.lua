@@ -288,7 +288,7 @@ local globalkeys = gears.table.join(
 			{},
 			'XF86AudioRaiseVolume',
 			function()
-				awful.spawn('amixer -D pulse sset Master 5%+')
+				awful.spawn('pactl -- set-sink-volume 0 +10%')
 			end,
 			{description = 'volume up', group = 'hotkeys'}
 		),
@@ -296,7 +296,7 @@ local globalkeys = gears.table.join(
 			{},
 			'XF86AudioLowerVolume',
 			function()
-				awful.spawn('amixer -D pulse sset Master 5%-')
+				awful.spawn('pactl -- set-sink-volume 0 -10%')
 			end,
 			{description = 'volume down', group = 'hotkeys'}
 		),
@@ -304,7 +304,7 @@ local globalkeys = gears.table.join(
 			{},
 			'XF86AudioMute',
 			function()
-				awful.spawn('amixer -D pulse set Master 1+ toggle')
+				awful.spawn('pactl -- set-sink-mute 0 toggle')
 			end,
 			{description = 'toggle mute', group = 'hotkeys'}
 		),
