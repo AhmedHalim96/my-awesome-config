@@ -272,7 +272,7 @@ local globalkeys = gears.table.join(
 
 	
 			end,
-			{description = '+10%', group = 'hotkeys'}
+			{description = 'Brightness +10%', group = 'hotkeys'}
 		),
 		awful.key(
 			{},
@@ -281,7 +281,7 @@ local globalkeys = gears.table.join(
 				-- awful.spawn('xbacklight -dec 10')
 				awful.spawn('light -U 10')
 			end,
-			{description = '-10%', group = 'hotkeys'}
+			{description = 'Brightness -10%', group = 'hotkeys'}
 		),
 		-- ALSA volume control
 		awful.key(
