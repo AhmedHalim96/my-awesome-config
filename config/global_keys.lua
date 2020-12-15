@@ -90,16 +90,44 @@ local globalkeys = gears.table.join(
     end,
     {description = 'Switch to previous window', group = 'client'}
 	),
+
+
+	--########################################################
+	--## rofi
+	--########################################################
+
 	awful.key(
     {modkey},
     'Tab',
     function()
-      awful.spawn('bash -c "~/.config/rofi/rofi_window.sh"')
+      awful.spawn('rofi -no-lazy-grab -show window' )
     end,
     {description = 'Open Rofi Window mode', group = 'launcher'}
+	),
+	
+	awful.key(
+    {modkey, "Shift"},
+    'p',
+    function()
+      awful.spawn('rofi -no-lazy-grab -show drun' )
+    end,
+    {description = 'Open Rofi drun mode', group = 'launcher'}
+	),
+	
+	awful.key(
+    {modkey, "Shift"},
+    'e',
+    function()
+      awful.spawn('rofi -no-lazy-grab -show file-browser' )
+    end,
+    {description = 'Open Rofi file-browser mode', group = 'launcher'}
   ),
 
-	-- Programs
+
+	--########################################################
+	--## Programs
+	--########################################################
+	
 	awful.key(
 		{ modkey,}, "Return", 
 		function () awful.spawn(terminal) end,
