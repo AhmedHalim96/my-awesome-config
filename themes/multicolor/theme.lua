@@ -1,9 +1,8 @@
---[[
+-- ==================================================================
+-- == MY THEME
+--===================================================================
 
-     Multicolor Awesome WM theme 2.0
-     github.com/lcpz
 
---]]
 
 local gears = require("gears")
 local lain  = require("lain")
@@ -24,18 +23,18 @@ theme.bg_normal                                                = "#000000"
 theme.bg_focus                                                 = "#434345"
 theme.bg_urgent                                                = "#A72323"
 theme.fg_normal                                                = "#aaaaaa"
-theme.fg_focus                                                 = "#CC9D00"
+theme.fg_focus                                                 = "#ffa000"
 theme.fg_urgent                                                = "#A72323"
 theme.fg_minimize                                              = "#ffffff"
 theme.border_width                                             = dpi(2)
 theme.border_normal                                            = "#b0bec5"
-theme.border_focus                                             = "#CC9D00"
+theme.border_focus                                             = "#ffa000"
 theme.border_marked                                            = "#3ca4d8"
 theme.menu_border_width                                        = dpi(2)
 theme.menu_width                                               = dpi(130)
 theme.menu_submenu_icon                                        = theme.confdir .. "/icons/submenu.png"
 theme.menu_fg_normal                                           = "#aaaaaa"
-theme.menu_fg_focus                                            = "#CC9D00"
+theme.menu_fg_focus                                            = "#ffa000"
 theme.menu_bg_normal                                           = "#050505dd"
 theme.menu_bg_focus                                            = "#050505dd"
 theme.widget_temp                                              = theme.confdir .. "/icons/temp.svg"
