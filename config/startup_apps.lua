@@ -1,5 +1,5 @@
 local startup_apps = {
-  "picom --config "..string.format("%s/.config/awesome/config/picom.conf", os.getenv("HOME")),
+  "picom-i",
 
   'remap', -- keyboard remaps
 
