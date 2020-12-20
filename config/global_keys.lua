@@ -144,11 +144,6 @@ local globalkeys = gears.table.join(
 		{description = "open default filemanager", group = "launcher"}
 	),
 	awful.key(
-		{ modkey, "Shift"}, "e", 
-		function () awful.spawn('dmenufm') end,
-		{description = "open dmenufm", group = "launcher"}
-	),
-	awful.key(
 		{ modkey,}, "Escape", 
 		function () awful.spawn('gnome-system-monitor') end,
 		{description = "open system monitor", group = "launcher"}
@@ -286,7 +281,7 @@ local globalkeys = gears.table.join(
 	-- dmenu Run Prompt
 	awful.key(
 		{ modkey },"r",
-		function () awful.util.spawn('dmenu_run_history') end,
+		function () awful.util.spawn('dmenu_run_history -h 26 -sb "#c50ed2"') end,
 		{description = "run prompt", group = "launcher"}
 	),
 
