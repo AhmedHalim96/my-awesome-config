@@ -281,7 +281,7 @@ local globalkeys = gears.table.join(
 	-- dmenu Run Prompt
 	awful.key(
 		{ modkey },"r",
-		function () awful.util.spawn('dmenu_run_history -h 26 -sb "#c50ed2"') end,
+		function () awful.util.spawn('dmenu_run_history -h 26') end,
 		{description = "run prompt", group = "launcher"}
 	),
 
