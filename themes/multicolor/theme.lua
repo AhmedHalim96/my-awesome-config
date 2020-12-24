@@ -18,22 +18,7 @@ local dpi   = require("beautiful.xresources").apply_dpi
 local os = os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
--- ###########################################################
--- #Colors
--- ###########################################################
-
-local colors        = {}
-colors.bg           = "#191c29"
-colors.primary      = "#c50ed2"
-colors.secondary    = "#00f3a1"
-colors.danger       = "#A72323"
-colors.white        = "#ffffff"
-colors.neon         = {}
-colors.neon.blue    = "#00e8c5"
-colors.neon.fuchsia = "#FE53BB"
-colors.neon.orange  = "#FF8211"
-
-
+local colors = require("themes.multicolor.config.colors")
 
 
 -- ###########################################################
