@@ -25,12 +25,12 @@ local startup_apps = {
   'pnmixer', -- shows an audiocontrol applet in systray when installed.
   'blueberry-tray', -- Bluetooth tray icon
   'xfce4-power-manager', -- Power manager
-   'flameshot',
-    'copyq',
-   'qbittorrent',
-   'cryptomator %F',
-   'mintupdate-launcher',
-   '"/opt/xdman/jre/bin/java" -Xmx1024m -jar "/opt/xdman/xdman.jar" -m', --Xtereme Download Manager
+  'flameshot',
+  'copyq',
+  'qbittorrent',
+  'cryptomator %F',
+  'mintupdate-launcher',
+  '"/opt/xdman/jre/bin/java" -Xmx1024m -jar "/opt/xdman/xdman.jar" -m', --Xtereme Download Manager
 
 
   "onedrive --monitor", --OneDrive Sync
