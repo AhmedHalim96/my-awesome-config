@@ -1,8 +1,13 @@
--- ==================================================================
--- == MY THEME
---===================================================================
+-- ###########################################################
+-- #                                                         #
+-- #                      MY THEME                           #
+-- #                                                         #
+-- ###########################################################
 
 
+-- ###########################################################
+-- #Imports                          
+-- ###########################################################
 
 local gears = require("gears")
 local lain  = require("lain")
@@ -13,30 +18,54 @@ local dpi   = require("beautiful.xresources").apply_dpi
 local os = os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
+-- ###########################################################
+-- #Colors
+-- ###########################################################
+
+local colors        = {}
+colors.bg           = "#191c29"
+colors.primary      = "#c50ed2"
+colors.secondary    = "#00f3a1"
+colors.danger       = "#A72323"
+colors.white        = "#ffffff"
+colors.neon         = {}
+colors.neon.blue    = "#00e8c5"
+colors.neon.fuchsia = "#FE53BB"
+colors.neon.orange  = "#FF8211"
+
+
+
+
+-- ###########################################################
+-- #Theme Variables
+-- ###########################################################
+
 local theme                                                    = {}
 theme.confdir                                                  = os.getenv("HOME") .. "/.config/awesome/themes/multicolor"
 theme.wallpaper                                                = theme.confdir .. "/wall.png"
 theme.font                                                     = "Noto Sans 10"
-theme.menu_bg_normal                                           = "#000000"
-theme.menu_bg_focus                                            = "#000000"
-theme.bg_normal                                                = "#000000"
+theme.menu_bg_normal                                           = colors.bg
+theme.menu_bg_focus                                            = colors.bg
+theme.bg_normal                                                = colors.bg
 theme.bg_focus                                                 = "#434345"
-theme.bg_urgent                                                = "#A72323"
+theme.bg_urgent                                                = colors.danger
 theme.fg_normal                                                = "#aaaaaa"
-theme.fg_focus                                                 = "#ffa000"
-theme.fg_urgent                                                = "#A72323"
-theme.fg_minimize                                              = "#ffffff"
+theme.fg_focus                                                 = colors.secondary
+theme.fg_urgent                                                = colors.danger
+theme.fg_minimize                                              = colors.white
 theme.border_width                                             = dpi(2)
 theme.border_normal                                            = "#b0bec5"
-theme.border_focus                                             = "#ffa000"
+theme.border_focus                                             = colors.secondary
 theme.border_marked                                            = "#3ca4d8"
 theme.menu_border_width                                        = dpi(2)
-theme.menu_width                                               = dpi(130)
+theme.menu_border_color                                        = colors.secondary
+theme.menu_width                                               = dpi(180)
 theme.menu_submenu_icon                                        = theme.confdir .. "/icons/submenu.png"
-theme.menu_fg_normal                                           = "#aaaaaa"
-theme.menu_fg_focus                                            = "#ffa000"
-theme.menu_bg_normal                                           = "#050505dd"
-theme.menu_bg_focus                                            = "#050505dd"
+theme.menu_fg_normal                                           = colors.white
+theme.menu_fg_focus                                            = colors.white
+theme.menu_bg_normal                                           = colors.bg
+theme.menu_bg_focus                                            = colors.primary
+theme.menu_height                                              = dpi(20)
 theme.widget_temp                                              = theme.confdir .. "/icons/temp.svg"
 theme.widget_uptime                                            = theme.confdir .. "/icons/ac.png"
 theme.widget_cpu                                               = theme.confdir .. "/icons/cpu.svg"
@@ -70,8 +99,8 @@ theme.layout_max                                               = theme.confdir .
 theme.layout_fullscreen                                        = theme.confdir .. "/icons/fullscreen.png"
 theme.layout_magnifier                                         = theme.confdir .. "/icons/magnifier.png"
 theme.layout_floating                                          = theme.confdir .. "/icons/floating.png"
-theme.titlebar_bg_normal                                       = "#212121"
-theme.titlebar_bg                                              = "#212121"
+theme.titlebar_bg_normal                                       = colors.bg
+theme.titlebar_bg                                              = colors.bg
 theme.titlebar_close_button_normal                             = theme.confdir .. "/icons/titlebar/close_normal.png"
 theme.titlebar_close_button_focus                              = theme.confdir .. "/icons/titlebar/close_focus.png"
 theme.titlebar_close_button_normal_hover                       = theme.confdir .. "/icons/titlebar/close_focus.png"
@@ -100,6 +129,11 @@ theme.titlebar_maximized_button_normal_active_hover            = theme.confdir .
 
 local markup = lain.util.markup
 
+
+-- ###########################################################
+-- #Widgets
+-- ###########################################################
+
 -- Textclock
 os.setlocale(os.getenv("LANG")) -- to localize the clock
 local clockicon =wibox.widget {
@@ -114,7 +148,7 @@ local clockicon =wibox.widget {
     widget = wibox.container.margin
 }
 
-local mytextclock = wibox.widget.textclock(markup("#fff", "%a %d %b ") .. markup("#ab7367", "|") .. markup("#7788af", " %H:%M "))
+local mytextclock = wibox.widget.textclock(markup(colors.neon.blue, "%a %d %b ") .. markup(colors.white, "|") .. markup(colors.neon.fuchsia, " %H:%M "))
 mytextclock.font = theme.font
 
 -- Calendar
@@ -129,6 +163,7 @@ theme.cal = lain.widget.cal({
 
 -- Weather
 local weathericon = wibox.widget.imagebox(theme.widget_weather)
+
 theme.weather = lain.widget.weather({
     city_id = 360630, -- placeholder (Cairo)
     notification_preset = { font = "Terminus 10", fg = theme.fg_normal },
@@ -144,20 +179,18 @@ theme.weather = lain.widget.weather({
 -- Coretemp
 local tempicon =wibox.widget {
     {
-        image = theme.widget_temp,
-        widget = wibox.widget.imagebox,
+        text="🔥 " ,
+        font = theme.font,
+        widget = wibox.widget.textbox,
     },
-    forced_height=20,
-    forced_width=20,
-    top=3,
+    bottom = 2,
     widget = wibox.container.margin
 }
 
 
-
 local temp = lain.widget.temp({
     settings = function()
-        widget:set_markup(markup.fontfg(theme.font, "#ffffff", coretemp_now .. "°C "))
+        widget:set_markup(markup.fontfg(theme.font, colors.neon.orange, coretemp_now .. "°C "))
     end
 })
 
@@ -180,10 +213,18 @@ local netupinfo = lain.widget.net({
 })
 
 -- MEM
-local memicon = wibox.widget.imagebox(theme.widget_mem)
+local memText = wibox.widget.textbox(markup(colors.neon.blue, "RAM: "))
+local memicon =wibox.widget {
+    {
+        font = theme.font,
+        widget = memText,
+    },
+    widget = wibox.container.margin
+}
+
 local memory = lain.widget.mem({
     settings = function()
-        widget:set_markup(markup.fontfg(theme.font, "#ffffff", mem_now.used .. "M "))
+        widget:set_markup(markup.fontfg(theme.font, colors.neon.fuchsia, mem_now.used .. "M "))
     end
 })
 
@@ -250,7 +291,6 @@ volume_icon:buttons(awful.util.table.join(
         ))
 
 -- cpu_widget
-
 local cpu_icon = wibox.widget {
     {
         image = theme.widget_cpu,
@@ -276,8 +316,6 @@ local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 
 
-
-
 function theme.at_screen_connect(s)
     -- Quake application
     s.quake = lain.util.quake({ app = awful.util.terminal })
@@ -295,7 +333,7 @@ function theme.at_screen_connect(s)
     -- Systray
     s.systray =  wibox.widget.systray()
     -- s.systray.visible = false 
-    -- systray.set_base_size(24)
+    s.systray.set_base_size(18)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -376,7 +414,7 @@ function theme.at_screen_connect(s)
                     },
                     layout = wibox.layout.fixed.horizontal,
                 },
-              
+
                 widget = wibox.container.margin
             },
             id     = 'background_role',
@@ -385,7 +423,7 @@ function theme.at_screen_connect(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(26), bg = theme.bg_normal, fg = theme.fg_normal , opacity = 0.7})
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(26), bg = colors.bg, fg = theme.fg_normal , opacity = 0.9})
 
     -- Add widgets to the wibox 
     s.mywibox:setup {
@@ -442,7 +480,7 @@ function theme.at_screen_connect(s)
                 width = 70,
                 step_width = 2,
                 step_spacing = 0,
-                color = '#434c5e'
+                color = colors.neon.blue
             }),
 
 
@@ -450,8 +488,8 @@ function theme.at_screen_connect(s)
 
             volume_icon,
             volumebar_widget(
-                {main_color = '#af13f7',
-                mute_color = theme.bg_urgent,
+                {main_color = colors.neon.fuchsia,
+                mute_color = colors.danger,
                 width = 80,
             }
             ),
@@ -467,11 +505,16 @@ function theme.at_screen_connect(s)
             show_current_level = true
            }),
 
-           
             right_separator,
             spacer,
 
-            s.systray,
+            wibox.widget {
+                {
+                    widget = s.systray,
+                },
+                top = 5,
+                widget = wibox.container.margin
+            },
            
             spacer,
 
