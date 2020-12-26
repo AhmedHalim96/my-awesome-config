@@ -210,9 +210,8 @@ end
 function vwidget:create_widget(args)
     self.widget_text = args.widget_text or {
         on  = '% 3d%% ',
-        off = '% 3dM ',
+        off = '% 3d%% ',
     }
-    self.widget_icon = "🔉"
     self.widget_colors = args.colors
     self.widget = wibox.widget.textbox()
     if self.font then
@@ -250,7 +249,7 @@ end
 
 function vwidget:update_widget(setting)
     self.widget:set_markup(
-        markup(self.widget_colors[setting.state], self.widget_icon..self.widget_text[setting.state]:format(setting.volume))
+        markup(self.widget_colors[setting.state], self.widget_text[setting.state]:format(setting.volume))
     )
 end
 

@@ -258,6 +258,7 @@ local spacer= wibox.widget.textbox('  ')
 local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
 
 -- Volume Widget
+local volume_icon = require("widgets.volume-control.volume-icon")
 local volume_control = require("widgets.volume-control")
 volumecfg = volume_control({
     device  = "pulse",
@@ -465,7 +466,8 @@ function theme.at_screen_connect(s)
 
             middle_separator,
 
-            container(volumecfg.widget),
+            volume_icon,
+            volumecfg.widget,
 
             middle_separator,
 
