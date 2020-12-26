@@ -119,6 +119,8 @@ local markup = lain.util.markup
 -- #Widgets
 -- ###########################################################
 
+-- container
+local container = require("widgets.container")
 -- Textclock
 os.setlocale(os.getenv("LANG")) -- to localize the clock
 local clockicon =wibox.widget {
@@ -259,24 +261,13 @@ local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightne
 local volume_control = require("widgets.volume-control")
 volumecfg = volume_control({
     device  = "pulse",
+    font = theme.font,
+    colors = {
+        on=colors.neon.fuchsia,
+        off=colors.danger
+    }
 })
 
-local volume_icon = wibox.widget {
-    {
-        image = '/usr/share/icons/Arc/status/symbolic/audio-volume-high-symbolic.svg',
-        resize = false,
-        widget = wibox.widget.imagebox,
-    },
-    top = 5,
-    right=5,
-    widget = wibox.container.margin
-}
-
-volume_icon:buttons(awful.util.table.join(
-    awful.button({""}, 1, function( self  )
-        awful.spawn('amixer -D pulse set Master 1+ toggle')
-    end)
-        ))
 
 -- cpu_widget
 local cpu_icon = wibox.widget {
@@ -474,8 +465,7 @@ function theme.at_screen_connect(s)
 
             middle_separator,
 
-            volume_icon,
-            volumecfg.widget,
+            container(volumecfg.widget),
 
             middle_separator,
 

@@ -3,6 +3,8 @@ local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
 local naughty = require("naughty")
+local lain = require("lain")
+local markup = lain.util.markup
 
 -- compatibility fallbacks for 3.5:
 local timer = gears.timer or timer
@@ -121,11 +123,11 @@ end
 
 function vcontrol:mixercommand(...)
     local args = awful.util.table.join(
-      {self.cmd},
-      (self.cmd == "amixer") and {"-M"} or {},
-      self.device and {"-D", self.device} or {},
-      self.cardid and {"-c", self.cardid} or {},
-      {...})
+        {self.cmd},
+        (self.cmd == "amixer") and {"-M"} or {},
+        self.device and {"-D", self.device} or {},
+        self.cardid and {"-c", self.cardid} or {},
+        {...})
     return readcommand(make_argv(args))
 end
 
@@ -210,9 +212,11 @@ function vwidget:create_widget(args)
         on  = '% 3d%% ',
         off = '% 3dM ',
     }
+    self.widget_icon = "🔉"
+    self.widget_colors = args.colors
     self.widget = wibox.widget.textbox()
     if self.font then
-      self.widget.font = self.font
+        self.widget.font = self.font
     end
     self.widget.set_align("right")
 end
@@ -246,7 +250,8 @@ end
 
 function vwidget:update_widget(setting)
     self.widget:set_markup(
-        self.widget_text[setting.state]:format(setting.volume))
+        markup(self.widget_colors[setting.state], self.widget_icon..self.widget_text[setting.state]:format(setting.volume))
+    )
 end
 
 -- tooltip
