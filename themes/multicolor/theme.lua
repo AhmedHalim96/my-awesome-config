@@ -256,7 +256,10 @@ local spacer= wibox.widget.textbox('  ')
 local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
 
 -- Volume Widget
-local volumebar_widget = require("awesome-wm-widgets.volumebar-widget.volumebar")
+local volume_control = require("widgets.volume-control")
+volumecfg = volume_control({
+    device  = "pulse",
+})
 
 local volume_icon = wibox.widget {
     {
@@ -472,12 +475,7 @@ function theme.at_screen_connect(s)
             middle_separator,
 
             volume_icon,
-            volumebar_widget(
-                {main_color = colors.neon.fuchsia,
-                mute_color = colors.danger,
-                width = 80,
-            }
-            ),
+            volumecfg.widget,
 
             middle_separator,
 

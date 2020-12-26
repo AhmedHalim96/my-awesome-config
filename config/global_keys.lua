@@ -311,7 +311,7 @@ local globalkeys = gears.table.join(
 			{},
 			'XF86AudioRaiseVolume',
 			function()
-				awful.spawn('pactl -- set-sink-volume 0 +10%')
+				volumecfg:up()
 			end,
 			{description = 'volume up', group = 'hotkeys'}
 		),
@@ -319,7 +319,7 @@ local globalkeys = gears.table.join(
 			{},
 			'XF86AudioLowerVolume',
 			function()
-				awful.spawn('pactl -- set-sink-volume 0 -10%')
+				volumecfg:down()
 			end,
 			{description = 'volume down', group = 'hotkeys'}
 		),
@@ -327,7 +327,7 @@ local globalkeys = gears.table.join(
 			{},
 			'XF86AudioMute',
 			function()
-				awful.spawn('pactl -- set-sink-mute 0 toggle')
+				volumecfg:toggle()
 			end,
 			{description = 'toggle mute', group = 'hotkeys'}
 		),
@@ -393,7 +393,7 @@ local globalkeys = gears.table.join(
 		function ()
     	awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
 		end,
-	 {description = "Toggle systray visibility", group = "custom"}
+	  {description = "Toggle systray visibility", group = "custom"}
 	),
 	awful.key(
 			{modkey},
