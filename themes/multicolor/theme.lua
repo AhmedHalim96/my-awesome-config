@@ -269,24 +269,7 @@ volumecfg = volume_control({
     }
 })
 
-
--- cpu_widget
-local cpu_icon = wibox.widget {
-    {
-        image = theme.widget_cpu,
-        widget = wibox.widget.imagebox,
-    },
-    forced_height=22,
-    forced_width=22,
-    top=3,
-    widget = wibox.container.margin
-}
-
-cpu_icon:buttons(awful.util.table.join(
-    awful.button({"", "Control"}, 1, function( self  )
-        awful.spawn('gnome-system-monitor')
-    end)
-        ))
+-- CPU widget
 
 local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
 
@@ -428,11 +411,6 @@ function theme.at_screen_connect(s)
             left_separator,
 
             config_widget,
-
-
-            middle_separator,
-
-            cpu_icon,
 
             middle_separator,
 
