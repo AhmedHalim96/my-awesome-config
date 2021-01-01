@@ -42,18 +42,12 @@ function manage_titlebars(c)
   then
     awful.titlebar.show(c)
   end
+ 
   if (awful.layout.get(client.screen) ==  awful.layout.suit.tile) 
   then
     awful.titlebar.hide(c)
   end
-  if (awful.layout.get(client.screen) ==  awful.layout.suit.tile.bottom) 
-  then
-    awful.titlebar.hide(c)
-  end
-  if (awful.layout.get(client.screen) ==  awful.layout.suit.fair) 
-  then
-    awful.titlebar.hide(c)
-  end
+ 
   if (awful.layout.get(client.screen) ==  awful.layout.suit.max) 
   then
     awful.titlebar.hide(c)
