@@ -88,8 +88,8 @@ theme.layout_magnifier                                         = theme.confdir .
 theme.layout_floating                                          = theme.confdir .. "/icons/floating.png"
 
 
-theme.titlebar_bg_normal                                       = "#0c0d14"
-theme.titlebar_bg                                              = "#0c0d14"
+theme.titlebar_bg_normal                                       = colors.titlebar_bg
+theme.titlebar_bg                                              = colors.titlebar_bg
 
 theme.titlebar_close_button_normal                             = theme.confdir .. "/icons/titlebar/close_normal.png"
 theme.titlebar_close_button_focus                              = theme.confdir .. "/icons/titlebar/close_focus.png"

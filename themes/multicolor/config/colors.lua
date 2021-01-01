@@ -4,6 +4,7 @@
 
 local colors        = {}
 colors.bg           = "#191c29"
+colors.titlebar_bg  = "#13151e"
 colors.primary      = "#c50ed2"
 colors.secondary    = "#00f3a1"
 colors.danger       = "#A72323"

@@ -2,6 +2,7 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local gears = require("gears")
 local wibox = require("wibox")
+local dpi   = require("beautiful.xresources").apply_dpi
 
 
 
@@ -41,17 +42,17 @@ _G.client.connect_signal("request::titlebars", function(c)
       end)
   )
 
-  awful.titlebar(c, {size=32}) : setup {
+  awful.titlebar(c, {size=dpi(32)}) : setup {
       { -- Left
           {
             {
-              forced_height=22,
-              forced_width=22,
+              forced_height=dpi(22),
+              forced_width=dpi(22),
               widget = awful.titlebar.widget.iconwidget(c),
           },
     
-          top=5,
-          left=12,
+          top=dpi(5),
+          left=dpi(10),
           widget = wibox.container.margin
           },
           buttons = buttons,
@@ -70,27 +71,27 @@ _G.client.connect_signal("request::titlebars", function(c)
         -- Minimize Button
         {
           {
-            forced_height=14,
-            forced_width=14,
+            forced_height=dpi(14),
+            forced_width=dpi(14),
             widget = awful.titlebar.widget.minimizebutton (c),
         },
 
-        top=9,
-        right=10,
+        top=dpi(9),
+        right=dpi(10),
         widget = wibox.container.margin
         },
 
         -- Maximize Button
         {
           {
-            forced_height=14,
-            forced_width=14,
+            forced_height=dpi(14),
+            forced_width=dpi(14),
             widget = awful.titlebar.widget.maximizedbutton(c),
 
         },
 
-        top=9,
-        right=10,
+        top=dpi(9),
+        right=dpi(10),
         widget = wibox.container.margin
         },
 
@@ -98,14 +99,14 @@ _G.client.connect_signal("request::titlebars", function(c)
         -- Close Button
         {
           {
-            forced_height=14,
-            forced_width=14,
+            forced_height=dpi(14),
+            forced_width=dpi(14),
             widget = awful.titlebar.widget.closebutton    (c),
 
         },
 
-        top=9,
-        right=17,
+        top=dpi(9),
+        right=dpi(16),
         widget = wibox.container.margin
         },
 
