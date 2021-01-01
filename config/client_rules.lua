@@ -43,13 +43,16 @@ awful.rules.rules = {
 				"Wpa_gui",
 				"veromix",
 				"Wine",
-				"xtightvncviewer"},
+				"xtightvncviewer",
+				"java"
+			},
 
 			-- Note that the name property shown in xprop might be set slightly after creation of the client
 			-- and the name shown there might not match defined rules here.
 			name = {
 				"Event Tester",  -- xev.
-				"win0"
+				"win0",
+				"Cryptomator"
 			},
 			role = {
 				"AlarmWindow",  -- Thunderbird's calendar.
@@ -61,7 +64,7 @@ awful.rules.rules = {
 
 			-- OnTop clients.
 		{ rule_any = {
-			instance = {"xdman", "Toolkit", "copyq"},
+			instance = {"Toolkit", "copyq"},
 			class = {},
 			name = {
 				-- "Picture-in-Picture" -- Firefox pip mode,
@@ -119,10 +122,11 @@ awful.rules.rules = {
 		instance = {
 			"Telegram",
 			"albert",
-			"xdman"
+			"xdman",
+			"celluloid"
 		},
 		class = {},
-		name = {},
+		name = {"Cryptomator"},
 		role = {}
 	}, properties = {  no_titlebar = true }}
 
