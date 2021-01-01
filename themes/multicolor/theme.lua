@@ -255,7 +255,7 @@ local spacer= wibox.widget.textbox('  ')
 
 
 -- Brightness Widget
-local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+local brightness_widget = require("widgets.brightness-widget.brightness")
 
 -- Volume Widget
 local volume_icon = require("widgets.volume-control.volume-icon")
@@ -271,12 +271,12 @@ volumecfg = volume_control({
 
 -- CPU widget
 
-local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+local cpu_widget = require("widgets.cpu-widget.cpu-widget")
 
 
 -- Battery widget
 
-local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+local battery_widget = require("widgets.battery-widget.battery")
 
 
 function theme.at_screen_connect(s)
