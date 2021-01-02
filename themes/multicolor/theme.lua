@@ -33,8 +33,7 @@ theme.wallpaper                                                = theme.confdir .
 theme.font                                                     = "Noto Sans 10"
 theme.menu_bg_normal                                           = colors.bg
 theme.menu_bg_focus                                            = colors.bg
-theme.bg_normal                                                = colors.bg
-theme.bg_normal_hover                                          = colors.bg_light
+    theme.bg_normal                                                = colors.bg
 theme.bg_focus                                                 = colors.bg_light
 theme.bg_urgent                                                = colors.danger
 theme.fg_normal                                                = "#aaaaaa"
@@ -367,16 +366,14 @@ function theme.at_screen_connect(s)
             },
             
         -- Add support for hover colors
-        create_callback = function(self, c3, index, objects)
+        create_callback = function(self, c, index, objects)
             self:connect_signal('mouse::enter', function()
-                if self.bg ~= theme.bg_focus then
-                    self.backup     = self.bg
-                    self.has_backup = true
-                end
                 self.bg = theme.bg_focus
             end)
             self:connect_signal('mouse::leave', function()
-                if self.has_backup then self.bg = self.backup end
+               if mouse.screen.selected_tag.index ~= index then
+                   self.bg = theme.bg
+               end
             end)
         end,
     
@@ -409,21 +406,22 @@ function theme.at_screen_connect(s)
         widget_template = {
             {
                 {
-                   { {
+                    {
                         {
-                            forced_height=dpi(16),
-                            forced_width=dpi(16),
-                            id     = 'icon_role',
-                            widget = wibox.widget.imagebox,
+                            {
+                                forced_height=dpi(16),
+                                forced_width=dpi(16),
+                                id     = 'icon_role',
+                                widget = wibox.widget.imagebox,
+                            },
+                            valign = 'center',
+                            halign = 'center',
+                            margins = 2,
+                            widget = wibox.container.place,
                         },
-                        valign = 'center',
-                        halign = 'center',
                         margins = 2,
-                        widget = wibox.container.place,
+                        widget  = wibox.container.margin,
                     },
-                    margins = 2,
-                    widget  = wibox.container.margin,
-                },
                     {
                         id     = 'text_role',
                         widget = wibox.widget.textbox,
@@ -436,16 +434,17 @@ function theme.at_screen_connect(s)
             },
             
             -- Add support for hover colors
-            create_callback = function(self, c3, index, objects)
+            create_callback = function(self, c, index, objects)
                 self:connect_signal('mouse::enter', function()
-                    if self.bg ~= theme.bg_focus then
-                        self.backup     = self.bg
-                        self.has_backup = true
-                    end
                     self.bg = theme.bg_focus
                 end)
                 self:connect_signal('mouse::leave', function()
-                    if self.has_backup then self.bg = self.backup end
+                    local focused_client = client.focus
+                    if c then
+                        if focused_client ~= c then
+                            self.bg = theme.bg   
+                        end
+                    end 
                 end)
             end,
 
