@@ -329,6 +329,7 @@ function theme.at_screen_connect(s)
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
+    s.mylayoutbox = round_container(s.mylayoutbox)
     s.mylayoutbox:buttons(my_table.join(
             awful.button({}, 1, function () awful.layout.inc( 1) end),
             awful.button({}, 2, function () awful.layout.set( awful.layout.layouts[1] ) end),
@@ -337,6 +338,7 @@ function theme.at_screen_connect(s)
             awful.button({}, 5, function () awful.layout.inc(-1) end)
         )
     )
+    
 
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, awful.util.taglist_buttons)
@@ -454,15 +456,23 @@ function theme.at_screen_connect(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(26), bg = colors.bg, fg = theme.fg_normal , opacity = 0.9})
+    s.mywibox = awful.wibar({ 
+        position = "top", 
+        screen = s, 
+        height = dpi(26), 
+        bg = colors.bg, 
+        fg = theme.fg_normal , 
+        opacity = 0.9,
+        shape = gears.shape.rounded_bar,
+    })
 
     -- Add widgets to the wibox 
     s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
+        
+            layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             --s.mylayoutbox,
-            spacer,
      
             round_container(s.mytaglist, {hover=false}),
 
@@ -565,8 +575,12 @@ function theme.at_screen_connect(s)
 
             spacer,
 
+
             s.mylayoutbox,
+            spacer
+
         },
+       
     }
 
 end
