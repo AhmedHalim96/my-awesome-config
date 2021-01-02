@@ -34,7 +34,8 @@ theme.font                                                     = "Noto Sans 10"
 theme.menu_bg_normal                                           = colors.bg
 theme.menu_bg_focus                                            = colors.bg
 theme.bg_normal                                                = colors.bg
-theme.bg_focus                                                 = "#434345"
+theme.bg_normal_hover                                          = colors.bg_light
+theme.bg_focus                                                 = colors.bg_light
 theme.bg_urgent                                                = colors.danger
 theme.fg_normal                                                = "#aaaaaa"
 theme.fg_focus                                                 = colors.secondary
@@ -147,7 +148,7 @@ local clockicon =wibox.widget {
     widget = wibox.container.margin
 }
 
-local mytextclock = wibox.widget.textclock(markup(colors.neon.blue, "%a %d %b ") .. markup(colors.white, "|") .. markup(colors.neon.fuchsia, " %H:%M "))
+local mytextclock = wibox.widget.textclock(markup(colors.neon.blue, "%a %d %b ") .. (" ") .. markup(colors.neon.fuchsia, " %H:%M "))
 mytextclock.font = theme.font
 
 -- Calendar
@@ -230,17 +231,7 @@ local memory = lain.widget.mem({
 
 
 -- Edit config widget
-local config_widget = wibox.widget {
-    {
-        image = theme.widget_config,
-        widget = wibox.widget.imagebox,
-    },
-    forced_height=20,
-    forced_width=20,
-    top=5,
-    left=2,
-    widget = wibox.container.margin
-}
+local config_widget = wibox.widget.imagebox(theme.widget_config)
 
 config_widget:buttons(awful.util.table.join(
     awful.button({"","Control"}, 1, function(  )
@@ -248,22 +239,38 @@ config_widget:buttons(awful.util.table.join(
     end)
         ))
 
-local left_task_separator = wibox.widget.textbox( '[ ')
-left_task_separator.font="Terminus 18"
-
-local right_task_separator = wibox.widget.textbox( ' ]')
-right_task_separator.font="Terminus 18"
-
-local left_separator = wibox.widget.textbox( '[')
-left_separator.font="Terminus 16"
-
-local right_separator = wibox.widget.textbox( ']')
-right_separator.font="Terminus 16"
-
-local middle_separator = wibox.widget.textbox('] [')
-middle_separator.font="Terminus 16"
-
 local spacer= wibox.widget.textbox('  ')
+
+-- round container
+function round_container (widget, args)
+    args = args or {hover= true}
+    local hover = args.hover
+    local container = wibox.widget {
+        {
+           widget,
+            left   = 10,
+            right  = 10,
+            top    = 3,
+            bottom = 3,
+            widget = wibox.container.margin
+        },
+        shape              = gears.shape.rounded_rect,
+        shape_border_color = colors.bg_light,
+        shape_border_width = dpi(2),
+        bg                 = theme.bg,
+        widget             = wibox.container.background
+    }
+
+    if hover then
+        container:connect_signal("mouse::enter", function (args)
+            container.bg = theme.bg_focus
+        end)
+        container:connect_signal("mouse::leave",function ()
+            container.bg = theme.bg_normal
+        end)
+    end
+    return container
+end
 
 
 -- Brightness Widget
@@ -310,6 +317,13 @@ function theme.at_screen_connect(s)
     -- s.systray.visible = false 
     s.systray.set_base_size(18)
 
+    s.systray = round_container({
+        s.systray,
+        valign = 'center',
+        margins = 2,
+        widget = wibox.container.place,
+       }, {hover=false})
+
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
@@ -331,11 +345,11 @@ function theme.at_screen_connect(s)
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
         buttons = awful.util.taglist_buttons,
-        style   = {
-            shape = gears.shape.square
+        style    = {
+            
+            shape  = gears.shape.rectangle,
         },
         layout   = {
-
             layout  = wibox.layout.fixed.horizontal
         },
         widget_template = {
@@ -366,30 +380,43 @@ function theme.at_screen_connect(s)
         filter   = awful.widget.tasklist.filter.currenttags,
         buttons= awful.util.tasklist_buttons,
         
+        style    = {
+            shape_border_width = dpi(2),
+            shape_border_color = colors.bg_light,
+            shape  = gears.shape.rounded_rect,
+        },
         layout   = {
             spacing = 5,
-            layout  = wibox.layout.fixed.horizontal
+            layout  = wibox.layout.flex.horizontal
         },
+        -- Notice that there is *NO* wibox.wibox prefix, it is a template,
+        -- not a widget instance.
         widget_template = {
             {
                 {
-                    {
-                        widget= left_task_separator
-                    },
-                    {
+                   { {
                         {
+                            forced_height=dpi(16),
+                            forced_width=dpi(16),
                             id     = 'icon_role',
                             widget = wibox.widget.imagebox,
                         },
+                        valign = 'center',
+                        halign = 'center',
                         margins = 2,
-                        widget  = wibox.container.margin,
+                        widget = wibox.container.place,
                     },
+                    margins = 2,
+                    widget  = wibox.container.margin,
+                },
                     {
-                        widget= right_task_separator
+                        id     = 'text_role',
+                        widget = wibox.widget.textbox,
                     },
                     layout = wibox.layout.fixed.horizontal,
                 },
-
+                left  = 10,
+                right = 10,
                 widget = wibox.container.margin
             },
             id     = 'background_role',
@@ -407,90 +434,105 @@ function theme.at_screen_connect(s)
             layout = wibox.layout.fixed.horizontal,
             --s.mylayoutbox,
             spacer,
-            left_task_separator,
-            s.mytaglist,
-            right_task_separator,
+     
+            round_container(s.mytaglist, {hover=false}),
+
             spacer,
             
             s.mypromptbox,
             spacer
         },
-        s.mytasklist, -- Middle widget
-        -- nil,
+    
+            s.mytasklist, -- Middle widget
+
+
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
 
-            left_separator,
+            spacer,
+            spacer,
+            round_container(config_widget),
 
-            config_widget,
+            spacer,
 
-            middle_separator,
+            round_container({
+                layout = wibox.layout.fixed.horizontal,
+                netdownicon,
+                netdowninfo,
+                netupicon,
+                netupinfo.widget,
+            }),
 
-            netdownicon,
-            netdowninfo,
-            netupicon,
-            netupinfo.widget,
+            spacer,
 
-            middle_separator,
+            round_container({
+                layout = wibox.layout.fixed.horizontal,
+                memicon,
+                memory.widget,
+            }),
+            
+            spacer,
 
-            memicon,
-            memory.widget,
+            round_container({
+                layout = wibox.layout.fixed.horizontal,
+                tempicon,
+                temp.widget,
+            }),
 
-            middle_separator,
-
-            tempicon,
-            temp.widget,
+            spacer,
 
             -- weathericon,
             -- theme.weather.widget,
 
-            middle_separator,
-
-            cpu_widget({
+            round_container(
+                cpu_widget({
                 width = 70,
                 step_width = 2,
                 step_spacing = 0,
                 color = colors.neon.blue
+                })
+            ),
+            
+            spacer,
+            
+
+            round_container({
+                layout = wibox.layout.fixed.horizontal,
+                volume_icon,
+                volumecfg.widget,
             }),
 
+            spacer,
 
-            middle_separator,
+            round_container({
+                brightness_widget(),
+                valign = 'center',
+                margins = 2,
+                widget = wibox.container.place,
+               }),
 
-            volume_icon,
-            volumecfg.widget,
+            spacer,
 
-            middle_separator,
-
-            brightness_widget(),
-
-         
-            middle_separator,
-
-           battery_widget({
-            show_current_level = true
+           round_container({
+            battery_widget({
+                show_current_level = true
+            }),
+            valign = 'center',
+            margins = 2,
+            widget = wibox.container.place,
            }),
 
-            right_separator,
             spacer,
 
-            wibox.widget {
-                {
-                    widget = s.systray,
-                },
-                top = 5,
-                widget = wibox.container.margin
-            },
+            s.systray,
            
             spacer,
-
-            left_separator,
-            clockicon,
-            mytextclock,
+       
+            round_container(mytextclock),
             
-            middle_separator,
+            spacer,
 
-            awful.widget.keyboardlayout:new (),
-            right_separator,
+            round_container(awful.widget.keyboardlayout:new ()),
 
             spacer,
 
