@@ -230,15 +230,6 @@ local memory = lain.widget.mem({
 
 
 
--- Edit config widget
-local config_widget = wibox.widget.imagebox(theme.widget_config)
-
-config_widget:buttons(awful.util.table.join(
-    awful.button({"","Control"}, 1, function(  )
-        awful.spawn("awesome-config")
-    end)
-        ))
-
 local spacer= wibox.widget.textbox('  ')
 
 -- round container
@@ -273,6 +264,16 @@ function round_container (widget, args)
 end
 
 
+-- Edit config widget
+local config_widget = round_container(wibox.widget.imagebox(theme.widget_config))
+
+config_widget:buttons(awful.util.table.join(
+    awful.button({"","Control"}, 1, function(  )
+        awful.spawn("awesome-config")
+    end)
+        ))
+
+        
 -- Brightness Widget
 local brightness_widget = require("widgets.brightness-widget.brightness")
 
@@ -345,10 +346,7 @@ function theme.at_screen_connect(s)
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
         buttons = awful.util.taglist_buttons,
-        style    = {
-            
-            shape  = gears.shape.rectangle,
-        },
+
         layout   = {
             layout  = wibox.layout.fixed.horizontal
         },
@@ -363,8 +361,25 @@ function theme.at_screen_connect(s)
                 },
                 left  = 10,
                 right = 10,
+                top    = 3,
+                bottom = 3,
                 widget = wibox.container.margin
             },
+            
+        -- Add support for hover colors
+        create_callback = function(self, c3, index, objects)
+            self:connect_signal('mouse::enter', function()
+                if self.bg ~= theme.bg_focus then
+                    self.backup     = self.bg
+                    self.has_backup = true
+                end
+                self.bg = theme.bg_focus
+            end)
+            self:connect_signal('mouse::leave', function()
+                if self.has_backup then self.bg = self.backup end
+            end)
+        end,
+    
             id     = 'background_role',
             widget = wibox.container.background,
             
@@ -419,6 +434,21 @@ function theme.at_screen_connect(s)
                 right = 10,
                 widget = wibox.container.margin
             },
+            
+            -- Add support for hover colors
+            create_callback = function(self, c3, index, objects)
+                self:connect_signal('mouse::enter', function()
+                    if self.bg ~= theme.bg_focus then
+                        self.backup     = self.bg
+                        self.has_backup = true
+                    end
+                    self.bg = theme.bg_focus
+                end)
+                self:connect_signal('mouse::leave', function()
+                    if self.has_backup then self.bg = self.backup end
+                end)
+            end,
+
             id     = 'background_role',
             widget = wibox.container.background,
         },
@@ -451,7 +481,7 @@ function theme.at_screen_connect(s)
 
             spacer,
             spacer,
-            round_container(config_widget),
+            config_widget,
 
             spacer,
 
