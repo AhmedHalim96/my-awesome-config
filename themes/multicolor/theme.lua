@@ -232,10 +232,18 @@ local memory = lain.widget.mem({
 local spacer= wibox.widget.textbox('  ')
 
 -- round container
-function round_container (widget, args)
-    args = args or {hover= true}
+function container (widget, args)
+    args = args or {}
+
     local hover = args.hover
-    local container = wibox.widget {
+    if args.hover == nil then
+        hover = true
+    end
+
+    local shape = args.shape or gears.shape.rounded_bar
+    
+
+    local _container = wibox.widget {
         {
            widget,
             left   = 10,
@@ -244,7 +252,7 @@ function round_container (widget, args)
             bottom = 3,
             widget = wibox.container.margin
         },
-        shape              = gears.shape.rounded_rect,
+        shape              = shape,
         shape_border_color = colors.bg_light,
         shape_border_width = dpi(2),
         bg                 = theme.bg,
@@ -252,19 +260,19 @@ function round_container (widget, args)
     }
 
     if hover then
-        container:connect_signal("mouse::enter", function (args)
-            container.bg = theme.bg_focus
+        _container:connect_signal("mouse::enter", function (args)
+            _container.bg = theme.bg_focus
         end)
-        container:connect_signal("mouse::leave",function ()
-            container.bg = theme.bg_normal
+        _container:connect_signal("mouse::leave",function ()
+            _container.bg = theme.bg_normal
         end)
     end
-    return container
+    return _container
 end
 
 
 -- Edit config widget
-local config_widget = round_container(wibox.widget.imagebox(theme.widget_config))
+local config_widget = container(wibox.widget.imagebox(theme.widget_config), {shape=gears.shape.rounded_rect})
 
 config_widget:buttons(awful.util.table.join(
     awful.button({"","Control"}, 1, function(  )
@@ -317,7 +325,7 @@ function theme.at_screen_connect(s)
     -- s.systray.visible = false 
     s.systray.set_base_size(18)
 
-    s.systray = round_container({
+    s.systray = container({
         s.systray,
         valign = 'center',
         margins = 2,
@@ -329,7 +337,7 @@ function theme.at_screen_connect(s)
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
-    s.mylayoutbox = round_container(s.mylayoutbox)
+    s.mylayoutbox = container(s.mylayoutbox, {shape=gears.shape.rounded_rect})
     s.mylayoutbox:buttons(my_table.join(
             awful.button({}, 1, function () awful.layout.inc( 1) end),
             awful.button({}, 2, function () awful.layout.set( awful.layout.layouts[1] ) end),
@@ -397,7 +405,7 @@ function theme.at_screen_connect(s)
         style    = {
             shape_border_width = dpi(2),
             shape_border_color = colors.bg_light,
-            shape  = gears.shape.rounded_rect,
+            shape  = gears.shape.rounded_bar,
         },
         layout   = {
             spacing = 5,
@@ -459,11 +467,11 @@ function theme.at_screen_connect(s)
     s.mywibox = awful.wibar({ 
         position = "top", 
         screen = s, 
-        height = dpi(26), 
+        height = dpi(28), 
         bg = colors.bg, 
         fg = theme.fg_normal , 
-        opacity = 0.9,
-        shape = gears.shape.rounded_bar,
+        opacity = 1,
+        shape = gears.shape.rectangle,
     })
 
     -- Add widgets to the wibox 
@@ -474,7 +482,7 @@ function theme.at_screen_connect(s)
             layout = wibox.layout.fixed.horizontal,
             --s.mylayoutbox,
      
-            round_container(s.mytaglist, {hover=false}),
+            container(s.mytaglist, {hover=false}),
 
             spacer,
             
@@ -494,7 +502,7 @@ function theme.at_screen_connect(s)
 
             spacer,
 
-            round_container({
+            container({
                 layout = wibox.layout.fixed.horizontal,
                 netdownicon,
                 netdowninfo,
@@ -504,7 +512,7 @@ function theme.at_screen_connect(s)
 
             spacer,
 
-            round_container({
+            container({
                 layout = wibox.layout.fixed.horizontal,
                 memicon,
                 memory.widget,
@@ -512,7 +520,7 @@ function theme.at_screen_connect(s)
             
             spacer,
 
-            round_container({
+            container({
                 layout = wibox.layout.fixed.horizontal,
                 tempicon,
                 temp.widget,
@@ -523,7 +531,7 @@ function theme.at_screen_connect(s)
             -- weathericon,
             -- theme.weather.widget,
 
-            round_container(
+            container(
                 cpu_widget({
                 width = 70,
                 step_width = 2,
@@ -535,7 +543,7 @@ function theme.at_screen_connect(s)
             spacer,
             
 
-            round_container({
+            container({
                 layout = wibox.layout.fixed.horizontal,
                 volume_icon,
                 volumecfg.widget,
@@ -543,7 +551,7 @@ function theme.at_screen_connect(s)
 
             spacer,
 
-            round_container({
+            container({
                 brightness_widget(),
                 valign = 'center',
                 margins = 2,
@@ -552,7 +560,7 @@ function theme.at_screen_connect(s)
 
             spacer,
 
-           round_container({
+           container({
             battery_widget({
                 show_current_level = true
             }),
@@ -567,11 +575,11 @@ function theme.at_screen_connect(s)
            
             spacer,
        
-            round_container(mytextclock),
+            container(mytextclock),
             
             spacer,
 
-            round_container(awful.widget.keyboardlayout:new ()),
+            container(awful.widget.keyboardlayout:new (),  {shape=gears.shape.rounded_rect}),
 
             spacer,
 
