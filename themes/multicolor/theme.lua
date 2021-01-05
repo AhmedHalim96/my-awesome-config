@@ -470,7 +470,7 @@ function theme.at_screen_connect(s)
         height = dpi(28), 
         bg = colors.bg, 
         fg = theme.fg_normal , 
-        opacity = 1,
+        opacity = 0.9,
         shape = gears.shape.rectangle,
     })
 
