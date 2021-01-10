@@ -60,7 +60,7 @@ local changesOnScreenCalled = false
 local function changesOnScreen(currentScreen)
   local tagIsMax = currentScreen.selected_tag ~= nil and currentScreen.selected_tag.layout == awful.layout.suit.max
   local clientsToManage = {}
-
+  
   for _, client in pairs(currentScreen.clients) do
     if not client.skip_decoration and not client.hidden then
       table.insert(clientsToManage, client)
@@ -121,6 +121,7 @@ _G.client.connect_signal('property::hidden', clientCallback)
 
 _G.client.connect_signal('property::minimized', clientCallback)
 
+
 _G.client.connect_signal(
   'property::fullscreen',
   function(c)
@@ -132,8 +133,20 @@ _G.client.connect_signal(
   end
 )
 
+-- No borders when rearranging only 1 non-floating or maximized client
+screen.connect_signal("arrange", function (s)
+  local only_one = #s.tiled_clients == 1
+  for _, c in pairs(s.clients) do
+      if ( only_one and (not c.floating or c.maximized)) or c.fullscreen then
+          c.border_width = 0
+      
+      else 
+          c.border_width = beautiful.border_width
+      end
+  end
+end)  
+
 _G.tag.connect_signal('property::selected', tagCallback)
--- _G.tag.connect_signal('property::selected', manage_titlebars) 
 
 
 _G.tag.connect_signal('property::layout', tagCallback)
