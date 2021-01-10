@@ -4,6 +4,7 @@ local startup_apps = {
   'remap', -- keyboard remaps
 
   'numlockx on', -- enable numlock
+  "randbg",
 
   "mintinstall-update-flatpak", -- Apply flatpak updates on startup
 
@@ -28,10 +29,10 @@ local startup_apps = {
   'flameshot',
   'copyq',
   'qbittorrent',
-  'cryptomator %F',
   'mintupdate-launcher',
   '"/opt/xdman/jre/bin/java" -Xmx1024m -jar "/opt/xdman/xdman.jar" -m', --Xtereme Download Manager
 
+  'cryptomator %F',
 
   "onedrive --monitor", --OneDrive Sync
 
