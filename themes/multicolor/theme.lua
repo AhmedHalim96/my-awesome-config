@@ -53,6 +53,9 @@ theme.menu_fg_focus                                            = colors.white
 theme.menu_bg_normal                                           = colors.bg
 theme.menu_bg_focus                                            = colors.primary
 theme.menu_height                                              = dpi(20)
+
+theme.notification_max_width                                   = dpi(360)
+
 theme.widget_temp                                              = theme.confdir .. "/icons/temp.svg"
 theme.widget_uptime                                            = theme.confdir .. "/icons/ac.png"
 theme.widget_cpu                                               = theme.confdir .. "/icons/cpu.svg"
@@ -70,9 +73,12 @@ theme.widget_clock                                             = theme.confdir .
 theme.widget_vol                                               = theme.confdir .. "/icons/spkr.png"
 theme.taglist_squares_sel                                      = theme.confdir .. "/icons/square_a.png"
 theme.taglist_squares_unsel                                    = theme.confdir .. "/icons/square_b.png"
+
 theme.tasklist_plain_task_name                                 = true
 theme.tasklist_disable_icon                                    = false
 theme.useless_gap                                              = dpi(5)
+
+
 theme.layout_tile                                              = theme.confdir .. "/icons/tile.png"
 theme.layout_tilegaps                                          = theme.confdir .. "/icons/tilegaps.png"
 theme.layout_tileleft                                          = theme.confdir .. "/icons/tileleft.png"
