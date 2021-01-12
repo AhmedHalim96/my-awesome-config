@@ -6,10 +6,27 @@ local dpi   = require("beautiful.xresources").apply_dpi
 
 
 
+-- function round_corners(c)
+-- 	c.shape = function(cr, w, h)
+-- 		gears.shape.rounded_rect(cr, w, h, dpi(5))
+-- 	end
+-- end
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 _G.client.connect_signal("manage", function (c)
+  -- unmaxmize on spawn
+  c.maximized = false
+
+  -- round corners
+  -- round_corners(c)
+
+-- center dialog
+
+  if c.type == "dialog" then
+    awful.placement.centered(c, {parent=c.transient_for})
+  end
+
   -- Set the windows at the slave,
   -- i.e. put it at the end of others instead of setting it master.
   if not awesome.startup then awful.client.setslave(c) end

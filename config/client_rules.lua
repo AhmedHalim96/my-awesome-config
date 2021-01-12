@@ -16,7 +16,7 @@ awful.rules.rules = {
 			keys = clientkeys,
 			buttons = clientbuttons,
 			screen = awful.screen.preferred,
-			placement = awful.placement.no_overlap+awful.placement.no_offscreen+awful.placement.centered,
+			placement = awful.placement.no_offscreen,
 			no_titlebar = false 
 		}
 	},
@@ -60,7 +60,7 @@ awful.rules.rules = {
 				"pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
 			},
 			type = { "splash", "dialog" }
-		}, properties = { floating = true }},
+		}, properties = { floating = true, placement=awful.placement.centered }},
 
 			-- OnTop clients.
 		{ rule_any = {
@@ -83,34 +83,6 @@ awful.rules.rules = {
 			},
 			role = {}
 		}, properties = {  skip_taskbar = true }},
-
-			-- uncenter clients
-			{ rule_any = {
-				instance = {
-					"xdman",
-				},
-				class = {},
-				name = {},
-				role = {"pop-up",}
-			}, properties = {
-				 placement =awful.placement.no_overlap+awful.placement.no_offscreen
-				}
-			},
-
-			-- clients that can overlap other clients
-			{ rule_any = {
-				instance = {
-					"albert",
-					"megasync",
-					"xdman"
-				},
-				class = {},
-				name = {},
-				role = {}
-			}, properties = {
-				placement =awful.placement.no_offscreen
-				}
-			},
 
 
 	-- Add titlebars to normal clients and dialogs
