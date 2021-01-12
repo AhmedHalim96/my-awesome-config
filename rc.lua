@@ -38,6 +38,7 @@ filemanager = default_apps.filemanager
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5", "6", }
 
+sloppy_focus_enabled = true 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.tile,   

@@ -17,9 +17,13 @@ local dpi   = require("beautiful.xresources").apply_dpi
 _G.client.connect_signal("manage", function (c)
   -- unmaxmize on spawn
   c.maximized = false
+  c.maximized_horizontal = false
+  c.maximized_vertical = false
 
-  -- round corners
-  -- round_corners(c)
+  -- disable sloppy if albert is spwned
+  if c.instance == "albert" then
+      sloppy_focus_enabled = false
+  end
 
 -- center dialog
 
@@ -43,7 +47,13 @@ end
 )
 
 
-
+_G.client.connect_signal("unmanage", function (c)
+    -- enable sloppy if albert is despwaned
+  if c.instance == "albert" then
+      sloppy_focus_enabled = true
+  end
+end
+)
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 _G.client.connect_signal("request::titlebars", function(c)
     
@@ -140,7 +150,9 @@ end)
 
 -- Enable sloppy focus, so that focus follows mouse.
 _G.client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", {raise = false})
+    if sloppy_focus_enabled then
+      c:emit_signal("request::activate", "mouse_enter", {raise = false})
+    end
 end)
 
 _G.client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
