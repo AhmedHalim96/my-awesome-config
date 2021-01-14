@@ -100,11 +100,24 @@ awful.rules.rules = {
 		class = {},
 		name = {"Cryptomator"},
 		role = {}
-	}, properties = {  no_titlebar = true }}
+	}, properties = {  no_titlebar = true }},
+
+	-- Workspaces
+	-- 1 browsers
+	{ rule_any = { class = {"Firefox", "Brave-browser","Chromium-browser"} },
+		properties = { screen = 1, tag = "1" } },
+		
+	-- 2 Editors and IDEs
+	{ rule_any = { class = {"VSCodium", "VSCode", "DrRacket", "jetbrains-phpstorm", "jetbrains-pycharm-ce", "jetbrains-studio"} },
+		properties = { screen = 1, tag = "2" } },
+		
+	-- 3 players
+	{ rule_any = { class = {"Clementine", }},
+	  properties = { screen = 1, tag = "5" } },
+	
 
 
 	-- Set Firefox to always map on the tag named "2" on screen 1.
 	-- { rule = { class = "Firefox" },
 	--   properties = { screen = 1, tag = "2" } },
 }
--- }}}skip_taskbar = true
