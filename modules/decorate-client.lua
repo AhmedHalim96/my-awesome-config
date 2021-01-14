@@ -36,8 +36,8 @@ screen.connect_signal("arrange", function (s)
     -- manage borders
     if ( only_one and (not c.floating or c.maximized)) 
         or c.fullscreen 
-        or (awful.layout.get(s) ==  awful.layout.suit.max)
-		or c.maximized then
+        or ((awful.layout.get(s) ==  awful.layout.suit.max) and not c.floating)
+		    or c.maximized then
 
         c.border_width = 0
 
