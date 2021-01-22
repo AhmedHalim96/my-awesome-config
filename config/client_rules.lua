@@ -104,7 +104,7 @@ awful.rules.rules = {
 
 	-- Workspaces
 	-- 1 browsers
-	{ rule_any = { class = {"Firefox", "Brave-browser","Chromium-browser"} },
+	{ rule_any = { class = { "Brave-browser","Chromium-browser"} },
 		properties = { screen = 1, tag = "1" } },
 		
 	-- 2 Editors and IDEs
