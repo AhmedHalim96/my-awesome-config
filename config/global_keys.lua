@@ -29,20 +29,22 @@ local globalkeys = gears.table.join(
 	function ()
 		local minimize = false
 
-		for _, cl in ipairs(mouse.screen.selected_tag:clients()) do
-			local c = cl
-			if c then
-				if c.minimized==false then
-					minimize = true
+		if mouse.screen.selected_tag then
+			for _, cl in ipairs(mouse.screen.selected_tag:clients()) do
+				local c = cl
+				if c then
+					if c.minimized==false then
+						minimize = true
+					end
 				end
 			end
-		end
-
-		for _, cl in ipairs(mouse.screen.selected_tag:clients()) do
-
-			local c = cl
-			if c then
-				c.minimized = minimize
+	
+			for _, cl in ipairs(mouse.screen.selected_tag:clients()) do
+	
+				local c = cl
+				if c then
+					c.minimized = minimize
+				end
 			end
 		end
 	end,
