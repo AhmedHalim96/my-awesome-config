@@ -3,9 +3,8 @@
 pcall(require, "luarocks.loader")
 
 -- Standard awesome library
-local awesome, client, screen = awesome, client, mouse
-local string, os, type =  string, os, type
-
+local awesome, client, mouse, screen, tag = awesome, client, mouse, screen, tag
+local ipairs, string, os, table, tostring, tonumber, type = ipairs, string, os, table, tostring, tonumber, type
 
 local gears = require("gears")
 local awful = require("awful")
