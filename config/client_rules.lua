@@ -16,7 +16,7 @@ awful.rules.rules = {
 			keys = clientkeys,
 			buttons = clientbuttons,
 			screen = awful.screen.preferred,
-			placement = awful.placement.no_offscreen,
+			placement = awful.placement.no_offscreen+awful.placement.centered,
 			no_titlebar = false 
 		}
 	},
@@ -60,7 +60,7 @@ awful.rules.rules = {
 				"pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
 			},
 			type = { "splash", "dialog" }
-		}, properties = { floating = true, placement=awful.placement.centered }},
+		}, properties = { floating = true, }},
 
 			-- OnTop clients.
 		{ rule_any = {
@@ -111,8 +111,8 @@ awful.rules.rules = {
 	{ rule_any = { class = {"VSCodium", "VSCode", "DrRacket", "jetbrains-phpstorm", "jetbrains-pycharm-ce", "jetbrains-studio"} },
 		properties = { screen = 1, tag = "2" } },
 		
-	-- 3 players
-	{ rule_any = { class = {"Clementine", }},
+	-- clemintine
+	{ rule = { class = "Clementine" },
 	  properties = { screen = 1, tag = "5" } },
 	
 
