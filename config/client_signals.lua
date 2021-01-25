@@ -12,27 +12,30 @@ local dpi   = require("beautiful.xresources").apply_dpi
 -- 	end
 -- end
 
--- {{{ Signals
+
 -- Signal function to execute when a new client appears.
 _G.client.connect_signal("manage", function (c)
   -- unmaxmize on spawn
   c.maximized = false
   c.maximized_horizontal = false
   c.maximized_vertical = false
+  
+  -- no fullscreen on spwan
+  c.fullscreen = false
 
   -- disable sloppy if albert is spwned
   if c.instance == "albert" then
       sloppy_focus_enabled = false
   end
 
--- center dialog
-
+-- center dialog to its parent
   if c.type == "dialog" then
     awful.placement.centered(c, {parent=c.transient_for})
+    awful.placement.no_offscreen(c)
+
   end
 
   -- Set the windows at the slave,
-  -- i.e. put it at the end of others instead of setting it master.
   if not awesome.startup then awful.client.setslave(c) end
 
   if _G.awesome.startup
@@ -48,7 +51,7 @@ end
 
 
 _G.client.connect_signal("unmanage", function (c)
-    -- enable sloppy if albert is despwaned
+    -- enable sloppy if albert is closed
   if c.instance == "albert" then
       sloppy_focus_enabled = true
   end
