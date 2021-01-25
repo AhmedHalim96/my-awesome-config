@@ -324,7 +324,7 @@ function theme.at_screen_connect(s)
     gears.wallpaper.maximized(wallpaper, s, true)
 
     -- Tags
-    awful.tag(awful.util.tagnames, s, awful.layout.layouts)
+    awful.tag(awful.util.tagnames, s , awful.layout.suit.tile)
 
     -- Systray
     s.systray =  wibox.widget.systray()
