@@ -389,7 +389,7 @@ function theme.at_screen_connect(s)
             self:connect_signal('mouse::leave', function()
                 local selected_tag = mouse.screen.selected_tag
                if selected_tag then
-                    if mouse.screen.selected_tag ~= index then
+                    if mouse.screen.selected_tag.index ~= index then
                         self.bg = theme.bg
                     end
                else  self.bg = theme.bg
