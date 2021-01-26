@@ -60,7 +60,7 @@ awful.rules.rules = {
 				"pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
 			},
 			type = { "splash", "dialog" }
-		}, properties = { floating = true, }},
+		}, properties = { floating = true, placement = awful.placement.no_offscreen+awful.placement.centered,}},
 
 			-- OnTop clients.
 		{ rule_any = {
@@ -83,6 +83,15 @@ awful.rules.rules = {
 			},
 			role = {}
 		}, properties = {  skip_taskbar = true }},
+-- uncenter
+		{ rule_any = {
+			instance = {"albert"},
+			class = {},
+			name = {
+			},
+			role = {}
+		}, properties = { placement=awful.placement.no_offscreen}},
+
 
 
 	-- Add titlebars to normal clients and dialogs
