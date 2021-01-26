@@ -8,7 +8,7 @@ local startup_apps = {
 
   "mintinstall-update-flatpak", -- Apply flatpak updates on startup
 
-  '/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager
+  'polkit', -- credential manager
 
   "albert",
 
@@ -16,10 +16,7 @@ local startup_apps = {
 
   '/usr/bin/libinput-gestures',
 
-  'xiccd', -- Applies color profile
-
-
-  
+  -- 'xiccd', -- Applies color profile
 
   --Systray
   'nm-applet --indicator', -- wifi
