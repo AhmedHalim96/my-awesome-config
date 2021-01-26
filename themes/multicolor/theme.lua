@@ -246,7 +246,7 @@ function container (widget, args)
         hover = true
     end
 
-    local shape = args.shape or gears.shape.rounded_bar
+    local shape = args.shape or gears.shape.rounded_rect
     
 
     local _container = wibox.widget {
@@ -278,7 +278,7 @@ end
 
 
 -- Edit config widget
-local config_widget = container(wibox.widget.imagebox(theme.widget_config), {shape=gears.shape.rounded_rect})
+local config_widget = container(wibox.widget.imagebox(theme.widget_config))
 
 config_widget:buttons(awful.util.table.join(
     awful.button({"","Control"}, 1, function(  )
@@ -343,7 +343,7 @@ function theme.at_screen_connect(s)
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
-    s.mylayoutbox = container(s.mylayoutbox, {shape=gears.shape.rounded_rect})
+    s.mylayoutbox = container(s.mylayoutbox)
     s.mylayoutbox:buttons(my_table.join(
             awful.button({}, 1, function () awful.layout.inc( 1) end),
             awful.button({}, 2, function () awful.layout.set( awful.layout.layouts[1] ) end),
@@ -415,7 +415,7 @@ function theme.at_screen_connect(s)
         style    = {
             shape_border_width = dpi(2),
             shape_border_color = colors.bg_light,
-            shape  = gears.shape.rounded_bar,
+            shape  = gears.shape.rounded_rect,
         },
         layout   = {
             spacing = 5,
@@ -589,7 +589,7 @@ function theme.at_screen_connect(s)
             
             spacer,
 
-            container(awful.widget.keyboardlayout:new (),  {shape=gears.shape.rounded_rect}),
+            container(awful.widget.keyboardlayout:new ()),
 
             spacer,
 
