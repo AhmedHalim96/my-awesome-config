@@ -88,6 +88,7 @@ awful.rules.rules = {
 			instance = {"albert"},
 			class = {},
 			name = {
+				"MEGAsync"
 			},
 			role = {}
 		}, properties = { placement=awful.placement.no_offscreen}},
