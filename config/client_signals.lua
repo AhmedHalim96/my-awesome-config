@@ -20,9 +20,6 @@ _G.client.connect_signal("manage", function (c)
   c.maximized_horizontal = false
   c.maximized_vertical = false
   
-  -- no fullscreen on spwan
-  c.fullscreen = false
-
   -- disable sloppy if albert is spwned
   if c.instance == "albert" then
       sloppy_focus_enabled = false
