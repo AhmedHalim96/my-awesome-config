@@ -443,9 +443,14 @@ function theme.at_screen_connect(s)
                         widget  = wibox.container.margin,
                     },
                     {
-                        id     = 'text_role',
-                        widget = wibox.widget.textbox,
-                    },
+                        {
+                            id     = 'text_role',
+                            widget = wibox.widget.textbox,
+                        },
+                        bottom = 2,
+                        widget = wibox.container.margin,
+                    }
+                    ,
                     layout = wibox.layout.fixed.horizontal,
                 },
                 left  = 10,
