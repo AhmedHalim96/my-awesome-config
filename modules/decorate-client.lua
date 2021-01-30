@@ -5,19 +5,10 @@ local dpi   = require("beautiful.xresources").apply_dpi
 
 function manage_titlebars(c)
   --   show titlebars only in floating layout
-
   if (awful.layout.get(client.screen) ==  awful.layout.suit.floating) 
   then
     awful.titlebar.show(c)
-  end
- 
-  if (awful.layout.get(client.screen) ==  awful.layout.suit.tile) 
-  then
-    awful.titlebar.hide(c)
-  end
- 
-  if (awful.layout.get(client.screen) ==  awful.layout.suit.max) 
-  then
+  else
     awful.titlebar.hide(c)
   end
 end
