@@ -1,7 +1,5 @@
 local awful = require('awful')
-local gears = require('gears')
 local beautiful = require('beautiful')
-local dpi   = require("beautiful.xresources").apply_dpi
 
 function manage_titlebars(c)
   --   show titlebars only in floating layout
