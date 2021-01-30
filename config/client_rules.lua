@@ -52,7 +52,8 @@ awful.rules.rules = {
 			name = {
 				"Event Tester",  -- xev.
 				"win0",
-				"Cryptomator"
+				"Cryptomator",
+				"Picture in picture" --freetube
 			},
 			role = {
 				"AlarmWindow",  -- Thunderbird's calendar.
@@ -78,6 +79,7 @@ awful.rules.rules = {
 			class = {},
 			name = {
 				"Picture-in-Picture", -- Firefox pip mode,
+				"Picture in picture",--freetube
 				"JavaEmbeddedFrame",
 				"MEGAsync"
 			},
