@@ -1,5 +1,6 @@
 local awful = require("awful")
 local gears = require("gears")
+local dpi   = require("beautiful.xresources").apply_dpi
 
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
