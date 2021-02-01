@@ -1,5 +1,5 @@
 local awful = require('awful')
-local apps = require("config.startup_apps")
+
 
 local function run_once(cmd)
   local findme = cmd
@@ -10,6 +10,6 @@ local function run_once(cmd)
   awful.spawn.with_shell(string.format('pgrep -u $USER -x %s > /dev/null || (%s)', findme, cmd))
 end
 
-for _, app in ipairs(apps) do
+for _, app in ipairs(startup_programs) do
   run_once(app)
 end

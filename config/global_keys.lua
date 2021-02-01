@@ -478,4 +478,4 @@ for i = 1, 9 do
 	)
 end
 
-return globalkeys
+root.keys(globalkeys)

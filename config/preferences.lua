@@ -1,4 +1,14 @@
-local startup_apps = {
+local awful = require("awful")
+
+local default_apps = {
+  terminal="alacritty",
+  editor=os.getenv("EDITOR") or "codium",
+  browser="firefox",
+  filemanager="nemo"
+}
+
+-- Startup Apps
+startup_programs = {
   "picom-i",
 
   'remap', -- keyboard remaps
@@ -40,4 +50,21 @@ local startup_apps = {
 
 }
 
-return startup_apps
+-- global vars
+terminal = default_apps.terminal
+editor = default_apps.editor
+editor_cmd = terminal .. " -e " .. editor
+modkey = "Mod4"
+altkey = "Mod1"
+browser = default_apps.browser
+filemanager = default_apps.filemanager
+sloppy_focus_enabled = true
+
+-- awful config
+awful.util.terminal = terminal
+awful.util.tagnames = { "1", "2", "3", "4", "5", "6", }
+awful.layout.layouts = {
+  awful.layout.suit.tile,   
+  awful.layout.suit.max,
+  awful.layout.suit.floating,
+}
