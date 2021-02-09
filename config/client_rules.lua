@@ -61,7 +61,7 @@ awful.rules.rules = {
 				"pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
 			},
 			type = { "splash", "dialog" }
-		}, properties = { floating = true, placement = awful.placement.no_offscreen+awful.placement.centered,}},
+		}, properties = { floating = true }},
 
 			-- OnTop clients.
 		{ rule_any = {
@@ -78,8 +78,8 @@ awful.rules.rules = {
 			instance = {},
 			class = {},
 			name = {
-				"Picture-in-Picture", -- Firefox pip mode,
-				"Picture in picture",--freetube
+				-- "Picture-in-Picture", -- Firefox pip mode,
+				-- "Picture in picture",--freetube
 				"JavaEmbeddedFrame",
 				"MEGAsync"
 			},
