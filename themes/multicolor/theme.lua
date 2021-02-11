@@ -76,8 +76,13 @@ theme.taglist_squares_unsel                                    = theme.confdir .
 
 theme.tasklist_plain_task_name                                 = true
 theme.tasklist_disable_icon                                    = false
+
 theme.useless_gap                                              = dpi(5)
 
+theme.snap_border_width                                        = dpi(2)
+theme.snapper_gap                                              = dpi(5)
+theme.snap_bg                                                  = colors.secondary
+theme.snap_shape                                               = gears.shape.rectangle
 
 theme.layout_tile                                              = theme.confdir .. "/icons/tile.png"
 theme.layout_tilegaps                                          = theme.confdir .. "/icons/tilegaps.png"
