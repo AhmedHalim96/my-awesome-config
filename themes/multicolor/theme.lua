@@ -31,8 +31,6 @@ local theme                                                    = {}
 theme.confdir                                                  = os.getenv("HOME") .. "/.config/awesome/themes/multicolor"
 theme.wallpaper                                                = theme.confdir .. "/wall.png"
 theme.font                                                     = "Noto Sans 10"
-theme.menu_bg_normal                                           = colors.bg
-theme.menu_bg_focus                                            = colors.bg
 theme.bg_normal                                                = colors.bg
 theme.bg_focus                                                 = colors.bg_light
 theme.bg_urgent                                                = colors.danger
@@ -40,19 +38,22 @@ theme.fg_normal                                                = "#9E9E9E"
 theme.fg_focus                                                 = colors.secondary
 theme.fg_urgent                                                = colors.danger
 theme.fg_minimize                                              = "#757575"
+
 theme.border_width                                             = dpi(2)
 theme.border_normal                                            = "#9E9E9E"
 theme.border_focus                                             = colors.secondary
 theme.border_marked                                            = "#3ca4d8"
+
+theme.menu_bg_focus                                            = colors.bg
 theme.menu_border_width                                        = dpi(2)
 theme.menu_border_color                                        = colors.secondary
-theme.menu_width                                               = dpi(180)
+theme.menu_width                                               = dpi(200)
 theme.menu_submenu_icon                                        = theme.confdir .. "/icons/submenu.png"
 theme.menu_fg_normal                                           = colors.white
 theme.menu_fg_focus                                            = colors.white
 theme.menu_bg_normal                                           = colors.bg
 theme.menu_bg_focus                                            = colors.primary
-theme.menu_height                                              = dpi(20)
+theme.menu_height                                              = dpi(25)
 
 theme.notification_max_width                                   = dpi(360)
 
@@ -78,6 +79,7 @@ theme.tasklist_plain_task_name                                 = true
 theme.tasklist_disable_icon                                    = false
 
 theme.useless_gap                                              = dpi(5)
+theme.icon_theme                                               = "Papirus-Dark"
 
 theme.snap_border_width                                        = dpi(2)
 theme.snapper_gap                                              = dpi(5)
