@@ -319,6 +319,22 @@ local globalkeys = gears.table.join(
 			{description = 'volume down', group = 'hotkeys'}
 		),
 		awful.key(
+			{"Control"},
+			'XF86AudioRaiseVolume',
+			function()
+				awful.spawn("pactl -- set-sink-volume 0 +10%")
+			end,
+			{description = 'Boooost volume up', group = 'hotkeys'}
+		),
+		awful.key(
+			{"Control"},
+			'XF86AudioLowerVolume',
+			function()
+				awful.spawn("pactl -- set-sink-volume 0 -10%")
+			end,
+			{description = 'Boooost volume down', group = 'hotkeys'}
+		),
+		awful.key(
 			{},
 			'XF86AudioMute',
 			function()
@@ -367,12 +383,12 @@ local globalkeys = gears.table.join(
 		-- 	{description = 'lock Screen', group = 'hotkeys'}
 		-- ),
 		-- Screen management
-		awful.key(
-			{modkey},
-			'o',
-			awful.client.movetoscreen,
-			{description = 'move window to next screen', group = 'client'}
-		),
+		-- awful.key(
+		-- 	{modkey},
+		-- 	'o',
+		-- 	awful.client.movetoscreen,
+		-- 	{description = 'move window to next screen', group = 'client'}
+		-- ),
 
 	-- Menubar
 	awful.key(
@@ -396,7 +412,7 @@ local globalkeys = gears.table.join(
 			function()
 				awful.spawn('picom-r')
 			end,
-			{description = 'Restart picom', group = 'awesome'}
+			{description = 'Restart picom', group = 'custom'}
 		)
 
 
