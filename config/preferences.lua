@@ -63,8 +63,11 @@ sloppy_focus_enabled = true
 -- awful config
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5", "6", }
+
 awful.layout.layouts = {
   awful.layout.suit.tile,   
   awful.layout.suit.max,
   awful.layout.suit.floating,
 }
+
+awful.mouse.snap.edge_enabled = false
