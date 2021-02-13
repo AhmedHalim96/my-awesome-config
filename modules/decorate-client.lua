@@ -17,7 +17,7 @@ screen.connect_signal("arrange", function (s)
   local only_one = #s.tiled_clients == 1
   for _, c in pairs(s.clients) do
 	-- titlebars in floating layout
-    if not c.no_titlebar then
+    if c.has_titlebar then
       manage_titlebars(c);
      end
 
@@ -27,7 +27,8 @@ screen.connect_signal("arrange", function (s)
         or c.fullscreen 
         or ((awful.layout.get(s) ==  awful.layout.suit.max) and not c.floating)
         or awful.layout.get(s) == awful.layout.suit.floating
-		    or c.maximized then
+		    or c.maximized
+        or not c.has_border then
 
         c.border_width = 0
 
