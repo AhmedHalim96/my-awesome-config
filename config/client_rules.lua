@@ -17,7 +17,8 @@ awful.rules.rules = {
 			buttons = clientbuttons,
 			screen = awful.screen.preferred,
 			placement = awful.placement.no_offscreen+awful.placement.centered,
-			no_titlebar = false 
+			has_titlebar = true,
+			has_border = true
 		}
 	},
 
@@ -104,7 +105,6 @@ awful.rules.rules = {
 	-- No Title bars
 	{ rule_any = {
 		instance = {
-			"Telegram",
 			"albert",
 			"xdman",
 			"celluloid"
@@ -112,7 +112,17 @@ awful.rules.rules = {
 		class = {},
 		name = {"Cryptomator"},
 		role = {}
-	}, properties = {  no_titlebar = true }},
+	}, properties = {  has_titlebar = false }},
+
+		-- No borders
+		{ rule_any = {
+			instance = {
+				"albert",
+			},
+			class = {},
+			name = {},
+			role = {}
+		}, properties = {  has_border = false }},
 
 	-- Workspaces
 	-- 1 browsers
