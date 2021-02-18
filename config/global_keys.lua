@@ -115,15 +115,6 @@ local globalkeys = gears.table.join(
     end,
     {description = 'Open Rofi drun mode', group = 'launcher'}
 	),
-	
-	awful.key(
-    {modkey, "Shift"},
-    'e',
-    function()
-      awful.spawn('rofi -no-lazy-grab -show file-browser' )
-    end,
-    {description = 'Open Rofi file-browser mode', group = 'launcher'}
-  ),
 
 
 	--########################################################
