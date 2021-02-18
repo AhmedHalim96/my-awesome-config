@@ -1,11 +1,11 @@
 local awful = require("awful")
 
-local default_apps = {
-  terminal="alacritty",
-  editor=os.getenv("EDITOR") or "codium",
-  browser="firefox",
-  filemanager="nemo"
-}
+-- Default Apps
+terminal="alacritty"
+editor=os.getenv("EDITOR") or "codium"
+browser="firefox"
+filemanager="nemo"
+terminalFM = "lf"
 
 -- Startup Apps
 startup_programs = {
@@ -51,13 +51,9 @@ startup_programs = {
 }
 
 -- global vars
-terminal = default_apps.terminal
-editor = default_apps.editor
 editor_cmd = terminal .. " -e " .. editor
 modkey = "Mod4"
 altkey = "Mod1"
-browser = default_apps.browser
-filemanager = default_apps.filemanager
 sloppy_focus_enabled = true
 
 -- awful config
