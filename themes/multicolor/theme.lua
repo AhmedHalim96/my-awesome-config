@@ -144,8 +144,6 @@ theme.titlebar_maximized_button_focus_active_hover             = theme.confdir .
 -- #Widgets
 -- ###########################################################
 
--- container
-local container = require("widgets.container")
 -- Textclock
 os.setlocale(os.getenv("LANG")) -- to localize the clock
 local clockicon =wibox.widget {
@@ -254,7 +252,6 @@ function container (widget, args)
     end
 
     local shape = args.shape or gears.shape.rounded_rect
-    
 
     local _container = wibox.widget {
         {
@@ -267,7 +264,7 @@ function container (widget, args)
         },
         shape              = shape,
         shape_border_color = colors.bg_light,
-        shape_border_width = dpi(2),
+        shape_border_width = dpi(1),
         bg                 = theme.bg,
         widget             = wibox.container.background
     }
@@ -280,7 +277,12 @@ function container (widget, args)
             _container.bg = theme.bg_normal
         end)
     end
-    return _container
+    return wibox.widget {
+       _container,
+        top=2,
+        bottom=2,
+        widget=wibox.container.margin
+    }
 end
 
 
@@ -420,7 +422,7 @@ function theme.at_screen_connect(s)
         buttons= awful.util.tasklist_buttons,
         
         style    = {
-            shape_border_width = dpi(2),
+            shape_border_width = dpi(1),
             shape_border_color = colors.bg_light,
             shape  = gears.shape.rounded_rect,
         },
@@ -436,52 +438,57 @@ function theme.at_screen_connect(s)
                     {
                         {
                             {
-                                forced_height=dpi(16),
-                                forced_width=dpi(16),
-                                id     = 'icon_role',
-                                widget = wibox.widget.imagebox,
+                                {
+                                    forced_height=dpi(16),
+                                    forced_width=dpi(16),
+                                    id     = 'icon_role',
+                                    widget = wibox.widget.imagebox,
+                                },
+                                valign = 'center',
+                                halign = 'center',
+                                margins = 2,
+                                widget = wibox.container.place,
                             },
-                            valign = 'center',
-                            halign = 'center',
                             margins = 2,
-                            widget = wibox.container.place,
+                            widget  = wibox.container.margin,
                         },
-                        margins = 2,
-                        widget  = wibox.container.margin,
-                    },
-                    {
                         {
-                            id     = 'text_role',
-                            widget = wibox.widget.textbox,
-                        },
-                        bottom = 2,
-                        widget = wibox.container.margin,
-                    }
-                    ,
-                    layout = wibox.layout.fixed.horizontal,
+                            {
+                                id     = 'text_role',
+                                widget = wibox.widget.textbox,
+                            },
+                            bottom = 2,
+                            widget = wibox.container.margin,
+                        }
+                        ,
+                        layout = wibox.layout.fixed.horizontal,
+                    },
+                    left  = 10,
+                    right = 10,
+                    widget = wibox.container.margin
                 },
-                left  = 10,
-                right = 10,
-                widget = wibox.container.margin
+                
+                -- Add support for hover colors
+                create_callback = function(self, c, index, objects)
+                    self:connect_signal('mouse::enter', function()
+                        self.bg = theme.bg_focus
+                    end)
+                    self:connect_signal('mouse::leave', function()
+                        local focused_client = client.focus
+                        if c then
+                            if focused_client ~= c then
+                                self.bg = theme.bg   
+                            end
+                        end 
+                    end)
+                end,
+    
+                id     = 'background_role',
+                widget = wibox.container.background,
             },
-            
-            -- Add support for hover colors
-            create_callback = function(self, c, index, objects)
-                self:connect_signal('mouse::enter', function()
-                    self.bg = theme.bg_focus
-                end)
-                self:connect_signal('mouse::leave', function()
-                    local focused_client = client.focus
-                    if c then
-                        if focused_client ~= c then
-                            self.bg = theme.bg   
-                        end
-                    end 
-                end)
-            end,
-
-            id     = 'background_role',
-            widget = wibox.container.background,
+            top=2,
+            bottom=2,
+            widget = wibox.container.margin
         },
     }
 
@@ -489,7 +496,7 @@ function theme.at_screen_connect(s)
     s.mywibox = awful.wibar({ 
         position = "top", 
         screen = s, 
-        height = dpi(28), 
+        height = dpi(32), 
         bg = colors.bg, 
         fg = theme.fg_normal , 
         opacity = 0.9,
