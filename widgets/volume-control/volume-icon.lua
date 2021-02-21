@@ -10,7 +10,6 @@ local icon = "audio-volume-high-symbolic.svg"
         widget = wibox.widget.imagebox,
       },
       valign = 'center',
-      margins = 2,
       widget = wibox.container.place,
     },
     forced_height=16,
