@@ -244,7 +244,7 @@ local memicon =wibox.widget {
 
 local memory = lain.widget.mem({
     settings = function()
-        widget:set_markup(markup.fontfg(theme.font, colors.neon.yellow, mem_now.used .. "M "))
+        widget:set_markup(markup.fontfg(theme.font, colors.neon.pink, mem_now.used .. "M "))
     end
 })
 
@@ -327,7 +327,7 @@ config_widget:buttons(awful.util.table.join(
 
         
 -- Brightness Widget
-local brightness_widget = require("widgets.brightness-widget.brightness")
+brightness_widget = require("widgets.brightness-widget.brightness")
 
 -- Volume Widget
 local volume_icon = require("widgets.volume-control.volume-icon")
@@ -626,7 +626,9 @@ function theme.at_screen_connect(s)
             spacer,
 
             container({
-                brightness_widget(),
+                brightness_widget{
+                    type = 'icon_and_text',
+                },
                 valign = 'center',
                 margins = 2,
                 widget = wibox.container.place,
