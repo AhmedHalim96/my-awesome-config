@@ -340,12 +340,16 @@ function theme.at_screen_connect(s)
     -- s.systray.visible = false 
     s.systray.set_base_size(18)
 
-    s.systray = container({
-        s.systray,
-        valign = 'center',
-        margins = 2,
-        widget = wibox.container.place,
-       }, {hover=false})
+    s.systray = wibox.widget{
+        layout=wibox.layout.fixed.horizontal,
+        container({
+            s.systray,
+            valign = 'center',
+            margins = 2,
+            widget = wibox.container.place,
+           }, {hover=false}),
+        spacer,
+    }
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -601,8 +605,6 @@ function theme.at_screen_connect(s)
             spacer,
 
             s.systray,
-           
-            spacer,
        
             container(mytextclock),
             
