@@ -138,7 +138,7 @@ theme.titlebar_maximized_button_focus_active                   = theme.confdir .
 theme.titlebar_maximized_button_normal_active_hover            = theme.confdir .. "/icons/titlebar/maximized_hover.png"
 theme.titlebar_maximized_button_focus_active_hover             = theme.confdir .. "/icons/titlebar/maximized_hover.png"
 
-theme.widgets_border_width                                     = dpi(2)
+theme.widgets_border_width                                     = dpi(1)
 
 -- ###########################################################
 -- #Widgets
@@ -258,12 +258,12 @@ function container (widget, args)
            widget,
             left   = 10,
             right  = 10,
-            top    = 3,
-            bottom = 3,
+            top    = 2,
+            bottom = 2,
             widget = wibox.container.margin
         },
         shape              = shape,
-        shape_border_color = colors.bg_light,
+        shape_border_color = colors.bg_lighter,
         shape_border_width = theme.widgets_border_width,
         bg                 = theme.bg,
         widget             = wibox.container.background
@@ -279,8 +279,8 @@ function container (widget, args)
     end
     return wibox.widget {
        _container,
-        top=2,
-        bottom=2,
+        top=3,
+        bottom=3,
         widget=wibox.container.margin
     }
 end
@@ -356,7 +356,20 @@ function theme.at_screen_connect(s)
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
-    s.mylayoutbox = container(s.mylayoutbox)
+    s.mylayoutbox = wibox.widget{
+        {
+            s.mylayoutbox,
+            top = 4,
+            bottom = 4,
+            left=4, 
+            right=4,
+            widget=wibox.container.margin,
+        },
+        shape_border_width = theme.widgets_border_width,
+        shape_border_color = colors.bg_lighter,
+        shape  = gears.shape.rectangle,
+        widget = wibox.container.background,
+    }
     s.mylayoutbox:buttons(my_table.join(
             awful.button({}, 1, function () awful.layout.inc( 1) end),
             awful.button({}, 2, function () awful.layout.set( awful.layout.layouts[1] ) end),
@@ -388,9 +401,7 @@ function theme.at_screen_connect(s)
                     layout = wibox.layout.fixed.horizontal,
                 },
                 left  = 10,
-                right = 10,
-                top    = 3,
-                bottom = 3,
+                right = 10,              
                 widget = wibox.container.margin
             },
             
@@ -427,7 +438,7 @@ function theme.at_screen_connect(s)
         
         style    = {
             shape_border_width = theme.widgets_border_width,
-            shape_border_color = colors.bg_light,
+            shape_border_color = colors.bg_lighter,
             shape  = gears.shape.rounded_rect,
         },
         layout   = {
@@ -490,8 +501,8 @@ function theme.at_screen_connect(s)
                 id     = 'background_role',
                 widget = wibox.container.background,
             },
-            top=2,
-            bottom=2,
+            top=4,
+            bottom=4,
             widget = wibox.container.margin
         },
     }
