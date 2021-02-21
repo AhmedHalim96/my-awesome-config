@@ -60,7 +60,7 @@ theme.notification_max_width                                   = dpi(360)
 theme.widget_temp                                              = theme.confdir .. "/icons/temp.svg"
 theme.widget_uptime                                            = theme.confdir .. "/icons/ac.png"
 theme.widget_cpu                                               = theme.confdir .. "/icons/cpu.svg"
-theme.widget_config                                            = theme.confdir .. "/icons/pencil.svg"
+theme.widget_config                                            = theme.confdir .. "/icons/gear.svg"
 theme.widget_weather                                           = theme.confdir .. "/icons/dish.png"
 theme.widget_fs                                                = theme.confdir .. "/icons/fs.png"
 theme.widget_mem                                               = theme.confdir .. "/icons/mem.svg"
@@ -287,7 +287,27 @@ end
 
 
 -- Edit config widget
-local config_widget = container(wibox.widget.imagebox(theme.widget_config))
+local config_widget = container(wibox.widget{
+    layout=wibox.layout.fixed.horizontal,
+    {
+        {
+            widget        = wibox.widget.imagebox(theme.widget_config),
+            forced_height = dpi(16),    
+            forced_width  = dpi(16),
+        },
+        valign="center",
+        widget=wibox.container.place
+    },
+    {
+        {
+            widget=wibox.widget.textbox((markup(colors.neon.fuchsia, " Edit Config"))),
+            font=theme.font
+        },
+        align="center",
+        widget=wibox.container.place
+    }
+    
+})
 
 config_widget:buttons(awful.util.table.join(
     awful.button({"","Control"}, 1, function(  )
