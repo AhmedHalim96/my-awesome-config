@@ -277,7 +277,8 @@ local globalkeys = gears.table.join(
 			'XF86MonBrightnessUp',
 			function()
 				-- awful.spawn('xbacklight -inc 10')
-				awful.spawn('light -A 10')
+				-- awful.spawn('light -A 10')
+				brightness_widget:inc()
 
 	
 			end,
@@ -288,7 +289,8 @@ local globalkeys = gears.table.join(
 			'XF86MonBrightnessDown',
 			function()
 				-- awful.spawn('xbacklight -dec 10')
-				awful.spawn('light -U 10')
+				-- awful.spawn('light -U 10')
+				brightness_widget:dec()
 			end,
 			{description = 'Brightness -10%', group = 'hotkeys'}
 		),
