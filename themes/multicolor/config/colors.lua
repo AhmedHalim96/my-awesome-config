@@ -16,6 +16,7 @@ colors.neon          = {}
 colors.neon.blue     = "#00e8c5"
 colors.neon.fuchsia  = "#FE53BB"
 colors.neon.orange   = "#FF8211"
+colors.neon.yellow   = "#FFD300"
 
 
 return colors
