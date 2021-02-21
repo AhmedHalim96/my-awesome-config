@@ -138,7 +138,7 @@ theme.titlebar_maximized_button_focus_active                   = theme.confdir .
 theme.titlebar_maximized_button_normal_active_hover            = theme.confdir .. "/icons/titlebar/maximized_hover.png"
 theme.titlebar_maximized_button_focus_active_hover             = theme.confdir .. "/icons/titlebar/maximized_hover.png"
 
-
+theme.widgets_border_width                                     = dpi(2)
 
 -- ###########################################################
 -- #Widgets
@@ -264,7 +264,7 @@ function container (widget, args)
         },
         shape              = shape,
         shape_border_color = colors.bg_light,
-        shape_border_width = dpi(1),
+        shape_border_width = theme.widgets_border_width,
         bg                 = theme.bg,
         widget             = wibox.container.background
     }
@@ -422,7 +422,7 @@ function theme.at_screen_connect(s)
         buttons= awful.util.tasklist_buttons,
         
         style    = {
-            shape_border_width = dpi(1),
+            shape_border_width = theme.widgets_border_width,
             shape_border_color = colors.bg_light,
             shape  = gears.shape.rounded_rect,
         },
