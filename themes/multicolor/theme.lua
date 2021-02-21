@@ -189,12 +189,17 @@ theme.weather = lain.widget.weather({
 -- Coretemp
 local tempicon =wibox.widget {
     {
-        text="🔥 " ,
-        font = theme.font,
-        widget = wibox.widget.textbox,
+        {
+            forced_height=dpi(16),
+            forced_width=dpi(16),
+            widget = wibox.widget.imagebox(theme.widget_temp),
+        },
+        right=2,
+        widget=wibox.container.margin
+
     },
-    bottom = 2,
-    widget = wibox.container.margin
+    valign="center",
+    widget = wibox.container.place
 }
 
 
