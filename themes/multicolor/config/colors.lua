@@ -21,7 +21,8 @@ colors.neon.purple         = "#7122FA"
 colors.neon.deepblue       = "#037A90"
 colors.neon.lightpurple    = "#3B27BA"
 colors.neon.oniony         = "#FF9472"
-colors.neon.pink           = "#F7019A"
+colors.neon.pink           = "#FF75A0"
+colors.neon.deepfuscia     = "#F7019A"
 
 
 return colors

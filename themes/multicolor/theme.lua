@@ -628,6 +628,7 @@ function theme.at_screen_connect(s)
             container({
                 brightness_widget{
                     type = 'icon_and_text',
+                    font = theme.font,
                 },
                 valign = 'center',
                 margins = 2,
