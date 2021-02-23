@@ -310,7 +310,7 @@ local config_widget = container(wibox.widget{
     },
     {
         {
-            widget=wibox.widget.textbox((markup(colors.neon.fuchsia, " Edit Config"))),
+            widget=wibox.widget.textbox((markup(colors.neon.green, " Edit Config"))),
             font=theme.font
         },
         align="center",

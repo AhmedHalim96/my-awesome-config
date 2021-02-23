@@ -23,6 +23,8 @@ colors.neon.lightpurple    = "#3B27BA"
 colors.neon.oniony         = "#FF9472"
 colors.neon.pink           = "#FF75A0"
 colors.neon.deepfuscia     = "#F7019A"
+colors.neon.green          = "#4ef037"
+
 
 
 return colors
