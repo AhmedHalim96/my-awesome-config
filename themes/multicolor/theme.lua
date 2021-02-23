@@ -244,7 +244,7 @@ local memicon =wibox.widget {
 
 local memory = lain.widget.mem({
     settings = function()
-        widget:set_markup(markup.fontfg(theme.font, colors.neon.pink, mem_now.used .. "M "))
+        widget:set_markup(markup.fontfg(theme.font, colors.neon.yellow, mem_now.used .. "M "))
     end
 })
 
