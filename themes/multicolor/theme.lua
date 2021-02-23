@@ -66,8 +66,8 @@ theme.widget_fs                                                = theme.confdir .
 theme.widget_mem                                               = theme.confdir .. "/icons/mem.svg"
 theme.widget_note                                              = theme.confdir .. "/icons/note.png"
 theme.widget_note_on                                           = theme.confdir .. "/icons/note_on.png"
-theme.widget_netdown                                           = theme.confdir .. "/icons/net_down.png"
-theme.widget_netup                                             = theme.confdir .. "/icons/net_up.png"
+theme.widget_netdown                                           = theme.confdir .. "/icons/down.svg"
+theme.widget_netup                                             = theme.confdir .. "/icons/up.svg"
 theme.widget_mail                                              = theme.confdir .. "/icons/mail.png"
 theme.widget_batt                                              = theme.confdir .. "/icons/bat.png"
 theme.widget_clock                                             = theme.confdir .. "/icons/clock.svg"
@@ -211,9 +211,38 @@ local temp = lain.widget.temp({
 
 
 -- Net
-local netdownicon = wibox.widget.imagebox(theme.widget_netdown)
+local netdownicon = wibox.widget {
+    {
+        {
+            forced_height=dpi(12),
+            forced_width=dpi(12),
+            widget=wibox.widget.imagebox(theme.widget_netdown)
+        },
+        valign="center",
+        halign="center",
+        widget=wibox.container.place
+    },
+    right=3,
+    top=3,
+    widget=wibox.container.margin
+}
 local netdowninfo = wibox.widget.textbox()
-local netupicon = wibox.widget.imagebox(theme.widget_netup)
+local netupicon = wibox.widget {
+    {
+        {
+            forced_height=dpi(12),
+            forced_width=dpi(12),
+            widget=wibox.widget.imagebox(theme.widget_netup)
+        },
+        valign="center",
+        halign="center",
+        widget=wibox.container.place
+    },
+    right=3,
+    left=6,
+    top=3,
+    widget=wibox.container.margin
+}
 local netupinfo = lain.widget.net({
     settings = function()
         if iface ~= "network off" and
@@ -222,8 +251,8 @@ local netupinfo = lain.widget.net({
             theme.weather.update()
         end
 
-        widget:set_markup(markup.fontfg(theme.font, "#e54c62", net_now.sent .. " "))
-        netdowninfo:set_markup(markup.fontfg(theme.font, "#87af5f", net_now.received .. " "))
+        widget:set_markup(markup.fontfg(theme.font, colors.neon.fuchsia, net_now.sent .. " "))
+        netdowninfo:set_markup(markup.fontfg(theme.font, colors.neon.blue, net_now.received .. " "))
     end
 })
 
