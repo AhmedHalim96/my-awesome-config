@@ -316,12 +316,7 @@ function container (widget, args)
             _container.bg = theme.bg_normal
         end)
     end
-    return wibox.widget {
-       _container,
-        top=3,
-        bottom=3,
-        widget=wibox.container.margin
-    }
+    return _container
 end
 
 
@@ -512,57 +507,52 @@ function theme.at_screen_connect(s)
                     {
                         {
                             {
-                                {
-                                    forced_height=dpi(16),
-                                    forced_width=dpi(16),
-                                    id     = 'icon_role',
-                                    widget = wibox.widget.imagebox,
-                                },
-                                valign = 'center',
-                                halign = 'center',
-                                margins = 2,
-                                widget = wibox.container.place,
+                                forced_height=dpi(16),
+                                forced_width=dpi(16),
+                                id     = 'icon_role',
+                                widget = wibox.widget.imagebox,
                             },
+                            valign = 'center',
+                            halign = 'center',
                             margins = 2,
-                            widget  = wibox.container.margin,
+                            widget = wibox.container.place,
                         },
-                        {
-                            {
-                                id     = 'text_role',
-                                widget = wibox.widget.textbox,
-                            },
-                            bottom = 2,
-                            widget = wibox.container.margin,
-                        }
-                        ,
-                        layout = wibox.layout.fixed.horizontal,
+                        margins = 2,
+                        widget  = wibox.container.margin,
                     },
-                    left  = 10,
-                    right = 10,
-                    widget = wibox.container.margin
+                    {
+                        {
+                            id     = 'text_role',
+                            widget = wibox.widget.textbox,
+                        },
+                        bottom = 2,
+                        widget = wibox.container.margin,
+                    }
+                    ,
+                    layout = wibox.layout.fixed.horizontal,
                 },
-                
-                -- Add support for hover colors
-                create_callback = function(self, c, index, objects)
-                    self:connect_signal('mouse::enter', function()
-                        self.bg = theme.bg_focus
-                    end)
-                    self:connect_signal('mouse::leave', function()
-                        local focused_client = client.focus
-                        if c then
-                            if focused_client ~= c then
-                                self.bg = theme.bg   
-                            end
-                        end 
-                    end)
-                end,
-    
-                id     = 'background_role',
-                widget = wibox.container.background,
+                left  = 10,
+                right = 10,
+                widget = wibox.container.margin
             },
-            top=4,
-            bottom=4,
-            widget = wibox.container.margin
+            
+            -- Add support for hover colors
+            create_callback = function(self, c, index, objects)
+                self:connect_signal('mouse::enter', function()
+                    self.bg = theme.bg_focus
+                end)
+                self:connect_signal('mouse::leave', function()
+                    local focused_client = client.focus
+                    if c then
+                        if focused_client ~= c then
+                            self.bg = theme.bg   
+                        end
+                    end 
+                end)
+            end,
+
+            id     = 'background_role',
+            widget = wibox.container.background,
         },
     }
 
@@ -570,7 +560,7 @@ function theme.at_screen_connect(s)
     s.mywibox = awful.wibar({ 
         position = "top", 
         screen = s, 
-        height = dpi(32), 
+        height = dpi(34), 
         bg = colors.bg, 
         fg = theme.fg_normal , 
         opacity = 0.9,
@@ -580,118 +570,123 @@ function theme.at_screen_connect(s)
     -- Add widgets to the wibox 
     s.mywibox:setup {
         
+        {
             layout = wibox.layout.align.horizontal,
-        { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            --s.mylayoutbox,
-     
-            container(s.mytaglist, {hover=false}),
-
-            spacer,
-            
-            s.mypromptbox,
-            spacer
-        },
-    
-            s.mytasklist, -- Middle widget
-
-
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-
-            spacer,
-            spacer,
-            config_widget,
-
-            spacer,
-
-            container({
+            { -- Left widgets
                 layout = wibox.layout.fixed.horizontal,
-                netdownicon,
-                netdowninfo,
-                netupicon,
-                netupinfo.widget,
-            }),
+                --s.mylayoutbox,
+        
+                container(s.mytaglist, {hover=false}),
 
-            spacer,
+                spacer,
+                
+                s.mypromptbox,
+                spacer
+            },
+        
+                s.mytasklist, -- Middle widget
 
-            container({
+
+            { -- Right widgets
                 layout = wibox.layout.fixed.horizontal,
-                memicon,
-                memory.widget,
-            }),
-            
-            spacer,
+
+                spacer,
+                spacer,
+                config_widget,
+
+                spacer,
+
+                container({
+                    layout = wibox.layout.fixed.horizontal,
+                    netdownicon,
+                    netdowninfo,
+                    netupicon,
+                    netupinfo.widget,
+                }),
+
+                spacer,
+
+                container({
+                    layout = wibox.layout.fixed.horizontal,
+                    memicon,
+                    memory.widget,
+                }),
+                
+                spacer,
+
+                container({
+                    layout = wibox.layout.fixed.horizontal,
+                    tempicon,
+                    temp.widget,
+                }),
+
+                spacer,
+
+                -- weathericon,
+                -- theme.weather.widget,
+
+                container(
+                    cpu_widget({
+                    width = 70,
+                    step_width = 2,
+                    step_spacing = 0,
+                    color = colors.neon.blue
+                    })
+                ),
+                
+                spacer,
+                
+
+                container({
+                    layout = wibox.layout.fixed.horizontal,
+                    volume_icon,
+                    volumecfg.widget,
+                }),
+
+                spacer,
+
+                container({
+                    brightness_widget{
+                        type = 'icon_and_text',
+                        font = theme.font,
+                    },
+                    valign = 'center',
+                    margins = 2,
+                    widget = wibox.container.place,
+                }),
+
+                spacer,
 
             container({
-                layout = wibox.layout.fixed.horizontal,
-                tempicon,
-                temp.widget,
-            }),
-
-            spacer,
-
-            -- weathericon,
-            -- theme.weather.widget,
-
-            container(
-                cpu_widget({
-                width = 70,
-                step_width = 2,
-                step_spacing = 0,
-                color = colors.neon.blue
-                })
-            ),
-            
-            spacer,
-            
-
-            container({
-                layout = wibox.layout.fixed.horizontal,
-                volume_icon,
-                volumecfg.widget,
-            }),
-
-            spacer,
-
-            container({
-                brightness_widget{
-                    type = 'icon_and_text',
-                    font = theme.font,
-                },
+                battery_widget({
+                    show_current_level = true
+                }),
                 valign = 'center',
                 margins = 2,
                 widget = wibox.container.place,
-               }),
-
-            spacer,
-
-           container({
-            battery_widget({
-                show_current_level = true
             }),
-            valign = 'center',
-            margins = 2,
-            widget = wibox.container.place,
-           }),
 
-            spacer,
+                spacer,
 
-            s.systray,
-       
-            container(mytextclock),
-            
-            spacer,
+                s.systray,
+        
+                container(mytextclock),
+                
+                spacer,
 
-            container(awful.widget.keyboardlayout:new ()),
+                container(awful.widget.keyboardlayout:new ()),
 
-            spacer,
+                spacer,
 
 
-            s.mylayoutbox,
-            spacer
+                s.mylayoutbox,
+                spacer
 
+            },
         },
+        top     = dpi(4),
+        bottom  = dpi(4),
+        widget  = wibox.container.margin
        
     }
 
