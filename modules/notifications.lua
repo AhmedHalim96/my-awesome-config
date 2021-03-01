@@ -1,7 +1,7 @@
 local naughty = require('naughty')
 local beautiful = require('beautiful')
 local gears = require('gears')
-local colors = require("themes.multicolor.config.colors")
+local colors = require("themes.neon.config.colors")
 local dpi = require('beautiful').xresources.apply_dpi
 
 -- Naughty presets

@@ -1,8 +1,8 @@
 -- imports
 local os = os
-local theme = require('themes.multicolor.theme')
+local theme = require('themes.neon.theme')
 local wibox = require("wibox")
-local colors = require("themes.multicolor.config.colors")
+local colors = require("themes.neon.config.colors")
 local lain  = require("lain")
 local markup = lain.util.markup
 

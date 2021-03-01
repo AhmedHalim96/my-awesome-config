@@ -18,7 +18,7 @@ local dpi   = require("beautiful.xresources").apply_dpi
 local os = os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
-local colors = require("themes.multicolor.config.colors")
+local colors = require("themes.neon.config.colors")
 local markup = lain.util.markup
 
 
@@ -28,7 +28,7 @@ local markup = lain.util.markup
 -- ###########################################################
 
 local theme                                                    = {}
-theme.confdir                                                  = os.getenv("HOME") .. "/.config/awesome/themes/multicolor"
+theme.confdir                                                  = os.getenv("HOME") .. "/.config/awesome/themes/neon"
 theme.wallpaper                                                = theme.confdir .. "/wall.png"
 theme.font                                                     = "Noto Sans 10"
 theme.bg_normal                                                = colors.bg

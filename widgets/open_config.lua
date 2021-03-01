@@ -1,6 +1,6 @@
 local wibox = require("wibox")
 local awful = require("awful")
-local theme = require("themes.multicolor.theme")
+local theme = require("themes.neon.theme")
 
 local config_widget = wibox.widget {
   {

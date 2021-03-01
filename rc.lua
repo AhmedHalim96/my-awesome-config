@@ -15,7 +15,7 @@ local beautiful = require("beautiful")
 require("config.preferences")
 
 
-beautiful.init(string.format("%s/.config/awesome/themes/multicolor/theme.lua", os.getenv("HOME")))
+beautiful.init(string.format("%s/.config/awesome/themes/neon/theme.lua", os.getenv("HOME")))
 --beautiful.wallpaper="/mnt/Data/Pictures/Bacakgrounds/2560x1440.png"
 
 -- Modules
