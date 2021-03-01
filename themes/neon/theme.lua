@@ -144,32 +144,19 @@ theme.widgets_border_width                                     = dpi(1)
 -- #Widgets
 -- ###########################################################
 
--- Textclock
-os.setlocale(os.getenv("LANG")) -- to localize the clock
-local clockicon =wibox.widget {
-    {
-        image = theme.widget_clock,
-        widget = wibox.widget.imagebox,
-    },
-    forced_height=20,
-    forced_width=20,
-    top=5,
-    right=2,
-    widget = wibox.container.margin
-}
-
-local mytextclock = wibox.widget.textclock(markup(colors.neon.blue, "%a %d %b ") .. (" ") .. markup(colors.neon.fuchsia, " %H:%M "))
-mytextclock.font = theme.font
+-- Clock
+local mytextclock = require("themes.neon.widgets.clock")({font=theme.font})
 
 -- Calendar
 theme.cal = lain.widget.cal({
     attach_to = { mytextclock },
     notification_preset = {
-        font = "Terminus 10",
+        font = "monospace 10",
         fg   = theme.fg_normal,
         bg   = theme.bg_normal
     }
 })
+
 
 -- Weather
 local weathericon = wibox.widget.imagebox(theme.widget_weather)
