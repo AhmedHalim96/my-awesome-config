@@ -1,3 +1,4 @@
+local temp = require "themes.neon.widgets.temp"
 -- ###########################################################
 -- #                                                         #
 -- #                      MY THEME                           #
@@ -157,6 +158,8 @@ theme.cal = lain.widget.cal({
     }
 })
 
+-- Temp
+local temp = require("themes.neon.widgets.temp")({color=colors.neon.orange, font=theme.font, icon=theme.widget_temp})
 
 -- Weather
 local weathericon = wibox.widget.imagebox(theme.widget_weather)
@@ -169,30 +172,6 @@ theme.weather = lain.widget.weather({
         descr = weather_now["weather"][1]["description"]:lower()
         units = math.floor(weather_now["main"]["temp"])
         widget:set_markup(markup.fontfg(theme.font, "#eca4c4", descr .. " @ " .. units .. "°C "))
-    end
-})
-
-
--- Coretemp
-local tempicon =wibox.widget {
-    {
-        {
-            forced_height=dpi(16),
-            forced_width=dpi(16),
-            widget = wibox.widget.imagebox(theme.widget_temp),
-        },
-        right=2,
-        widget=wibox.container.margin
-
-    },
-    valign="center",
-    widget = wibox.container.place
-}
-
-
-local temp = lain.widget.temp({
-    settings = function()
-        widget:set_markup(markup.fontfg(theme.font, colors.neon.orange, coretemp_now .. "°C "))
     end
 })
 
@@ -603,7 +582,7 @@ function theme.at_screen_connect(s)
 
                 container({
                     layout = wibox.layout.fixed.horizontal,
-                    tempicon,
+                    temp.icon,
                     temp.widget,
                 }),
 
