@@ -190,9 +190,8 @@ function theme.at_screen_connect(s)
 
 
     -- Create a tasklist widget
-    local _tasklist = require("themes.neon.widgets.tasklist")(s)
-    s.mytasklist = _tasklist
-
+    require("themes.neon.widgets.tasklist")(s)
+    
     -- Create the wibox
    require("themes.neon.wibar")(s)
 

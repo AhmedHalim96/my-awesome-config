@@ -119,7 +119,7 @@ local function wibar(s)
             spacer
         },
     
-            s.mytasklist, -- Middle widget
+            s.tasklist, -- Middle widget
 
 
         { -- Right widgets

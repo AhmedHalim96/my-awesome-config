@@ -5,7 +5,7 @@ local gears = require("gears")
 local wibox = require("wibox")
 
 local function tasklist(s)
-  return awful.widget.tasklist {
+  s.tasklist =  awful.widget.tasklist {
     screen   = s,
     filter   = awful.widget.tasklist.filter.currenttags,
     buttons= awful.util.tasklist_buttons,
