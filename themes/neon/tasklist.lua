@@ -68,8 +68,8 @@ local function tasklist(s)
                 {
                     {
                         {
-                            forced_height=dpi(16),
-                            forced_width=dpi(16),
+                            forced_height=dpi(18),
+                            forced_width=dpi(18),
                             id     = 'icon_role',
                             widget = wibox.widget.imagebox,
                         },
