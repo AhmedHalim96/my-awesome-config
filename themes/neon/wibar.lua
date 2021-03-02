@@ -95,7 +95,7 @@ local function wibar(s)
   s.wibar = awful.wibar({ 
     position = "top", 
     screen = s, 
-    height = dpi(34), 
+    height = dpi(32), 
     bg = beautiful.bg, 
     fg = beautiful.fg_normal , 
     opacity = 0.9,
