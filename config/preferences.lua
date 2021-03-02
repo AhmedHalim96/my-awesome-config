@@ -14,7 +14,6 @@ startup_programs = {
   'remap', -- keyboard remaps
 
   'numlockx on', -- enable numlock
-  "randbg",
 
   "mintinstall-update-flatpak", -- Apply flatpak updates on startup
 

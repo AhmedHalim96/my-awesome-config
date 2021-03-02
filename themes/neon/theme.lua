@@ -30,7 +30,7 @@ local markup = lain.util.markup
 
 local theme                                                    = {}
 theme.confdir                                                  = os.getenv("HOME") .. "/.config/awesome/themes/neon"
-theme.wallpaper                                                = theme.confdir .. "/wall.png"
+theme.wallpaper                                                = function () awful.spawn("randbg") end
 theme.font                                                     = "Noto Sans 10"
 theme.bg_normal                                                = colors.bg
 theme.bg_focus                                                 = colors.bg_light
