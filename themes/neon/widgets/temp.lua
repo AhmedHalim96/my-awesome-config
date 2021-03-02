@@ -1,4 +1,3 @@
-local colors = require("themes.neon.config.colors")
 local lain  = require("lain")
 local markup = lain.util.markup
 local wibox = require("wibox")
