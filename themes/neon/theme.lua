@@ -20,7 +20,6 @@ local os = os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local colors = require("themes.neon.config.colors")
-local markup = lain.util.markup
 
 
 
@@ -142,90 +141,11 @@ theme.titlebar_maximized_button_focus_active_hover             = theme.confdir .
 theme.widget_border_width                                      = dpi(1)
 theme.widget_border_color                                      = colors.bg_lighter
 
--- ###########################################################
--- #Widgets
--- ###########################################################
-
--- Clock
-local mytextclock = require("themes.neon.widgets.clock")({font=theme.font})
-
--- Calendar
-theme.cal = lain.widget.cal({
-    attach_to = { mytextclock },
-    notification_preset = {
-        font = "monospace 10",
-        fg   = theme.fg_normal,
-        bg   = theme.bg_normal
-    }
-})
-
--- Temp
-local temp = require("themes.neon.widgets.temp")({color=colors.neon.orange, font=theme.font, icon=theme.widget_temp})
-
--- Weather
-local weathericon = wibox.widget.imagebox(theme.widget_weather)
-
-theme.weather = lain.widget.weather({
-    city_id = 360630, -- placeholder (Cairo)
-    notification_preset = { font = "Terminus 10", fg = theme.fg_normal },
-    weather_na_markup = markup.fontfg(theme.font, "#eca4c4", "N/A "),
-    settings = function()
-        descr = weather_now["weather"][1]["description"]:lower()
-        units = math.floor(weather_now["main"]["temp"])
-        widget:set_markup(markup.fontfg(theme.font, "#eca4c4", descr .. " @ " .. units .. "°C "))
-    end
-})
-
-
--- Net
-local net = require("themes.neon.widgets.net")({
-    netdownicon=theme.widget_netdown, 
-    netupicon=theme.widget_netup, 
-    netdowncolor=colors.neon.blue, 
-    netupcolor=colors.neon.fuchsia
-})
-
--- MEM
-local memory = require("themes.neon.widgets.memory")({
-    color=colors.neon.yellow, 
-    font=theme.font, 
-    icon=theme.widget_mem
-})
-
+-- spacer
 local spacer= wibox.widget.textbox('  ')
 
 -- container
 local container = require("themes.neon.widgets.container")
-
--- Edit config widget
-local config_widget = require("themes.neon.widgets.edit_config")({
-    color=colors.neon.green, 
-    font=theme.font, 
-    icon=theme.widget_config
-})
-
--- Brightness Widget
-brightness_widget = require("widgets.brightness-widget.brightness")
-
--- Volume Widget
-local volume_icon = require("widgets.volume-control.volume-icon")
-local volume_control = require("widgets.volume-control")
-volumecfg = volume_control({
-    device  = "pulse",
-    font = theme.font,
-    colors = {
-        on=colors.neon.fuchsia,
-        off=colors.danger
-    }
-})
-
--- CPU widget
-local cpu_widget = require("widgets.cpu-widget.cpu-widget")
-
-
--- Battery widget
-local battery_widget = require("widgets.battery-widget.battery")
-
 
 function theme.at_screen_connect(s)
     -- Quake application
@@ -274,138 +194,7 @@ function theme.at_screen_connect(s)
     s.mytasklist = _tasklist
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ 
-        position = "top", 
-        screen = s, 
-        height = dpi(34), 
-        bg = colors.bg, 
-        fg = theme.fg_normal , 
-        opacity = 0.9,
-        shape = gears.shape.rectangle,
-    })
-
-    -- Add widgets to the wibox 
-    s.mywibox:setup {
-        
-        {
-            layout = wibox.layout.align.horizontal,
-            { -- Left widgets
-                layout = wibox.layout.fixed.horizontal,
-                --s.mylayoutbox,
-        
-                container(s.mytaglist, {hover=false}),
-
-                spacer,
-                
-                s.mypromptbox,
-                spacer
-            },
-        
-                s.mytasklist, -- Middle widget
-
-
-            { -- Right widgets
-                layout = wibox.layout.fixed.horizontal,
-
-                spacer,
-                spacer,
-                config_widget,
-
-                spacer,
-
-                container({
-                    layout = wibox.layout.fixed.horizontal,
-                    net.down.icon,
-                    net.down.widget,
-                    net.up.icon,
-                    net.up.widget,
-                }),
-
-                spacer,
-
-                container({
-                    layout = wibox.layout.fixed.horizontal,
-                    memory.icon,
-                    memory.widget,
-                }),
-                
-                spacer,
-
-                container({
-                    layout = wibox.layout.fixed.horizontal,
-                    temp.icon,
-                    temp.widget,
-                }),
-
-                spacer,
-
-                -- weathericon,
-                -- theme.weather.widget,
-
-                container(
-                    cpu_widget({
-                    width = 70,
-                    step_width = 2,
-                    step_spacing = 0,
-                    color = colors.neon.blue
-                    })
-                ),
-                
-                spacer,
-                
-
-                container({
-                    layout = wibox.layout.fixed.horizontal,
-                    volume_icon,
-                    volumecfg.widget,
-                }),
-
-                spacer,
-
-                container({
-                    brightness_widget{
-                        type = 'icon_and_text',
-                        font = theme.font,
-                    },
-                    valign = 'center',
-                    margins = 2,
-                    widget = wibox.container.place,
-                }),
-
-                spacer,
-
-            container({
-                battery_widget({
-                    show_current_level = true
-                }),
-                valign = 'center',
-                margins = 2,
-                widget = wibox.container.place,
-            }),
-
-                spacer,
-
-                s.systray,
-        
-                container(mytextclock),
-                
-                spacer,
-
-                container(awful.widget.keyboardlayout:new ()),
-
-                spacer,
-
-
-                s.mylayoutbox,
-                spacer
-
-            },
-        },
-        top     = dpi(4),
-        bottom  = dpi(4),
-        widget  = wibox.container.margin
-       
-    }
+   require("themes.neon.wibar")(s)
 
 end
 
