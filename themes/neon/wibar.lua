@@ -224,8 +224,6 @@ local function wibar(s)
     widget  = wibox.container.margin
    
   }
-
-  return _wibar
   
 end
 
