@@ -181,10 +181,10 @@ function theme.at_screen_connect(s)
     s.mylayoutbox = require("themes.neon.widgets.layoutbox")
 
     -- Create a taglist widget
-    require("themes.neon.widgets.taglist")(s)
+    require("themes.neon.taglist")(s)
 
     -- Create a tasklist widget
-    require("themes.neon.widgets.tasklist")(s)
+    require("themes.neon.tasklist")(s)
     
     -- Create the wibox
     require("themes.neon.wibar")(s)
