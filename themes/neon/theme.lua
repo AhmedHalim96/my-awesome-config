@@ -135,11 +135,12 @@ theme.titlebar_maximized_button_focus_active                   = theme.confdir .
 theme.titlebar_maximized_button_normal_active_hover            = theme.confdir .. "/icons/titlebar/maximized_hover.png"
 theme.titlebar_maximized_button_focus_active_hover             = theme.confdir .. "/icons/titlebar/maximized_hover.png"
 
-theme.widget_border_width                                      = dpi(1)
+theme.widget_border_width                                      = dpi(0)
 theme.widget_border_color                                      = colors.bg_lighter
+theme.widget_shape                                             = gears.shape.rounded_rect
 
 -- spacer
-local spacer= wibox.widget.textbox('  ')
+local seperator= require("themes.neon.widgets.seperator")
 
 -- container
 local container = require("themes.neon.widgets.container")
@@ -171,7 +172,7 @@ function theme.at_screen_connect(s)
             margins = 2,
             widget = wibox.container.place,
            }, {hover=false}),
-        spacer,
+        seperator
     }
 
     -- Create a promptbox for each screen

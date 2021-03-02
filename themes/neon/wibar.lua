@@ -57,8 +57,7 @@ local memory = require("themes.neon.widgets.memory")({
     icon=beautiful.widget_mem
 })
 
-local spacer= wibox.widget.textbox('  ')
-
+local seperator= require("themes.neon.widgets.seperator")
 -- container
 local container = require("themes.neon.widgets.container")
 
@@ -95,7 +94,7 @@ local function wibar(s)
   s.wibar = awful.wibar({ 
     position = "top", 
     screen = s, 
-    height = dpi(32), 
+    height = dpi(28), 
     bg = beautiful.bg, 
     fg = beautiful.fg_normal , 
     opacity = 0.9,
@@ -112,11 +111,8 @@ local function wibar(s)
             --s.mylayoutbox,
     
             container(s.taglist, {hover=false}),
-
-            spacer,
             
-            s.mypromptbox,
-            spacer
+            -- s.mypromptbox,
         },
     
             s.tasklist, -- Middle widget
@@ -125,11 +121,11 @@ local function wibar(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
 
-            spacer,
-            spacer,
+            wibox.widget.textbox("  "),
+
             config_widget,
 
-            spacer,
+            seperator,
 
             container({
                 layout = wibox.layout.fixed.horizontal,
@@ -139,7 +135,7 @@ local function wibar(s)
                 net.up.widget,
             }),
 
-            spacer,
+            seperator,
 
             container({
                 layout = wibox.layout.fixed.horizontal,
@@ -147,7 +143,7 @@ local function wibar(s)
                 memory.widget,
             }),
             
-            spacer,
+            seperator,
 
             container({
                 layout = wibox.layout.fixed.horizontal,
@@ -155,7 +151,7 @@ local function wibar(s)
                 temp.widget,
             }),
 
-            spacer,
+            seperator,
 
             -- weathericon,
             -- beautiful.weather.widget,
@@ -169,7 +165,7 @@ local function wibar(s)
                 })
             ),
             
-            spacer,
+            seperator,
             
 
             container({
@@ -178,49 +174,43 @@ local function wibar(s)
                 volumecfg.widget,
             }),
 
-            spacer,
+            seperator,
 
-            container({
+            container(
                 brightness_widget{
                     type = 'icon_and_text',
                     font = beautiful.font,
-                },
-                valign = 'center',
-                margins = 2,
-                widget = wibox.container.place,
-            }),
+                }
+            ),
 
-            spacer,
+            seperator,
 
-        container({
+        container(
             battery_widget({
                 show_current_level = true
-            }),
-            valign = 'center',
-            margins = 2,
-            widget = wibox.container.place,
-        }),
+            })
+        ),
 
-            spacer,
+            seperator,
 
             s.systray,
     
             container(mytextclock),
             
-            spacer,
+            seperator,
 
             container(awful.widget.keyboardlayout:new ()),
 
-            spacer,
+            seperator,
 
 
             s.mylayoutbox,
-            spacer
+            seperator
 
         },
     },
-    top     = dpi(4),
-    bottom  = dpi(4),
+    top     = dpi(2),
+    bottom  = dpi(2),
     widget  = wibox.container.margin
    
   }

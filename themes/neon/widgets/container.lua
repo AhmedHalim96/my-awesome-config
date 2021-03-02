@@ -13,7 +13,7 @@ local function container (widget, args)
       hover = true
   end
 
-  local shape = args.shape or gears.shape.rounded_rect
+  local shape = args.shape or beautiful.widget_shape  
 
   local _container = wibox.widget {
       {
@@ -25,8 +25,8 @@ local function container (widget, args)
           widget = wibox.container.margin
       },
       shape              = shape,
-      shape_border_color = colors.bg_lighter,
-      shape_border_width = dpi(1),
+      shape_border_color = beautiful.widget_border_color,
+      shape_border_width = beautiful.widget_border_width,
       bg                 = beautiful.bg,
       widget             = wibox.container.background
   }
@@ -39,7 +39,12 @@ local function container (widget, args)
           _container.bg = beautiful.bg_normal
       end)
   end
-  return _container
+  return wibox.widget {
+    _container,
+    valign="center",
+    halign="center",
+    widget=wibox.container.place
+  }
 end
 
 return container
