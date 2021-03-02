@@ -18,8 +18,8 @@ local function container (widget, args)
   local _container = wibox.widget {
       {
          widget,
-          left   = dpi(10),
-          right  = dpi(10),
+          left   = dpi(8),
+          right  = dpi(8),
           top    = dpi(2),
           bottom = dpi(2),
           widget = wibox.container.margin

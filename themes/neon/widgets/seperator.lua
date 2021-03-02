@@ -10,6 +10,8 @@ local seperator = wibox.widget{
             widget = wibox.widget.textbox(markup(colors.bg_light,'|'))
         },
         bottom=3,
+        left=2,
+        right=2,
         widget=wibox.container.margin,
     },
     valign="center",
