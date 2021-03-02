@@ -86,7 +86,8 @@ awful.rules.rules = {
 			},
 			role = {}
 		}, properties = {  skip_taskbar = true }},
--- uncenter
+
+		-- uncenter
 		{ rule_any = {
 			instance = {"albert"},
 			class = {},
@@ -95,6 +96,14 @@ awful.rules.rules = {
 			},
 			role = {}
 		}, properties = { placement=awful.placement.no_offscreen}},
+
+		-- disable sloppy focus
+		{ rule_any = {
+			instance = {"albert", "copyq"},
+			class = {},
+			name = {},
+			role = {}
+		}, properties = { disable_sloppy_focus = true}},
 
 
 

@@ -21,7 +21,7 @@ _G.client.connect_signal("manage", function (c)
   c.maximized_vertical = false
   
   -- disable sloppy if albert is spwned
-  if c.instance == "albert" then
+  if c.disable_sloppy_focus then
       sloppy_focus_enabled = false
   end
 
@@ -49,7 +49,7 @@ end
 
 _G.client.connect_signal("unmanage", function (c)
     -- enable sloppy if albert is closed
-  if c.instance == "albert" then
+  if c.disable_sloppy_focus then
       sloppy_focus_enabled = true
   end
 end
