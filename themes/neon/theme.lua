@@ -185,27 +185,11 @@ local net = require("themes.neon.widgets.net")({
 })
 
 -- MEM
-local memicon =wibox.widget {
-    {
-        {
-            forced_height = dpi(20),
-            forced_width = dpi(20),
-            widget = wibox.widget.imagebox(theme.widget_mem),
-        },
-        valign="center",
-        widget=wibox.container.place
-    },
-    right = dpi(4),
-    widget = wibox.container.margin
-}
-
-local memory = lain.widget.mem({
-    settings = function()
-        widget:set_markup(markup.fontfg(theme.font, colors.neon.yellow, mem_now.used .. "M "))
-    end
+local memory = require("themes.neon.widgets.memory")({
+    color=colors.neon.yellow, 
+    font=theme.font, 
+    icon=theme.widget_mem
 })
-
-
 
 local spacer= wibox.widget.textbox('  ')
 
@@ -536,7 +520,7 @@ function theme.at_screen_connect(s)
 
                 container({
                     layout = wibox.layout.fixed.horizontal,
-                    memicon,
+                    memory.icon,
                     memory.widget,
                 }),
                 
