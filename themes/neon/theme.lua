@@ -261,29 +261,7 @@ function theme.at_screen_connect(s)
     s.mypromptbox = awful.widget.prompt()
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
-    s.mylayoutbox = awful.widget.layoutbox(s)
-    s.mylayoutbox = wibox.widget{
-        {
-            s.mylayoutbox,
-            top = 4,
-            bottom = 4,
-            left=4, 
-            right=4,
-            widget=wibox.container.margin,
-        },
-        shape_border_width = theme.widget_border_width,
-        shape_border_color = theme.widget_border_color,
-        shape  = gears.shape.rectangle,
-        widget = wibox.container.background,
-    }
-    s.mylayoutbox:buttons(my_table.join(
-            awful.button({}, 1, function () awful.layout.inc( 1) end),
-            awful.button({}, 2, function () awful.layout.set( awful.layout.layouts[1] ) end),
-            awful.button({}, 3, function () awful.layout.inc(-1) end),
-            awful.button({}, 4, function () awful.layout.inc( 1) end),
-            awful.button({}, 5, function () awful.layout.inc(-1) end)
-        )
-    )
+    s.mylayoutbox = require("themes.neon.widgets.layoutbox")
     
 
     -- Create a taglist widget
