@@ -111,7 +111,7 @@ local function wibar(s)
             layout = wibox.layout.fixed.horizontal,
             --s.mylayoutbox,
     
-            container(s.mytaglist, {hover=false}),
+            container(s.taglist, {hover=false}),
 
             spacer,
             

@@ -182,12 +182,9 @@ function theme.at_screen_connect(s)
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     s.mylayoutbox = require("themes.neon.widgets.layoutbox")
-    
 
     -- Create a taglist widget
-    local _taglist = require("themes.neon.widgets.taglist")(s)
-    s.mytaglist = _taglist
-
+    require("themes.neon.widgets.taglist")(s)
 
     -- Create a tasklist widget
     require("themes.neon.widgets.tasklist")(s)

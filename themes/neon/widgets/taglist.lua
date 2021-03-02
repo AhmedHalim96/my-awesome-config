@@ -4,7 +4,7 @@ local dpi   = require("beautiful.xresources").apply_dpi
 local wibox = require("wibox")
 
 local function taglist(s)
-  return awful.widget.taglist {
+  s.taglist = awful.widget.taglist {
     screen  = s,
     filter  = awful.widget.taglist.filter.all,
     buttons = awful.util.taglist_buttons,
