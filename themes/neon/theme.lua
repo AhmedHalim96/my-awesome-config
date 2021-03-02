@@ -139,7 +139,8 @@ theme.titlebar_maximized_button_focus_active                   = theme.confdir .
 theme.titlebar_maximized_button_normal_active_hover            = theme.confdir .. "/icons/titlebar/maximized_hover.png"
 theme.titlebar_maximized_button_focus_active_hover             = theme.confdir .. "/icons/titlebar/maximized_hover.png"
 
-theme.widgets_border_width                                     = dpi(1)
+theme.widget_border_width                                      = dpi(1)
+theme.widget_border_color                                      = colors.bg_lighter
 
 -- ###########################################################
 -- #Widgets
@@ -193,47 +194,11 @@ local memory = require("themes.neon.widgets.memory")({
 
 local spacer= wibox.widget.textbox('  ')
 
--- round container
-function container (widget, args)
-    args = args or {}
-
-    local hover = args.hover
-    if args.hover == nil then
-        hover = true
-    end
-
-    local shape = args.shape or gears.shape.rounded_rect
-
-    local _container = wibox.widget {
-        {
-           widget,
-            left   = 10,
-            right  = 10,
-            top    = 2,
-            bottom = 2,
-            widget = wibox.container.margin
-        },
-        shape              = shape,
-        shape_border_color = colors.bg_lighter,
-        shape_border_width = theme.widgets_border_width,
-        bg                 = theme.bg,
-        widget             = wibox.container.background
-    }
-
-    if hover then
-        _container:connect_signal("mouse::enter", function (args)
-            _container.bg = theme.bg_focus
-        end)
-        _container:connect_signal("mouse::leave",function ()
-            _container.bg = theme.bg_normal
-        end)
-    end
-    return _container
-end
-
+-- container
+local container = require("themes.neon.widgets.container")
 
 -- Edit config widget
-local config_widget = container(wibox.widget{
+local config_widget = container({
     layout=wibox.layout.fixed.horizontal,
     {
         {
@@ -331,8 +296,8 @@ function theme.at_screen_connect(s)
             right=4,
             widget=wibox.container.margin,
         },
-        shape_border_width = theme.widgets_border_width,
-        shape_border_color = colors.bg_lighter,
+        shape_border_width = theme.widget_border_width,
+        shape_border_color = theme.widget_border_color,
         shape  = gears.shape.rectangle,
         widget = wibox.container.background,
     }
@@ -403,8 +368,8 @@ function theme.at_screen_connect(s)
         buttons= awful.util.tasklist_buttons,
         
         style    = {
-            shape_border_width = theme.widgets_border_width,
-            shape_border_color = colors.bg_lighter,
+            shape_border_width = theme.widget_border_width,
+            shape_border_color = theme.widget_border_color,
             shape  = gears.shape.rounded_rect,
         },
         layout   = {
