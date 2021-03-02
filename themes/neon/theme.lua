@@ -15,9 +15,7 @@ local lain  = require("lain")
 local awful = require("awful")
 local wibox = require("wibox")
 local dpi   = require("beautiful.xresources").apply_dpi
-
 local os = os
-local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local colors = require("themes.neon.config.colors")
 
@@ -99,7 +97,6 @@ theme.layout_max                                               = theme.confdir .
 theme.layout_fullscreen                                        = theme.confdir .. "/icons/fullscreen.png"
 theme.layout_magnifier                                         = theme.confdir .. "/icons/magnifier.png"
 theme.layout_floating                                          = theme.confdir .. "/icons/floating.png"
-
 
 theme.titlebar_bg_normal                                       = colors.titlebar_bg
 theme.titlebar_bg                                              = colors.titlebar_bg
@@ -190,7 +187,7 @@ function theme.at_screen_connect(s)
     require("themes.neon.widgets.tasklist")(s)
     
     -- Create the wibox
-   require("themes.neon.wibar")(s)
+    require("themes.neon.wibar")(s)
 
 end
 
