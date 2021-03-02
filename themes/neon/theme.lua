@@ -177,49 +177,11 @@ theme.weather = lain.widget.weather({
 
 
 -- Net
-local netdownicon = wibox.widget {
-    {
-        {
-            forced_height=dpi(12),
-            forced_width=dpi(12),
-            widget=wibox.widget.imagebox(theme.widget_netdown)
-        },
-        valign="center",
-        halign="center",
-        widget=wibox.container.place
-    },
-    right=3,
-    top=3,
-    widget=wibox.container.margin
-}
-local netdowninfo = wibox.widget.textbox()
-local netupicon = wibox.widget {
-    {
-        {
-            forced_height=dpi(12),
-            forced_width=dpi(12),
-            widget=wibox.widget.imagebox(theme.widget_netup)
-        },
-        valign="center",
-        halign="center",
-        widget=wibox.container.place
-    },
-    right=3,
-    left=6,
-    top=3,
-    widget=wibox.container.margin
-}
-local netupinfo = lain.widget.net({
-    settings = function()
-        if iface ~= "network off" and
-           string.match(theme.weather.widget.text, "N/A")
-        then
-            theme.weather.update()
-        end
-
-        widget:set_markup(markup.fontfg(theme.font, colors.neon.fuchsia, net_now.sent .. " "))
-        netdowninfo:set_markup(markup.fontfg(theme.font, colors.neon.blue, net_now.received .. " "))
-    end
+local net = require("themes.neon.widgets.net")({
+    netdownicon=theme.widget_netdown, 
+    netupicon=theme.widget_netup, 
+    netdowncolor=colors.neon.blue, 
+    netupcolor=colors.neon.fuchsia
 })
 
 -- MEM
@@ -564,10 +526,10 @@ function theme.at_screen_connect(s)
 
                 container({
                     layout = wibox.layout.fixed.horizontal,
-                    netdownicon,
-                    netdowninfo,
-                    netupicon,
-                    netupinfo.widget,
+                    net.down.icon,
+                    net.down.widget,
+                    net.up.icon,
+                    net.up.widget,
                 }),
 
                 spacer,
