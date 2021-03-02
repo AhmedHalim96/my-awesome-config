@@ -198,35 +198,12 @@ local spacer= wibox.widget.textbox('  ')
 local container = require("themes.neon.widgets.container")
 
 -- Edit config widget
-local config_widget = container({
-    layout=wibox.layout.fixed.horizontal,
-    {
-        {
-            widget        = wibox.widget.imagebox(theme.widget_config),
-            forced_height = dpi(16),    
-            forced_width  = dpi(16),
-        },
-        valign="center",
-        widget=wibox.container.place
-    },
-    {
-        {
-            widget=wibox.widget.textbox((markup(colors.neon.green, " Edit Config"))),
-            font=theme.font
-        },
-        align="center",
-        widget=wibox.container.place
-    }
-    
+local config_widget = require("themes.neon.widgets.edit_config")({
+    color=colors.neon.green, 
+    font=theme.font, 
+    icon=theme.widget_config
 })
 
-config_widget:buttons(awful.util.table.join(
-    awful.button({"","Control"}, 1, function(  )
-        awful.spawn("awesome-config")
-    end)
-        ))
-
-        
 -- Brightness Widget
 brightness_widget = require("widgets.brightness-widget.brightness")
 
@@ -243,12 +220,10 @@ volumecfg = volume_control({
 })
 
 -- CPU widget
-
 local cpu_widget = require("widgets.cpu-widget.cpu-widget")
 
 
 -- Battery widget
-
 local battery_widget = require("widgets.battery-widget.battery")
 
 
