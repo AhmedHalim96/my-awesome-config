@@ -27,7 +27,7 @@ local colors = require("themes.neon.config.colors")
 
 local theme                                                    = {}
 theme.confdir                                                  = os.getenv("HOME") .. "/.config/awesome/themes/neon"
-theme.wallpaper                                                = function () awful.spawn('find ~/.wallpapers/ -type f -iname "*.jpg" -print0 | shuf -z -n 1') end
+theme.wallpaper                                                = "~/wall.jpg"
 theme.font                                                     = "Noto Sans 10"
 theme.bg_normal                                                = colors.bg
 theme.bg_focus                                                 = colors.bg_light

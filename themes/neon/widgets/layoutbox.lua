@@ -8,11 +8,11 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 local layoutbox = wibox.widget{
   {
     awful.widget.layoutbox(),
-    top = 4,
-    bottom = 4,
-    left=4, 
-    right=4,
-    widget=wibox.container.margin,
+    top    = 2,
+    bottom = 2,
+    left   = 2, 
+    right  = 2,
+    widget = wibox.container.margin,
   },
   shape_border_width = beautiful.widget_border_width,
   shape_border_color = beautiful.widget_border_color,

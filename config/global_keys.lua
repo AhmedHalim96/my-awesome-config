@@ -294,7 +294,31 @@ local globalkeys = gears.table.join(
 			end,
 			{description = 'Brightness -10%', group = 'hotkeys'}
 		),
-		-- ALSA volume control
+		awful.key(
+			{modkey, "Control"},
+			'Right',
+			function()
+				-- awful.spawn('xbacklight -inc 10')
+				-- awful.spawn('light -A 10')
+				brightness_widget:inc()
+
+	
+			end,
+			{description = 'Brightness +10%', group = 'hotkeys'}
+		),
+
+		awful.key(
+			{modkey, "Control"},
+			'Left',
+			function()
+				-- awful.spawn('xbacklight -dec 10')
+				-- awful.spawn('light -U 10')
+				brightness_widget:dec()
+			end,
+			{description = 'Brightness -10%', group = 'hotkeys'}
+		),
+
+		-- volume control
 		awful.key(
 			{},
 			'XF86AudioRaiseVolume',
@@ -312,16 +336,16 @@ local globalkeys = gears.table.join(
 			{description = 'volume down', group = 'hotkeys'}
 		),
 		awful.key(
-			{"Control"},
-			'XF86AudioRaiseVolume',
+			{modkey, "Control"},
+			'Up',
 			function()
 				awful.spawn("pactl -- set-sink-volume 0 +10%")
 			end,
 			{description = 'Boooost volume up', group = 'hotkeys'}
 		),
 		awful.key(
-			{"Control"},
-			'XF86AudioLowerVolume',
+			{modkey, "Control"},
+			'Down',
 			function()
 				awful.spawn("pactl -- set-sink-volume 0 -10%")
 			end,
