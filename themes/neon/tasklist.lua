@@ -29,15 +29,6 @@ awful.util.tasklist_buttons = my_table.join(
     end),
     awful.button({ }, 2, function (c) c:kill() end),
     awful.button({ }, 3, function (c)
-        if not c.right_click_menu then
-            c.right_click_menu = awful.menu{ items = {
-                { "on Top",   function() c.ontop    = not c.ontop     end },
-                { "Sticky",   function() c.sticky   = not c.sticky    end },
-                { "Floating", function() c.floating = not c.floating  end },
-                { "Close",    function() c:kill()                     end } 
-            }} 
-        end
-       
         c.right_click_menu:toggle()
     end),
     awful.button({ }, 4, function () awful.client.focus.byidx(1) end),
