@@ -1,10 +1,9 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
+local dpi   = require("beautiful.xresources").apply_dpi
 local gears = require("gears")
 local wibox = require("wibox")
-local dpi   = require("beautiful.xresources").apply_dpi
-
-
+local scratch = require("modules.scratch")
 
 -- function round_corners(c)
 -- 	c.shape = function(cr, w, h)
@@ -134,7 +133,26 @@ _G.client.connect_signal("mouse::enter", function(c)
     end
 end)
 
-_G.client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-_G.client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+_G.client.connect_signal("focus", function(c) 
+  c.border_color = beautiful.border_focus
+  -- disable sloppy focus
+  if c.disable_sloppy_focus then
+    sloppy_focus_enabled = false
+  end   
+end)
+
+_G.client.connect_signal("unfocus", function(c) 
+  c.border_color = beautiful.border_normal 
+
+  --enable sloppy
+    if c.disable_sloppy_focus then
+      sloppy_focus_enabled = true
+    end
+  -- hide scratch pad
+  if c.scratch_pad then
+    scratch.hide(c)
+  end
+end)
+
 
 -- }}}
