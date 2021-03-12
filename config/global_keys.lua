@@ -3,6 +3,7 @@ local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local menubar = require("menubar")
 local naughty = require("naughty")
+local scratch = require("modules.scratch")
 
 
 local globalkeys = gears.table.join(
@@ -141,8 +142,12 @@ local globalkeys = gears.table.join(
 		function () awful.spawn('gnome-system-monitor') end,
 		{description = "open system monitor", group = "launcher"}
 	),
+	awful.key(
+		{ modkey,}, "z",
+		function () scratch.toggle("alacritty --class scratch", { instance = "scratch" })  end,
+		{description = "Open ScratchPad Terminal", group = "launcher"}
+	),
 	
-
 	-- Awesome Control 
 	awful.key(
 		{ modkey, "Control" }, "r", 

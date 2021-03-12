@@ -2,6 +2,10 @@ local beautiful = require("beautiful")
 local awful = require("awful")
 local clientkeys = require('config.client_keys')
 local clientbuttons = require("config.client_buttons")
+local gears = require("gears")
+
+local screen_width = awful.screen.focused().geometry.width
+local screen_height = awful.screen.focused().geometry.height
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
@@ -111,6 +115,7 @@ awful.rules.rules = {
 	-- { rule_any = {type = { "normal", "dialog" }
 	--   }, properties = { titlebars_enabled = true }
 	-- },
+
 	-- No Title bars
 	{ rule_any = {
 		instance = {
@@ -123,15 +128,36 @@ awful.rules.rules = {
 		role = {}
 	}, properties = {  has_titlebar = false }},
 
-		-- No borders
-		{ rule_any = {
+	-- No borders
+	{ rule_any = {
 			instance = {
 				"albert",
 			},
 			class = {},
 			name = {},
 			role = {}
-		}, properties = {  has_border = false }},
+	}, properties = {  has_border = false }},
+
+
+	--  Scratch
+	{
+        rule_any = {
+            instance = { "scratch" },
+            class = { "scratch" },
+        },
+        properties = {
+            floating = true,
+            width = screen_width * 0.6,
+            height = screen_height * 0.65,
+        },
+        callback = function (c)
+            awful.placement.centered(c,{honor_padding = true, honor_workarea=true})
+            gears.timer.delayed_call(function()
+                c.urgent = false
+            end)
+        end
+    },
+
 
 		
 	-- 2nd workspace for Editors and IDEs
