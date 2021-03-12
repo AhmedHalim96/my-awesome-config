@@ -56,5 +56,7 @@ function scratch.toggle(cmd, rule, alwaysclose)
         scratch.raise(cmd, rule)
     end
 end
-
+function scratch.hide(c)
+    turn_off(c)
+end
 return scratch

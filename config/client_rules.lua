@@ -118,21 +118,11 @@ awful.rules.rules = {
 
 	-- disable sloppy focus
 	{ rule_any = {
-			instance = {"albert", "copyq"},
+			instance = {"albert", "copyq", "scratch"},
 			class = {},
 			name = {},
 			role = {}
 		}, properties = { disable_sloppy_focus = true},
-		callback = function (c)
-			sloppy_focus_enabled = false
-			client.connect_signal("unmanage", function (c)
-				-- enable sloppy if albert is closed
-			  if c.disable_sloppy_focus then
-				  sloppy_focus_enabled = true
-			  end
-			end
-			)
-		end
 
 	},
 	
@@ -141,10 +131,8 @@ awful.rules.rules = {
 		type={"dialog"}
 	}, properties = { },
 	callback = function (c)
-		
 		awful.placement.centered(c, {parent=c.transient_for})
 		awful.placement.no_offscreen(c)
-		  
 	end
 },
 
@@ -185,6 +173,7 @@ awful.rules.rules = {
             class = { "scratch" },
         },
         properties = {
+			scratch_pad = true,
             floating = true,
             width = screen_width * 0.6,
             height = screen_height * 0.65,
@@ -193,7 +182,7 @@ awful.rules.rules = {
             awful.placement.centered(c,{honor_padding = true, honor_workarea=true})
             gears.timer.delayed_call(function()
                 c.urgent = false
-            end)
+            end)	
         end
     },
 
