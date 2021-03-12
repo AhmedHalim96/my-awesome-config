@@ -133,12 +133,8 @@ awful.rules.rules = {
 			role = {}
 		}, properties = {  has_border = false }},
 
-	-- Workspaces
-	-- 1 browsers
-	{ rule_any = { class = { "Brave-browser","Chromium-browser"} },
-		properties = { screen = 1, tag = "1" } },
 		
-	-- 2 Editors and IDEs
+	-- 2nd workspace for Editors and IDEs
 	{ rule_any = { class = {"VSCodium", "VSCode", "DrRacket", "jetbrains-phpstorm", "jetbrains-pycharm-ce", "jetbrains-studio"} },
 		properties = { screen = 1, tag = "2" } },
 		
@@ -146,8 +142,6 @@ awful.rules.rules = {
 	{ rule = { class = "Clementine" },
 	  properties = { screen = 1, tag = "5" } },
 	
-
-
 	-- Set Firefox to always map on the tag named "2" on screen 1.
 	-- { rule = { class = "Firefox" },
 	--   properties = { screen = 1, tag = "2" } },
