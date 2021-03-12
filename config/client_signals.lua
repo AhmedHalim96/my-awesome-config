@@ -14,23 +14,7 @@ local dpi   = require("beautiful.xresources").apply_dpi
 
 
 -- Signal function to execute when a new client appears.
-_G.client.connect_signal("manage", function (c)
-  -- unmaxmize on spawn
-  c.maximized = false
-  c.maximized_horizontal = false
-  c.maximized_vertical = false
-  
-  -- disable sloppy if albert is spwned
-  if c.disable_sloppy_focus then
-      sloppy_focus_enabled = false
-  end
-
--- center dialog to its parent
-  if c.type == "dialog" then
-    awful.placement.centered(c, {parent=c.transient_for})
-    awful.placement.no_offscreen(c)
-
-  end
+_G.client.connect_signal("manage", function (c)  
 
   -- Set the windows at the slave,
   if not awesome.startup then awful.client.setslave(c) end
@@ -41,25 +25,12 @@ _G.client.connect_signal("manage", function (c)
       -- Prevent clients from being unreachable after screen count changes.
       awful.placement.no_offscreen(c)
   end
-
-  -- adding right_click_menu
-  c.right_click_menu = awful.menu{ items = {
-    { "on Top",   function() c.ontop    = not c.ontop     end },
-    { "Sticky",   function() c.sticky   = not c.sticky    end },
-    { "Floating", function() c.floating = not c.floating  end },
-    { "Close",    function() c:kill()                     end } 
-  }} 
-
-
 end
 )
 
 
 _G.client.connect_signal("unmanage", function (c)
-    -- enable sloppy if albert is closed
-  if c.disable_sloppy_focus then
-      sloppy_focus_enabled = true
-  end
+  --
 end
 )
 -- Add a titlebar if titlebars_enabled is set to true in the rules.

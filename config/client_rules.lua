@@ -13,17 +13,30 @@ awful.rules.rules = {
 	-- All clients will match this rule.
 	{ rule = { },
 		properties = { 
-			border_width = beautiful.border_width,
 			border_color = beautiful.border_normal,
-			focus = awful.client.focus.filter,
-			raise = true,
-			keys = clientkeys,
+			border_width = beautiful.border_width,
 			buttons = clientbuttons,
-			screen = awful.screen.preferred,
-			placement = awful.placement.no_offscreen+awful.placement.centered,
+			focus = awful.client.focus.filter,
+			has_border = true,
 			has_titlebar = true,
-			has_border = true
-		}
+			keys = clientkeys,
+			maximized = false,
+			maximized_horizontal = false,
+			maximized_vertical = false,
+			placement = awful.placement.no_offscreen+awful.placement.centered,
+			raise = true,
+			screen = awful.screen.preferred,
+		},
+		callback = function (c)
+             -- adding right_click_menu
+			c.right_click_menu = awful.menu{ items = {
+				{ "on Top",   function() c.ontop    = not c.ontop     end },
+				{ "Sticky",   function() c.sticky   = not c.sticky    end },
+				{ "Floating", function() c.floating = not c.floating  end },
+				{ "Close",    function() c:kill()                     end } 
+			}} 
+        end
+
 	},
 
 	-- Floating clients.
@@ -89,25 +102,51 @@ awful.rules.rules = {
 				"MEGAsync"
 			},
 			role = {}
-		}, properties = {  skip_taskbar = true }},
+		}, properties = {  skip_taskbar = true }
+	},
 
-		-- uncenter
-		{ rule_any = {
-			instance = {"albert"},
-			class = {},
-			name = {
-				"MEGAsync"
-			},
-			role = {}
-		}, properties = { placement=awful.placement.no_offscreen}},
+	-- uncenter
+	{ rule_any = {
+		instance = {"albert"},
+		class = {},
+		name = {
+			"MEGAsync"
+		},
+		role = {}
+		}, properties = { placement=awful.placement.no_offscreen}
+	},
 
-		-- disable sloppy focus
-		{ rule_any = {
+	-- disable sloppy focus
+	{ rule_any = {
 			instance = {"albert", "copyq"},
 			class = {},
 			name = {},
 			role = {}
-		}, properties = { disable_sloppy_focus = true}},
+		}, properties = { disable_sloppy_focus = true},
+		callback = function (c)
+			sloppy_focus_enabled = false
+			client.connect_signal("unmanage", function (c)
+				-- enable sloppy if albert is closed
+			  if c.disable_sloppy_focus then
+				  sloppy_focus_enabled = true
+			  end
+			end
+			)
+		end
+
+	},
+	
+	-- Center dialogs to their parents
+	{ rule_any = {
+		type={"dialog"}
+	}, properties = { },
+	callback = function (c)
+		
+		awful.placement.centered(c, {parent=c.transient_for})
+		awful.placement.no_offscreen(c)
+		  
+	end
+},
 
 
 
