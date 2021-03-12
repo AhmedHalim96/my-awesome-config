@@ -2,6 +2,10 @@ local beautiful = require("beautiful")
 local awful = require("awful")
 local clientkeys = require('config.client_keys')
 local clientbuttons = require("config.client_buttons")
+local gears = require("gears")
+
+local screen_width = awful.screen.focused().geometry.width
+local screen_height = awful.screen.focused().geometry.height
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
@@ -9,17 +13,30 @@ awful.rules.rules = {
 	-- All clients will match this rule.
 	{ rule = { },
 		properties = { 
-			border_width = beautiful.border_width,
 			border_color = beautiful.border_normal,
-			focus = awful.client.focus.filter,
-			raise = true,
-			keys = clientkeys,
+			border_width = beautiful.border_width,
 			buttons = clientbuttons,
-			screen = awful.screen.preferred,
-			placement = awful.placement.no_offscreen+awful.placement.centered,
+			focus = awful.client.focus.filter,
+			has_border = true,
 			has_titlebar = true,
-			has_border = true
-		}
+			keys = clientkeys,
+			maximized = false,
+			maximized_horizontal = false,
+			maximized_vertical = false,
+			placement = awful.placement.no_offscreen+awful.placement.centered,
+			raise = true,
+			screen = awful.screen.preferred,
+		},
+		callback = function (c)
+             -- adding right_click_menu
+			c.right_click_menu = awful.menu{ items = {
+				{ "on Top",   function() c.ontop    = not c.ontop     end },
+				{ "Sticky",   function() c.sticky   = not c.sticky    end },
+				{ "Floating", function() c.floating = not c.floating  end },
+				{ "Close",    function() c:kill()                     end } 
+			}} 
+        end
+
 	},
 
 	-- Floating clients.
@@ -85,25 +102,51 @@ awful.rules.rules = {
 				"MEGAsync"
 			},
 			role = {}
-		}, properties = {  skip_taskbar = true }},
+		}, properties = {  skip_taskbar = true }
+	},
 
-		-- uncenter
-		{ rule_any = {
-			instance = {"albert"},
-			class = {},
-			name = {
-				"MEGAsync"
-			},
-			role = {}
-		}, properties = { placement=awful.placement.no_offscreen}},
+	-- uncenter
+	{ rule_any = {
+		instance = {"albert"},
+		class = {},
+		name = {
+			"MEGAsync"
+		},
+		role = {}
+		}, properties = { placement=awful.placement.no_offscreen}
+	},
 
-		-- disable sloppy focus
-		{ rule_any = {
+	-- disable sloppy focus
+	{ rule_any = {
 			instance = {"albert", "copyq"},
 			class = {},
 			name = {},
 			role = {}
-		}, properties = { disable_sloppy_focus = true}},
+		}, properties = { disable_sloppy_focus = true},
+		callback = function (c)
+			sloppy_focus_enabled = false
+			client.connect_signal("unmanage", function (c)
+				-- enable sloppy if albert is closed
+			  if c.disable_sloppy_focus then
+				  sloppy_focus_enabled = true
+			  end
+			end
+			)
+		end
+
+	},
+	
+	-- Center dialogs to their parents
+	{ rule_any = {
+		type={"dialog"}
+	}, properties = { },
+	callback = function (c)
+		
+		awful.placement.centered(c, {parent=c.transient_for})
+		awful.placement.no_offscreen(c)
+		  
+	end
+},
 
 
 
@@ -111,6 +154,7 @@ awful.rules.rules = {
 	-- { rule_any = {type = { "normal", "dialog" }
 	--   }, properties = { titlebars_enabled = true }
 	-- },
+
 	-- No Title bars
 	{ rule_any = {
 		instance = {
@@ -123,22 +167,39 @@ awful.rules.rules = {
 		role = {}
 	}, properties = {  has_titlebar = false }},
 
-		-- No borders
-		{ rule_any = {
+	-- No borders
+	{ rule_any = {
 			instance = {
 				"albert",
 			},
 			class = {},
 			name = {},
 			role = {}
-		}, properties = {  has_border = false }},
+	}, properties = {  has_border = false }},
 
-	-- Workspaces
-	-- 1 browsers
-	{ rule_any = { class = { "Brave-browser","Chromium-browser"} },
-		properties = { screen = 1, tag = "1" } },
+
+	--  Scratch
+	{
+        rule_any = {
+            instance = { "scratch" },
+            class = { "scratch" },
+        },
+        properties = {
+            floating = true,
+            width = screen_width * 0.6,
+            height = screen_height * 0.65,
+        },
+        callback = function (c)
+            awful.placement.centered(c,{honor_padding = true, honor_workarea=true})
+            gears.timer.delayed_call(function()
+                c.urgent = false
+            end)
+        end
+    },
+
+
 		
-	-- 2 Editors and IDEs
+	-- 2nd workspace for Editors and IDEs
 	{ rule_any = { class = {"VSCodium", "VSCode", "DrRacket", "jetbrains-phpstorm", "jetbrains-pycharm-ce", "jetbrains-studio"} },
 		properties = { screen = 1, tag = "2" } },
 		
@@ -146,8 +207,6 @@ awful.rules.rules = {
 	{ rule = { class = "Clementine" },
 	  properties = { screen = 1, tag = "5" } },
 	
-
-
 	-- Set Firefox to always map on the tag named "2" on screen 1.
 	-- { rule = { class = "Firefox" },
 	--   properties = { screen = 1, tag = "2" } },
