@@ -21,9 +21,9 @@ beautiful.init(string.format("%s/.config/awesome/themes/neon/theme.lua", os.gete
 -- Modules
 require('modules.notifications')
 require("modules.awesome_menu")
-require("modules.screen")
 
-
+-- screen signals
+require("config.screen_signals")
 
 --- Global keys
 require("config.global_keys")
@@ -33,9 +33,6 @@ require("config.client_rules")
 
 -- client Signals
 require("config.client_signals")
-
--- Styling clients
-require('modules.decorate-client')
 
 -- Autostart apps
 require("modules.autostart")
