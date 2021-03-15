@@ -25,8 +25,6 @@ startup_programs = {
 
   '/usr/bin/libinput-gestures',
 
-  -- 'xiccd', -- Applies color profile
-
   --Systray
   'nm-applet --indicator', -- wifi
   'pnmixer', -- shows an audiocontrol applet in systray when installed.
@@ -40,7 +38,7 @@ startup_programs = {
 
   'cryptomator %F',
 
-  "onedrive --monitor", --OneDrive Sync
+  -- "onedrive --monitor", --OneDrive Sync
 
 
   -- Add applications that need to be killed between reloads
