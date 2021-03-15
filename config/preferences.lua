@@ -65,4 +65,3 @@ awful.layout.layouts = {
   awful.layout.suit.tile.bottom,
 }
 
-awful.mouse.snap.edge_enabled = false
