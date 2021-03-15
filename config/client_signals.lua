@@ -43,7 +43,7 @@ _G.client.connect_signal("request::titlebars", function(c)
       end),
       awful.button({ }, 3, function()
           c:emit_signal("request::activate", "titlebar", {raise = true})
-          awful.mouse.client.resize(c)
+          c.right_click_menu:toggle()
       end)
   )
 
