@@ -147,7 +147,11 @@ local globalkeys = gears.table.join(
 		function () scratch.toggle("alacritty --class scratch", { instance = "scratch" })  end,
 		{description = "Open ScratchPad Terminal", group = "launcher"}
 	),
-	
+	awful.key(
+		{ modkey,}, "g", 
+		function () awful.spawn('lutris') end,
+		{description = "open Lutris", group = "launcher"}
+	),
 	-- Awesome Control 
 	awful.key(
 		{ modkey, "Control" }, "r", 
