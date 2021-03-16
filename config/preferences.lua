@@ -38,8 +38,6 @@ startup_programs = {
 
   'cryptomator %F',
 
-  -- "onedrive --monitor", --OneDrive Sync
-
 
   -- Add applications that need to be killed between reloads
   -- to avoid multipled instances, inside the awspawn script
