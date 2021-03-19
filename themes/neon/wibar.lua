@@ -43,12 +43,7 @@ beautiful.weather = lain.widget.weather({
 
 
 -- Net
-local net = require("themes.neon.widgets.net")({
-    netdownicon=beautiful.widget_netdown, 
-    netupicon=beautiful.widget_netup, 
-    netdowncolor=colors.neon.blue, 
-    netupcolor=colors.neon.fuchsia
-})
+local net = require("themes.neon.widgets.net")
 
 -- MEM
 local memory = require("themes.neon.widgets.memory")({
@@ -127,12 +122,11 @@ local function wibar(s)
 
             seperator,
 
-            container({
-                layout = wibox.layout.fixed.horizontal,
-                net.down.icon,
-                net.down.widget,
-                net.up.icon,
-                net.up.widget,
+            net({
+                netdownicon=beautiful.widget_netdown, 
+                netupicon=beautiful.widget_netup, 
+                netdowncolor=colors.neon.blue, 
+                netupcolor=colors.neon.fuchsia
             }),
 
             seperator,
