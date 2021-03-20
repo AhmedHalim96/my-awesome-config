@@ -58,40 +58,40 @@ local globalkeys = gears.table.join(
 	),
 
 	awful.key(
-    {altkey},
-    '`',
-    function()
-      awful.client.focus.history.previous()
-        if _G.client.focus then
-          _G.client.focus:raise()
-        end
-    end,
-    {description = 'Switch to previous window', group = 'client'}
-  ),
+	{altkey},
+	'`',
+	function()
+		awful.client.focus.history.previous()
+		if _G.client.focus then
+			_G.client.focus:raise()
+		end
+	end,
+	{description = 'Switch to previous window', group = 'client'}
+	),
 
-  awful.key(
-    {altkey},
-    'Tab',
-    function()
-      -- awful.client.focus.history.previous()
-      awful.client.focus.byidx(1)
-      if _G.client.focus then
-        _G.client.focus:raise()
-      end
-    end,
-    {description = 'Switch to next window', group = 'client'}
-  ),
-  awful.key(
-    {altkey, 'Shift'},
-    'Tab',
-    function()
-      --awful.client.focus.history.previous()
-      awful.client.focus.byidx(-1)
-      if _G.client.focus then
-        _G.client.focus:raise()
-      end
-    end,
-    {description = 'Switch to previous window', group = 'client'}
+	awful.key(
+		{altkey},
+		'Tab',
+		function()
+			-- awful.client.focus.history.previous()
+			awful.client.focus.byidx(1)
+			if _G.client.focus then
+			_G.client.focus:raise()
+			end
+		end,
+		{description = 'Switch to next window', group = 'client'}
+	),
+	awful.key(
+		{altkey, 'Shift'},
+		'Tab',
+		function()
+			--awful.client.focus.history.previous()
+			awful.client.focus.byidx(-1)
+			if _G.client.focus then
+				_G.client.focus:raise()
+			end
+		end,
+		{description = 'Switch to previous window', group = 'client'}
 	),
 
 
@@ -103,7 +103,7 @@ local globalkeys = gears.table.join(
     {modkey},
     'Tab',
     function()
-      awful.spawn('rofi -no-lazy-grab -show window' )
+		awful.spawn('rofi -no-lazy-grab -show window' )
     end,
     {description = 'Open Rofi Window mode', group = 'launcher'}
 	),
@@ -112,7 +112,7 @@ local globalkeys = gears.table.join(
     {modkey, "Shift"},
     'p',
     function()
-      awful.spawn('rofi -no-lazy-grab -show drun' )
+		awful.spawn('rofi -no-lazy-grab -show drun' )
     end,
     {description = 'Open Rofi drun mode', group = 'launcher'}
 	),
@@ -148,10 +148,17 @@ local globalkeys = gears.table.join(
 		{description = "Open ScratchPad Terminal", group = "launcher"}
 	),
 	awful.key(
+		{ modkey, "Shift"}, "/",
+		function () awful.spawn("flatpak run com.github.alainm23.planner")  end,
+		{description = "Open ScratchPad Planner", group = "launcher"}
+	),
+	awful.key(
 		{ modkey,}, "g", 
 		function () awful.spawn('lutris') end,
 		{description = "open Lutris", group = "launcher"}
 	),
+
+	
 	-- Awesome Control 
 	awful.key(
 		{ modkey, "Control" }, "r", 
@@ -177,21 +184,21 @@ local globalkeys = gears.table.join(
 		{description = "decrease master width factor", group = "layout"}
 	),
 	awful.key(
-    {modkey},
-    'j',
-    function()
-      awful.client.incwfact(-0.05)
-    end,
-    {description = 'decrease master height factor', group = 'layout'}
-  ),
-  awful.key(
-    {modkey},
-    'k',
-    function()
-      awful.client.incwfact(0.05)
-    end,
-    {description = 'increase master height factor', group = 'layout'}
-  ),
+		{modkey},
+		'j',
+		function()
+			awful.client.incwfact(-0.05)
+		end,
+		{description = 'decrease master height factor', group = 'layout'}
+	),
+	awful.key(
+		{modkey},
+		'k',
+		function()
+			awful.client.incwfact(0.05)
+		end,
+		{description = 'increase master height factor', group = 'layout'}
+	),
 
 	awful.key(
 		{ modkey, "Control"   }, "l",     
@@ -280,157 +287,158 @@ local globalkeys = gears.table.join(
 		{description = "run prompt", group = "launcher"}
 	),
 
-	  -- Brightness
-		awful.key(
-			{},
-			'XF86MonBrightnessUp',
-			function()
-				-- awful.spawn('xbacklight -inc 10')
-				-- awful.spawn('light -A 10')
-				brightness_widget:inc()
+	-- Brightness
+	awful.key(
+		{},
+		'XF86MonBrightnessUp',
+		function()
+			-- awful.spawn('xbacklight -inc 10')
+			-- awful.spawn('light -A 10')
+			brightness_widget:inc()
 
-	
-			end,
-			{description = 'Brightness +10%', group = 'hotkeys'}
-		),
-		awful.key(
-			{},
-			'XF86MonBrightnessDown',
-			function()
-				-- awful.spawn('xbacklight -dec 10')
-				-- awful.spawn('light -U 10')
-				brightness_widget:dec()
-			end,
-			{description = 'Brightness -10%', group = 'hotkeys'}
-		),
-		awful.key(
-			{modkey, "Control"},
-			'Right',
-			function()
-				-- awful.spawn('xbacklight -inc 10')
-				-- awful.spawn('light -A 10')
-				brightness_widget:inc()
 
-	
-			end,
-			{description = 'Brightness +10%', group = 'hotkeys'}
-		),
+		end,
+		{description = 'Brightness +10%', group = 'hotkeys'}
+	),
+	awful.key(
+		{},
+		'XF86MonBrightnessDown',
+		function()
+			-- awful.spawn('xbacklight -dec 10')
+			-- awful.spawn('light -U 10')
+			brightness_widget:dec()
+		end,
+		{description = 'Brightness -10%', group = 'hotkeys'}
+	),
+	awful.key(
+		{modkey, "Control"},
+		'Right',
+		function()
+			-- awful.spawn('xbacklight -inc 10')
+			-- awful.spawn('light -A 10')
+			brightness_widget:inc()
 
-		awful.key(
-			{modkey, "Control"},
-			'Left',
-			function()
-				-- awful.spawn('xbacklight -dec 10')
-				-- awful.spawn('light -U 10')
-				brightness_widget:dec()
-			end,
-			{description = 'Brightness -10%', group = 'hotkeys'}
-		),
 
-		-- volume control
-		awful.key(
-			{},
-			'XF86AudioRaiseVolume',
-			function()
-				volumecfg:up()
-			end,
-			{description = 'volume up', group = 'hotkeys'}
-		),
-		awful.key(
-			{},
-			'XF86AudioLowerVolume',
-			function()
-				volumecfg:down()
-			end,
-			{description = 'volume down', group = 'hotkeys'}
-		),
-		awful.key(
-			{modkey, "Control"},
-			'Up',
-			function()
-				awful.spawn("pactl -- set-sink-volume 0 +10%")
-			end,
-			{description = 'Boooost volume up', group = 'hotkeys'}
-		),
-		awful.key(
-			{modkey, "Control"},
-			'Down',
-			function()
-				awful.spawn("pactl -- set-sink-volume 0 -10%")
-			end,
-			{description = 'Boooost volume down', group = 'hotkeys'}
-		),
-		awful.key(
-			{},
-			'XF86AudioMute',
-			function()
-				volumecfg:toggle()
-			end,
-			{description = 'toggle mute', group = 'hotkeys'}
-		),
-		awful.key(
-			{},
-			'XF86AudioNext',
-			function()
-				awful.spawn('playerctl next')
-			end,
-			{description = 'Next', group = 'hotkeys'}
-		),
-		awful.key(
-			{},
-			'XF86AudioPrev',
-			function()
-				awful.spawn('playerctl previous')
-			end,
-			{description = 'Previous', group = 'hotkeys'}
-		),
-		awful.key(
-			{},
-			'XF86AudioPlay',
-			function()
-				awful.spawn('playerctl play-pause')
-			end,
-			{description = 'Next', group = 'hotkeys'}
-		),
-		awful.key(
-			{},
-			'XF86PowerOff',
-			function()
-				awful.spawn('system-control')
-			end,
-			{description = 'ShutDown Screen', group = 'hotkeys'}
-		),
-		-- awful.key(
-		-- 	{modkey, "Control"},
-		-- 	'l',
-		-- 	function()
-		-- 		awful.spawn('cinnamon-screensaver-command  -l')
-		-- 	end,
-		-- 	{description = 'lock Screen', group = 'hotkeys'}
-		-- ),
-		-- Screen management
-		-- awful.key(
-		-- 	{modkey},
-		-- 	'o',
-		-- 	awful.client.movetoscreen,
-		-- 	{description = 'move window to next screen', group = 'client'}
-		-- ),
+		end,
+		{description = 'Brightness +10%', group = 'hotkeys'}
+	),
+
+	awful.key(
+		{modkey, "Control"},
+		'Left',
+		function()
+			-- awful.spawn('xbacklight -dec 10')
+			-- awful.spawn('light -U 10')
+			brightness_widget:dec()
+		end,
+		{description = 'Brightness -10%', group = 'hotkeys'}
+	),
+
+	-- volume control
+	awful.key(
+		{},
+		'XF86AudioRaiseVolume',
+		function()
+			volumecfg:up()
+		end,
+		{description = 'volume up', group = 'hotkeys'}
+	),
+	awful.key(
+		{},
+		'XF86AudioLowerVolume',
+		function()
+			volumecfg:down()
+		end,
+		{description = 'volume down', group = 'hotkeys'}
+	),
+	awful.key(
+		{modkey, "Control"},
+		'Up',
+		function()
+			awful.spawn("pactl -- set-sink-volume 0 +10%")
+		end,
+		{description = 'Boooost volume up', group = 'hotkeys'}
+	),
+	awful.key(
+		{modkey, "Control"},
+		'Down',
+		function()
+			awful.spawn("pactl -- set-sink-volume 0 -10%")
+		end,
+		{description = 'Boooost volume down', group = 'hotkeys'}
+	),
+	awful.key(
+		{},
+		'XF86AudioMute',
+		function()
+			volumecfg:toggle()
+		end,
+		{description = 'toggle mute', group = 'hotkeys'}
+	),
+	awful.key(
+		{},
+		'XF86AudioNext',
+		function()
+			awful.spawn('playerctl next')
+		end,
+		{description = 'Next', group = 'hotkeys'}
+	),
+	awful.key(
+		{},
+		'XF86AudioPrev',
+		function()
+			awful.spawn('playerctl previous')
+		end,
+		{description = 'Previous', group = 'hotkeys'}
+	),
+	awful.key(
+		{},
+		'XF86AudioPlay',
+		function()
+			awful.spawn('playerctl play-pause')
+		end,
+		{description = 'Next', group = 'hotkeys'}
+	),
+	awful.key(
+		{},
+		'XF86PowerOff',
+		function()
+			awful.spawn('system-control')
+		end,
+		{description = 'ShutDown Screen', group = 'hotkeys'}
+	),
+	-- awful.key(
+	-- 	{modkey, "Control"},
+	-- 	'l',
+	-- 	function()
+	-- 		awful.spawn('cinnamon-screensaver-command  -l')
+	-- 	end,
+	-- 	{description = 'lock Screen', group = 'hotkeys'}
+	-- ),
+	-- Screen management
+	-- awful.key(
+	-- 	{modkey},
+	-- 	'o',
+	-- 	awful.client.movetoscreen,
+	-- 	{description = 'move window to next screen', group = 'client'}
+	-- ),
 
 	-- Menubar
 	awful.key(
-	{ modkey }, "p", 
-	-- function() menubar.show() end,
-	-- {description = "show the menubar", group = "launcher"}
+		{ modkey }, "p", 
+		-- function() menubar.show() end,
+		-- {description = "show the menubar", group = "launcher"}
 
-	function() awful.spawn('albert toggle') end,
-	{description = "toggle albert", group = "launcher"}
-	), 
+		function() awful.spawn('albert toggle') end,
+		{description = "toggle albert", group = "launcher"}
+	),
+
 	awful.key(
 		{ modkey }, "=", 
 		function ()
-    	awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
+			awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
 		end,
-	  {description = "Toggle systray visibility", group = "custom"}
+		{description = "Toggle systray visibility", group = "custom"}
 	),
 	awful.key(
 			{modkey},
