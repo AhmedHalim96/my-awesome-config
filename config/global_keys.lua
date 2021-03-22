@@ -157,6 +157,11 @@ local globalkeys = gears.table.join(
 		function () awful.spawn('lutris') end,
 		{description = "open Lutris", group = "launcher"}
 	),
+	awful.key(
+		{ modkey,}, ",", 
+		function () awful.spawn('awesome-config') end,
+		{description = "open Config", group = "launcher"}
+	),
 
 	
 	-- Awesome Control 
