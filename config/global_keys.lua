@@ -149,8 +149,8 @@ local globalkeys = gears.table.join(
 	),
 	awful.key(
 		{ modkey, "Shift"}, "/",
-		function () awful.spawn("flatpak run com.github.alainm23.planner")  end,
-		{description = "Open ScratchPad Planner", group = "launcher"}
+		function () awful.spawn("simplenote")  end,
+		{description = "Open Notes", group = "launcher"}
 	),
 	awful.key(
 		{ modkey,}, "g", 
