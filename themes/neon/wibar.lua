@@ -25,7 +25,7 @@ beautiful.cal = lain.widget.cal({
 })
 
 -- Temp
-local temp = require("themes.neon.widgets.temp")({color=colors.neon.orange, font=beautiful.font, icon=beautiful.widget_temp})
+local temp_widget = require("themes.neon.widgets.temp")
 
 -- Weather
 local weathericon = wibox.widget.imagebox(beautiful.widget_weather)
@@ -86,18 +86,18 @@ local cpu_widget = require("widgets.cpu-widget.cpu-widget")
 local battery_widget = require("widgets.battery-widget.battery")
 
 local function wibar(s)
-  s.wibar = awful.wibar({ 
-    position = "top", 
-    screen = s, 
-    height = dpi(28), 
-    bg = beautiful.bg, 
-    fg = beautiful.fg_normal , 
-    opacity = 0.9,
-    shape = gears.shape.rectangle,
-  })
+    s.wibar = awful.wibar({ 
+        position = "top", 
+        screen = s, 
+        height = dpi(28), 
+        bg = beautiful.bg, 
+        fg = beautiful.fg_normal , 
+        opacity = 0.9,
+        shape = gears.shape.rectangle,
+    })
 
-  -- Add widgets to the wibox 
-  s.wibar:setup {
+    -- Add widgets to the wibox 
+    s.wibar:setup {
     
     {
         layout = wibox.layout.align.horizontal,
@@ -139,10 +139,10 @@ local function wibar(s)
             
             seperator,
 
-            container({
-                layout = wibox.layout.fixed.horizontal,
-                temp.icon,
-                temp.widget,
+            temp_widget({
+                color=colors.neon.orange,
+                font=beautiful.font,
+                icon=beautiful.widget_temp
             }),
 
             seperator,
@@ -206,9 +206,7 @@ local function wibar(s)
     top     = dpi(2),
     bottom  = dpi(2),
     widget  = wibox.container.margin
-   
-  }
-  
+    }
 end
 
 return wibar
