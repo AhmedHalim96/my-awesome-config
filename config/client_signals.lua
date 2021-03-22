@@ -29,7 +29,8 @@ end
 
 
 _G.client.connect_signal("unmanage", function (c)
-  --
+  -- hide right_click_menu when client is closed
+  c.right_click_menu:hide()
 end
 )
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
