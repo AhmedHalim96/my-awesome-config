@@ -57,11 +57,11 @@ local seperator= require("themes.neon.widgets.seperator")
 local container = require("themes.neon.widgets.container")
 
 -- Edit config widget
-local config_widget = require("themes.neon.widgets.edit_config")({
-    color=colors.neon.green, 
-    font=beautiful.font, 
-    icon=beautiful.widget_config
-})
+-- local config_widget = require("themes.neon.widgets.edit_config")({
+--     color=colors.neon.green, 
+--     font=beautiful.font, 
+--     icon=beautiful.widget_config
+-- })
 
 -- Brightness Widget
 brightness_widget = require("widgets.brightness-widget.brightness")
@@ -118,9 +118,9 @@ local function wibar(s)
 
             wibox.widget.textbox("  "),
 
-            config_widget,
+            -- config_widget,
 
-            seperator,
+            -- seperator,
 
             net({
                 netdownicon=beautiful.widget_netdown, 
