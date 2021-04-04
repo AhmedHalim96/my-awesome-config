@@ -21,7 +21,7 @@ startup_programs = {
 
   "albert",
   
-  "plank",
+  -- "plank",
 
   'touchpad-indicator',
 
