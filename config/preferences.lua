@@ -20,6 +20,8 @@ startup_programs = {
   'polkit', -- credential manager
 
   "albert",
+  
+  "plank",
 
   'touchpad-indicator',
 
