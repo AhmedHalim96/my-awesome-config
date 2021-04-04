@@ -28,7 +28,7 @@ awful.rules.rules = {
 			screen = awful.screen.preferred,
 		},
 		callback = function (c)
-             -- adding right_click_menu
+            -- adding right_click_menu
 			c.right_click_menu = awful.menu{ items = {
 				{ "on Top",   function() c.ontop    = not c.ontop     end },
 				{ "Sticky",   function() c.sticky   = not c.sticky    end },
@@ -62,7 +62,8 @@ awful.rules.rules = {
 				"veromix",
 				"Wine",
 				"xtightvncviewer",
-				"java"
+				"java",
+				"Plank"
 			},
 
 			-- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -84,7 +85,9 @@ awful.rules.rules = {
 			-- OnTop clients.
 		{ rule_any = {
 			instance = {"Toolkit", "copyq"},
-			class = {},
+			class = {
+				"Plank"
+			},
 			name = {
 				-- "Picture-in-Picture" -- Firefox pip mode,
 			},
@@ -108,7 +111,9 @@ awful.rules.rules = {
 	-- uncenter
 	{ rule_any = {
 		instance = {"albert"},
-		class = {},
+		class = {
+			"Plank"
+		},
 		name = {
 			"MEGAsync"
 		},
@@ -160,7 +165,9 @@ awful.rules.rules = {
 			instance = {
 				"albert",
 			},
-			class = {},
+			class = {
+				"Plank"
+			},
 			name = {},
 			role = {}
 	}, properties = {  has_border = false }},
