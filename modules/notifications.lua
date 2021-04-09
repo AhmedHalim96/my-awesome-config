@@ -1,7 +1,7 @@
 local naughty = require('naughty')
 local beautiful = require('beautiful')
 local gears = require('gears')
-local colors = require("themes.neon.config.colors")
+
 local dpi = require('beautiful').xresources.apply_dpi
 
 -- Naughty presets
@@ -20,7 +20,7 @@ naughty.config.defaults.shape = function(cr, w, h) gears.shape.rounded_rect(cr, 
 naughty.config.defaults.border_width = 0
 naughty.config.defaults.hover_timeout = nil
 
-naughty.config.presets.critical.bg = colors.danger
+naughty.config.presets.critical.bg = beautiful.urgent
 
 -- Error handling
 if _G.awesome.startup_errors then

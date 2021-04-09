@@ -12,14 +12,13 @@ local temp = require "themes.neon.widgets.temp"
 
 local gears = require("gears")
 local lain  = require("lain")
+local gtk = require("beautiful").gtk
 local awful = require("awful")
 local wibox = require("wibox")
 local dpi   = require("beautiful.xresources").apply_dpi
 local os = os
 
-local colors = require("themes.neon.config.colors")
-
-
+local gtk_theme = gtk.get_theme_variables()
 
 -- ###########################################################
 -- #Theme Variables
@@ -29,28 +28,28 @@ local theme                                                    = {}
 theme.confdir                                                  = os.getenv("HOME") .. "/.config/awesome/themes/neon"
 theme.wallpaper                                                = "~/wall.jpg"
 theme.font                                                     = "Noto Sans 10"
-theme.bg_normal                                                = colors.bg
-theme.bg_focus                                                 = colors.bg_light
-theme.bg_urgent                                                = colors.danger
-theme.fg_normal                                                = "#9E9E9E"
-theme.fg_focus                                                 = colors.secondary
-theme.fg_urgent                                                = colors.danger
-theme.fg_minimize                                              = "#757575"
+theme.bg_normal                                                = gtk_theme.bg_color
+theme.bg_focus                                                 = gtk_theme.selected_bg_color
+theme.bg_urgent                                                = gtk_theme.error_color
+theme.fg_normal                                                = gtk_theme.fg_color
+theme.fg_focus                                                 = gtk_theme.selected_fg_color
+theme.fg_urgent                                                = gtk_theme.error_color
+theme.fg_minimize                                              = gtk_theme.fg_color
 
 theme.border_width                                             = dpi(2)
-theme.border_normal                                            = "#9E9E9E"
-theme.border_focus                                             = colors.secondary
-theme.border_marked                                            = "#3ca4d8"
+theme.border_normal                                            = gtk_theme.wm_border_unfocused_color
+theme.border_focus                                             = gtk_theme.wm_border_focused_color
+theme.border_marked                                            = gtk_theme.wm_border_focused_color
 
-theme.menu_bg_focus                                            = colors.bg
+theme.menu_bg_focus                                            = gtk_theme.bg_color
 theme.menu_border_width                                        = dpi(2)
-theme.menu_border_color                                        = colors.secondary
+theme.menu_border_color                                        = gtk_theme.wm_border_focused_color
 theme.menu_width                                               = dpi(200)
 theme.menu_submenu_icon                                        = theme.confdir .. "/icons/submenu.png"
-theme.menu_fg_normal                                           = colors.white
-theme.menu_fg_focus                                            = colors.white
-theme.menu_bg_normal                                           = colors.bg
-theme.menu_bg_focus                                            = colors.primary
+theme.menu_fg_normal                                           = gtk_theme.fg_color
+theme.menu_fg_focus                                            = gtk_theme.selected_fg_color
+theme.menu_bg_normal                                           = gtk_theme.bg_color
+theme.menu_bg_focus                                            = gtk_theme.selected_bg_color
 theme.menu_height                                              = dpi(25)
 
 theme.notification_max_width                                   = dpi(360)
@@ -81,7 +80,7 @@ theme.icon_theme                                               = "Papirus-Dark"
 
 theme.snap_border_width                                        = dpi(2)
 theme.snapper_gap                                              = dpi(5)
-theme.snap_bg                                                  = colors.secondary
+theme.snap_bg                                                  = gtk_theme.selected_bg_color
 theme.snap_shape                                               = gears.shape.rectangle
 
 theme.layout_tile                                              = theme.confdir .. "/icons/tile.png"
@@ -98,8 +97,8 @@ theme.layout_fullscreen                                        = theme.confdir .
 theme.layout_magnifier                                         = theme.confdir .. "/icons/magnifier.png"
 theme.layout_floating                                          = theme.confdir .. "/icons/floating.png"
 
-theme.titlebar_bg_normal                                       = colors.titlebar_bg
-theme.titlebar_bg                                              = colors.titlebar_bg
+theme.titlebar_bg_normal                                       = gtk_theme.bg_color
+theme.titlebar_bg                                              = gtk_theme.bg_color
 
 theme.titlebar_close_button_normal                             = theme.confdir .. "/icons/titlebar/close_normal.png"
 theme.titlebar_close_button_focus                              = theme.confdir .. "/icons/titlebar/close_focus.png"
@@ -136,7 +135,7 @@ theme.titlebar_maximized_button_normal_active_hover            = theme.confdir .
 theme.titlebar_maximized_button_focus_active_hover             = theme.confdir .. "/icons/titlebar/maximized_hover.png"
 
 theme.widget_border_width                                      = dpi(0)
-theme.widget_border_color                                      = colors.bg_lighter
+theme.widget_border_color                                      = gtk_theme.selected_bg_color
 theme.widget_shape                                             = gears.shape.rounded_rect
 
 -- spacer
@@ -171,7 +170,7 @@ function theme.at_screen_connect(s)
             valign = 'center',
             margins = 2,
             widget = wibox.container.place,
-           }, {hover=false}),
+        }, {hover=false}),
         seperator
     }
 

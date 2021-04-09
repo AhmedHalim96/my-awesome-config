@@ -2,8 +2,6 @@ local beautiful = require("beautiful")
 local dpi   = require("beautiful.xresources").apply_dpi
 local gears = require("gears")
 local wibox = require("wibox")
-local colors = require ("themes.neon.config.colors")
-
 
 local function container (widget, args)
   args = args or {}
