@@ -29,7 +29,7 @@ startup_programs = {
 
   --Systray
   'nm-applet --indicator', -- wifi
-  'pnmixer', -- shows an audiocontrol applet in systray when installed.
+  -- 'pnmixer', -- shows an audiocontrol applet in systray when installed.
   'blueberry-tray', -- Bluetooth tray icon
   'xfce4-power-manager', -- Power manager
   'flameshot',
@@ -38,7 +38,7 @@ startup_programs = {
   'mintupdate-launcher',
   '"/opt/xdman/jre/bin/java" -Xmx1024m -jar "/opt/xdman/xdman.jar" -m', --Xtereme Download Manager
 
-  'cryptomator %F',
+  -- 'cryptomator %F',
 
 
   -- Add applications that need to be killed between reloads
