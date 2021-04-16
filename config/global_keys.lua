@@ -365,7 +365,7 @@ local globalkeys = gears.table.join(
 		{modkey, "Control"},
 		'Up',
 		function()
-			awful.spawn("pactl -- set-sink-volume 0 +10%")
+			awful.spawn("pactl -- set-sink-volume 1 +10%")
 		end,
 		{description = 'Boooost volume up', group = 'hotkeys'}
 	),
@@ -373,7 +373,7 @@ local globalkeys = gears.table.join(
 		{modkey, "Control"},
 		'Down',
 		function()
-			awful.spawn("pactl -- set-sink-volume 0 -10%")
+			awful.spawn("pactl -- set-sink-volume 1 -10%")
 		end,
 		{description = 'Boooost volume down', group = 'hotkeys'}
 	),
