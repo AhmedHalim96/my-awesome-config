@@ -1,5 +1,5 @@
 local awful = require('awful')
-
+local startup_programs = require("config.startup_programs")
 
 local function run_once(cmd)
   local findme = cmd
