@@ -4,6 +4,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 local menubar = require("menubar")
 local naughty = require("naughty")
 local scratch = require("modules.scratch")
+local HOME    = os.getenv("HOME")
+
 
 
 local globalkeys = gears.table.join(
@@ -159,12 +161,12 @@ local globalkeys = gears.table.join(
 	),
 	awful.key(
 		{ modkey,}, ",", 
-		function () awful.spawn('code ~/.config/awesome/') end,
+		function () awful.spawn('code ' .. HOME .. '/.config/awesome') end,
 		{description = "Open Awesome Config", group = "launcher"}
 	),
 	awful.key(
 		{ modkey, "Shift"}, ",", 
-		function () awful.spawn('dmconfig') end,
+		function () awful.spawn('dmconf') end,
 		{description = "dmconf", group = "launcher"}
 	),
 
@@ -365,7 +367,7 @@ local globalkeys = gears.table.join(
 		{modkey, "Control"},
 		'Up',
 		function()
-			awful.spawn("pactl -- set-sink-volume 1 +10%")
+			awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ +10%")
 		end,
 		{description = 'Boooost volume up', group = 'hotkeys'}
 	),
@@ -373,7 +375,7 @@ local globalkeys = gears.table.join(
 		{modkey, "Control"},
 		'Down',
 		function()
-			awful.spawn("pactl -- set-sink-volume 1 -10%")
+			awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ -10%")
 		end,
 		{description = 'Boooost volume down', group = 'hotkeys'}
 	),
