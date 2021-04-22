@@ -453,13 +453,21 @@ local globalkeys = gears.table.join(
 		{description = "Toggle systray visibility", group = "custom"}
 	),
 	awful.key(
-			{modkey},
-			'\\',
-			function()
-				awful.spawn('picom-r')
-			end,
-			{description = 'Restart picom', group = 'custom'}
-		)
+		{modkey},
+		'\\',
+		function()
+			awful.spawn('picom-r')
+		end,
+		{description = 'Restart picom', group = 'custom'}
+	),
+	awful.key(
+		{modkey},
+		'F2',
+		function()
+			awful.spawn('randbg')
+		end,
+		{description = 'Random background', group = 'custom'}
+	)
 
 
 )
