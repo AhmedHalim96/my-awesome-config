@@ -445,7 +445,7 @@ local globalkeys = gears.table.join(
 		function ()
 			awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
 		end,
-		{description = "Toggle systray visibility", group = "custom"}
+		{description = "Toggle systray visibility", group = "Custom"}
 	),
 	awful.key(
 		{modkey},
@@ -453,7 +453,7 @@ local globalkeys = gears.table.join(
 		function()
 			awful.spawn('picom-r')
 		end,
-		{description = 'Restart picom', group = 'custom'}
+		{description = 'Restart picom', group = 'Custom'}
 	),
 	awful.key(
 		{modkey},
@@ -461,9 +461,18 @@ local globalkeys = gears.table.join(
 		function()
 			awful.spawn('randbg')
 		end,
-		{description = 'Random background', group = 'custom'}
+		{description = 'Random background', group = 'Custom'}
+	),
+	awful.key(
+		{modkey, "Shift"},
+		'x',
+		function()
+			awful.spawn('xkill')
+		end,
+		{description = 'xkill', group = 'Custom'}
 	)
 
+	
 
 )
 
