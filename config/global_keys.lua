@@ -150,11 +150,6 @@ local globalkeys = gears.table.join(
 		{description = "Open ScratchPad Terminal", group = "launcher"}
 	),
 	awful.key(
-		{ modkey, "Shift"}, "/",
-		function () awful.spawn("simplenote")  end,
-		{description = "Open Notes", group = "launcher"}
-	),
-	awful.key(
 		{ modkey, "Shift"}, "g", 
 		function () awful.spawn('lutris') end,
 		{description = "open Lutris", group = "launcher"}
