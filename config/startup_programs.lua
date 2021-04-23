@@ -21,6 +21,7 @@ return {
     'qbittorrent',
     'mintupdate-launcher',
     'udiskie -t',
+    'xbanish',
     --Xtereme Download Manager
     '"/opt/xdman/jre/bin/java" -Xmx1024m -jar "/opt/xdman/xdman.jar" -m', 
     -- 'cryptomator %F',
