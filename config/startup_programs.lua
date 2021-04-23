@@ -20,6 +20,7 @@ return {
     'copyq',
     'qbittorrent',
     'mintupdate-launcher',
+    'udiskie -t',
     --Xtereme Download Manager
     '"/opt/xdman/jre/bin/java" -Xmx1024m -jar "/opt/xdman/xdman.jar" -m', 
     -- 'cryptomator %F',
