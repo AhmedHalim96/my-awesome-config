@@ -198,7 +198,13 @@ awful.rules.rules = {
 	-- 2nd workspace for Editors and IDEs
 	{ rule_any = { class = {"VSCodium", "VSCode", "DrRacket", "jetbrains-phpstorm", "jetbrains-pycharm-ce", "jetbrains-studio"} },
 		properties = { screen = 1, tag = "2" } },
-		
+	
+	--Telegram 
+	{ 
+		rule = { class = "TelegramDesktop" },
+		properties = { screen = 1, tag = "4" } 
+	},
+
 	-- clemintine
 	{ 
 		rule = { class = "Clementine" },
