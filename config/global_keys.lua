@@ -123,7 +123,14 @@ local globalkeys = gears.table.join(
 	--########################################################
 	--## Programs
 	--########################################################
-	
+	awful.key(
+		{modkey},
+		'XF86AudioPlay',
+		function()
+			awful.spawn('smplayer')
+		end,
+		{description = 'Smplayer', group = 'Programs'}
+	),
 	awful.key(
 		{ modkey,}, "Return", 
 		function () awful.spawn(terminal) end,
