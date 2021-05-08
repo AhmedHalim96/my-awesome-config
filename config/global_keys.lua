@@ -175,19 +175,19 @@ local globalkeys = gears.table.join(
 	-- Flamshot 
 	awful.key(
 		{""}, "Print", 
-		function () awful.spawn('flameshot gui  -p '..HOME..'/Pictures') end,
+		function () awful.spawn('flameshot gui  -p '..HOME..'/Pictures/Screenshots') end,
 		{description = "flameshot gui", group = "Flamshot"}
 	),
 
 	awful.key(
 		{"Control"}, "Print", 
-		function () awful.spawn('flameshot gui -d 2000  -p '..HOME..'/Pictures') end,
+		function () awful.spawn('flameshot gui -d 2000  -p '..HOME..'/Pictures/Screenshots') end,
 		{description = "delayed flameshot gui", group = "Flamshot"}
 	),
 	
 	awful.key(
 		{modkey}, "Print", 
-		function () awful.spawn('flameshot screen -p '..HOME..'/Pictures') end,
+		function () awful.spawn('flameshot full -p '..HOME..'/Pictures/Screenshots') end,
 		{description = "flameshot gui", group = "Flamshot"}
 	),
 	
