@@ -172,6 +172,24 @@ local globalkeys = gears.table.join(
 		{description = "dmconf", group = "launcher"}
 	),
 
+	-- Flamshot 
+	awful.key(
+		{""}, "Print", 
+		function () awful.spawn('flameshot gui  -p '..HOME..'/Pictures') end,
+		{description = "flameshot gui", group = "Flamshot"}
+	),
+
+	awful.key(
+		{"Control"}, "Print", 
+		function () awful.spawn('flameshot gui -d 2000  -p '..HOME..'/Pictures') end,
+		{description = "delayed flameshot gui", group = "Flamshot"}
+	),
+	
+	awful.key(
+		{modkey}, "Print", 
+		function () awful.spawn('flameshot screen -p '..HOME..'/Pictures') end,
+		{description = "flameshot gui", group = "Flamshot"}
+	),
 	
 	-- Awesome Control 
 	awful.key(
