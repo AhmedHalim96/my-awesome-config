@@ -14,7 +14,6 @@ local gears = require("gears")
 local lain  = require("lain")
 local gtk = require("beautiful").gtk
 local awful = require("awful")
-local wibox = require("wibox")
 local dpi   = require("beautiful.xresources").apply_dpi
 local os = os
 
@@ -138,11 +137,6 @@ theme.widget_border_width                                      = dpi(0)
 theme.widget_border_color                                      = gtk_theme.selected_bg_color
 theme.widget_shape                                             = gears.shape.rounded_rect
 
--- spacer
-local seperator= require("themes.neon.widgets.seperator")
-
--- container
-local container = require("themes.neon.widgets.container")
 
 function theme.at_screen_connect(s)
     -- Quake application
@@ -159,20 +153,7 @@ function theme.at_screen_connect(s)
     awful.tag(awful.util.tagnames, s , awful.layout.suit.tile)
 
     -- Systray
-    s.systray =  wibox.widget.systray()
-    -- s.systray.visible = false 
-    s.systray.set_base_size(18)
-
-    s.systray = wibox.widget{
-        layout=wibox.layout.fixed.horizontal,
-        container({
-            s.systray,
-            valign = 'center',
-            margins = 2,
-            widget = wibox.container.place,
-        }, {hover=false}),
-        seperator
-    }
+    -- require("config.bar.systray")(s)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -181,13 +162,13 @@ function theme.at_screen_connect(s)
     s.mylayoutbox = require("themes.neon.widgets.layoutbox")
 
     -- Create a taglist widget
-    require("themes.neon.taglist")(s)
+    require("config.bar.taglist")(s)
 
     -- Create a tasklist widget
-    require("themes.neon.tasklist")(s)
+    require("config.bar.tasklist")(s)
     
-    -- Create the wibox
-    require("themes.neon.wibar")(s)
+    -- Create the wibar
+    require("config.bar.wibar")(s)
 
 end
 
