@@ -1,12 +1,5 @@
 local temp = require "widgets.temp"
 -- ###########################################################
--- #                                                         #
--- #                      MY THEME                           #
--- #                                                         #
--- ###########################################################
-
-
--- ###########################################################
 -- #Imports                          
 -- ###########################################################
 
@@ -136,40 +129,5 @@ theme.titlebar_maximized_button_focus_active_hover             = theme.confdir .
 theme.widget_border_width                                      = dpi(0)
 theme.widget_border_color                                      = gtk_theme.selected_bg_color
 theme.widget_shape                                             = gears.shape.rounded_rect
-
-
-function theme.at_screen_connect(s)
-    -- Quake application
-    s.quake = lain.util.quake({ app = awful.util.terminal })
-
-    -- If wallpaper is a function, call it with the screen
-    local wallpaper = theme.wallpaper
-    if type(wallpaper) == "function" then
-        wallpaper = wallpaper(s)
-    end
-    gears.wallpaper.maximized(wallpaper, s, true)
-
-    -- Tags
-    awful.tag(awful.util.tagnames, s , awful.layout.suit.tile)
-
-    -- Systray
-    require("config.bar.systray")(s)
-
-    -- Create a promptbox for each screen
-    s.mypromptbox = awful.widget.prompt()
-    -- Create an imagebox widget which will contains an icon indicating which layout we're using.
-    -- We need one layoutbox per screen.
-    s.mylayoutbox = require("widgets.layoutbox")
-
-    -- Create a taglist widget
-    require("config.bar.taglist")(s)
-
-    -- Create a tasklist widget
-    require("config.bar.tasklist")(s)
-    
-    -- Create the wibar
-    require("config.bar.wibar")(s)
-
-end
 
 return theme

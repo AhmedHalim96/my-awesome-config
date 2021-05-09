@@ -1,6 +1,7 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 local gears = require("gears")
+local lain = require("lain")
 local screen = screen
 
   -- {{{ Screen
@@ -17,8 +18,42 @@ local screen = screen
     end
   end)
 
+  function at_screen_connect(s)
+    -- Quake application
+    s.quake = lain.util.quake({ app = awful.util.terminal })
+
+    -- If wallpaper is a function, call it with the screen
+    local wallpaper = beautiful.wallpaper
+    if type(wallpaper) == "function" then
+        wallpaper = wallpaper(s)
+    end
+    gears.wallpaper.maximized(wallpaper, s, true)
+
+    -- Tags
+    awful.tag(awful.util.tagnames, s , awful.layout.suit.tile)
+
+    -- Systray
+    require("config.bar.systray")(s)
+
+    -- Create a promptbox for each screen
+    s.mypromptbox = awful.widget.prompt()
+    -- Create an imagebox widget which will contains an icon indicating which layout we're using.
+    -- We need one layoutbox per screen.
+    s.mylayoutbox = require("widgets.layoutbox")
+
+    -- Create a taglist widget
+    require("config.bar.taglist")(s)
+
+    -- Create a tasklist widget
+    require("config.bar.tasklist")(s)
+    
+    -- Create the wibar
+    require("config.bar.wibar")(s)
+
+end
+
 -- Create a wibox for each screen and add it
-awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s) end)
+awful.screen.connect_for_each_screen(function(s) at_screen_connect(s) end)
 
 
 screen.connect_signal("arrange", function (s)
