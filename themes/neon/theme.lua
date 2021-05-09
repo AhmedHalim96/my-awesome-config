@@ -1,4 +1,4 @@
-local temp = require "themes.neon.widgets.temp"
+local temp = require "widgets.temp"
 -- ###########################################################
 -- #                                                         #
 -- #                      MY THEME                           #
@@ -159,7 +159,7 @@ function theme.at_screen_connect(s)
     s.mypromptbox = awful.widget.prompt()
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
-    s.mylayoutbox = require("themes.neon.widgets.layoutbox")
+    s.mylayoutbox = require("widgets.layoutbox")
 
     -- Create a taglist widget
     require("config.bar.taglist")(s)

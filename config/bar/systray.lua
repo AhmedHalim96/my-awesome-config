@@ -1,10 +1,10 @@
 local wibox = require("wibox")
 
 -- spacer
-local seperator= require("themes.neon.widgets.seperator")
+local seperator= require("widgets.seperator")
 
 -- container
-local container = require("themes.neon.widgets.container")
+local container = require("widgets.container")
 
 
 local function systray(s) 

@@ -1,6 +1,6 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
-local container = require("themes.neon.widgets.container")
+local container = require("widgets.container")
 local dpi   = require("beautiful.xresources").apply_dpi
 local gears = require("gears")
 local lain  = require("lain")

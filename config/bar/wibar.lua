@@ -12,7 +12,7 @@ local wibox = require("wibox")
 -- ###########################################################
 
 -- Clock
-local mytextclock = require("themes.neon.widgets.clock")({font=beautiful.font})
+local mytextclock = require("widgets.clock")({font=beautiful.font})
 
 -- Calendar
 beautiful.cal = lain.widget.cal({
@@ -25,7 +25,7 @@ beautiful.cal = lain.widget.cal({
 })
 
 -- Temp
-local temp_widget = require("themes.neon.widgets.temp")
+local temp_widget = require("widgets.temp")
 
 -- Weather
 local weathericon = wibox.widget.imagebox(beautiful.widget_weather)
@@ -43,21 +43,21 @@ beautiful.weather = lain.widget.weather({
 
 
 -- Net
-local net = require("themes.neon.widgets.net")
+local net = require("widgets.net")
 
 -- MEM
-local memory = require("themes.neon.widgets.memory")({
+local memory = require("widgets.memory")({
     color=colors.neon.yellow, 
     font=beautiful.font, 
     icon=beautiful.widget_mem
 })
 
-local seperator= require("themes.neon.widgets.seperator")
+local seperator= require("widgets.seperator")
 -- container
-local container = require("themes.neon.widgets.container")
+local container = require("widgets.container")
 
 -- Edit config widget
--- local config_widget = require("themes.neon.widgets.edit_config")({
+-- local config_widget = require("widgets.edit_config")({
 --     color=colors.neon.green, 
 --     font=beautiful.font, 
 --     icon=beautiful.widget_config
