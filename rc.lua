@@ -29,10 +29,10 @@ require("config.screen_signals")
 require("config.global_keys")
 
 -- client rules
-require("config.client_rules")
+require("config.client.rules")
 
 -- client Signals
-require("config.client_signals")
+require("config.client.signals")
 
 -- Autostart apps
 require("modules.autostart")

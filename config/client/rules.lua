@@ -1,7 +1,7 @@
 local beautiful = require("beautiful")
 local awful = require("awful")
-local clientkeys = require('config.client_keys')
-local clientbuttons = require("config.client_buttons")
+local clientkeys = require('config.client.keys')
+local clientbuttons = require("config.client.buttons")
 local gears = require("gears")
 
 local screen_width = awful.screen.focused().geometry.width
