@@ -153,7 +153,7 @@ function theme.at_screen_connect(s)
     awful.tag(awful.util.tagnames, s , awful.layout.suit.tile)
 
     -- Systray
-    -- require("config.bar.systray")(s)
+    require("config.bar.systray")(s)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
