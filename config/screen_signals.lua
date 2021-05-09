@@ -33,7 +33,7 @@ local screen = screen
     awful.tag(awful.util.tagnames, s , awful.layout.suit.tile)
 
     -- Systray
-    require("config.bar.systray")(s)
+    require("layout.bar.systray")(s)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -42,13 +42,13 @@ local screen = screen
     s.mylayoutbox = require("widgets.layoutbox")
 
     -- Create a taglist widget
-    require("config.bar.taglist")(s)
+    require("layout.bar.taglist")(s)
 
     -- Create a tasklist widget
-    require("config.bar.tasklist")(s)
+    require("layout.bar.tasklist")(s)
     
     -- Create the wibar
-    require("config.bar.wibar")(s)
+    require("layout.bar.wibar")(s)
 
 end
 
