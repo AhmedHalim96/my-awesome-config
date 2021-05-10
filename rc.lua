@@ -8,7 +8,7 @@ require("awful.autofocus")
 local beautiful = require("beautiful")
 
 -- collision
--- require("collision")()
+-- require("modules.collision")()
 
 
 --Variable definitions
