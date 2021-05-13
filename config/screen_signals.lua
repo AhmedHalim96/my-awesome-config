@@ -57,11 +57,11 @@ awful.screen.connect_for_each_screen(function(s) at_screen_connect(s) end)
 
 
 screen.connect_signal("arrange", function (s)
-
     local only_one = #s.tiled_clients == 1
+    local current_layout = awful.layout.get(s)
     for _, c in pairs(s.clients) do
     -- titlebars in floating layout
-      if (awful.layout.get(s) ==  awful.layout.suit.floating) then 
+      if (current_layout ==  awful.layout.suit.floating) then 
         awful.titlebar.show(c)
         awful.mouse.snap.edge_enabled = true
       else
@@ -72,8 +72,8 @@ screen.connect_signal("arrange", function (s)
       -- manage borders
       if ( only_one and (not c.floating or c.maximized)) 
           or c.fullscreen 
-          or ((awful.layout.get(s) ==  awful.layout.suit.max) and not c.floating)
-          or awful.layout.get(s) == awful.layout.suit.floating
+          or ((current_layout ==  awful.layout.suit.max) and not c.floating)
+          or current_layout == awful.layout.suit.floating
           or c.maximized
           or not c.has_border then
 
@@ -81,6 +81,15 @@ screen.connect_signal("arrange", function (s)
 
       else 
           c.border_width = beautiful.border_width
+      end
+
+
+      -- manage Shadows
+      if (current_layout == awful.layout.suit.floating 
+          or c.floating) and not c.maximized  and not c.fullscreen then
+            awful.spawn("xprop -id " .. c.window .. " -f _COMPTON_SHADOW 32c -set _COMPTON_SHADOW 1")
+      else
+          awful.spawn("xprop -id " .. c.window .. " -f _COMPTON_SHADOW 32c -set _COMPTON_SHADOW 0")
       end
     end
   end
