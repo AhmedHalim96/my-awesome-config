@@ -83,14 +83,15 @@ screen.connect_signal("arrange", function (s)
           c.border_width = beautiful.border_width
       end
 
-
-      -- manage Shadows
-      if (current_layout == awful.layout.suit.floating 
-          or c.floating) and not c.maximized  and not c.fullscreen then
-            awful.spawn("xprop -id " .. c.window .. " -f _COMPTON_SHADOW 32c -set _COMPTON_SHADOW 1")
-      else
-          awful.spawn("xprop -id " .. c.window .. " -f _COMPTON_SHADOW 32c -set _COMPTON_SHADOW 0")
-      end
+    --[[
+        -- manage Shadows
+        if (current_layout == awful.layout.suit.floating 
+            or c.floating) and not c.maximized  and not c.fullscreen then
+              awful.spawn("xprop -id " .. c.window .. " -f _COMPTON_SHADOW 32c -set _COMPTON_SHADOW 1")
+        else
+            awful.spawn("xprop -id " .. c.window .. " -f _COMPTON_SHADOW 32c -set _COMPTON_SHADOW 0")
+        end
+        ]]--
     end
   end
 )
