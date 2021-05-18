@@ -196,7 +196,7 @@ awful.rules.rules = {
 
 		
 	-- 2nd workspace for Editors and IDEs
-	{ rule_any = { class = {"VSCodium", "VSCode", "DrRacket", "jetbrains-phpstorm", "jetbrains-pycharm-ce", "jetbrains-studio"} },
+	{ rule_any = { class = {"VSCodium", "VSCode", "DrRacket", "jetbrains-phpstorm", "jetbrains-pycharm-ce", "jetbrains-studio", "jetbrains-idea-ce"} },
 		properties = { screen = 1, tag = "2" } },
 	
 	--Telegram 
