@@ -113,7 +113,8 @@ awful.rules.rules = {
 	{ rule_any = {
 		instance = {"albert"},
 		class = {
-			"Plank"
+			"Plank",
+			"Microsoft Teams - Preview"
 		},
 		name = {
 			"MEGAsync"
