@@ -30,7 +30,14 @@ local screen = screen
     gears.wallpaper.maximized(wallpaper, s, true)
 
     -- Tags
-    awful.tag(awful.util.tagnames, s , awful.layout.suit.tile)
+    local l = awful.layout.suit
+    awful.tag(awful.util.tagnames, s , {l.tile, 
+                                        l.tile, 
+                                        l.tile, 
+                                        l.tile,
+                                        l.tile,
+                                        l.tile,
+                                        l.floating})
 
     -- Systray
     require("layout.bar.systray")(s)
