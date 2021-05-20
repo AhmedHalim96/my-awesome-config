@@ -68,7 +68,7 @@ screen.connect_signal("arrange", function (s)
     local current_layout = awful.layout.get(s)
     for _, c in pairs(s.clients) do
     -- titlebars in floating layout
-      if (current_layout ==  awful.layout.suit.floating) then 
+      if (current_layout ==  awful.layout.suit.floating and c.has_titlebar) then 
         awful.titlebar.show(c)
         awful.mouse.snap.edge_enabled = true
       else
