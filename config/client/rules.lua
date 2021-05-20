@@ -63,7 +63,8 @@ awful.rules.rules = {
 				"Wine",
 				"xtightvncviewer",
 				"java",
-				"Plank"
+				"Plank",
+				"Microsoft Teams - Preview"
 			},
 
 			-- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -155,7 +156,9 @@ awful.rules.rules = {
 			"xdman",
 			"celluloid"
 		},
-		class = {},
+		class = {
+			"Microsoft Teams - Preview"
+		},
 		name = {"Cryptomator"},
 		role = {}
 	}, properties = {  has_titlebar = false }},
@@ -214,7 +217,13 @@ awful.rules.rules = {
 	-- peertube 
 	{ 
 		rule = { class = "FreeTube" },
-		properties = { screen = 1, tag = "6" } 
+		properties = { screen = 1, tag = "6" }
+	},
+
+	-- teams No, God! please 
+	{ 
+		rule = { class = "Microsoft Teams - Preview" },
+		properties = { screen = 1, tag = "7" }
 	},
 	
 	-- Set Firefox to always map on the tag named "2" on screen 1.
