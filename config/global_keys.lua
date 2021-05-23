@@ -142,6 +142,11 @@ local globalkeys = gears.table.join(
 		{description = "open default browser", group = "launcher"}
 	),
 	awful.key(
+		{ modkey, "Shift"}, "e", 
+		function () awful.spawn("rangerfm") end,
+		{description = "open ranger", group = "Programs"}
+	),
+  awful.key(
 		{ modkey,}, "e", 
 		function () awful.spawn(filemanager) end,
 		{description = "open default filemanager", group = "launcher"}
