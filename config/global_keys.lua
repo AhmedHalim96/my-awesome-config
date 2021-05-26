@@ -110,15 +110,6 @@ local globalkeys = gears.table.join(
     {description = 'Open Rofi Window mode', group = 'launcher'}
 	),
 	
-	awful.key(
-    {modkey, "Shift"},
-    'p',
-    function()
-		awful.spawn('rofi -no-lazy-grab -show drun' )
-    end,
-    {description = 'Open Rofi drun mode', group = 'launcher'}
-	),
-
 
 	--########################################################
 	--## Programs
