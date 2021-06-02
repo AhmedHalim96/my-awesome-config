@@ -203,12 +203,18 @@ awful.rules.rules = {
 	{ rule_any = { class = {"VSCodium", "VSCode", "DrRacket", "jetbrains-phpstorm", "jetbrains-pycharm-ce", "jetbrains-studio", "jetbrains-idea-ce"} },
 		properties = { screen = 1, tag = "2" } },
 	
+		-- Insomnia 
+		{ 
+			rule = { class = "Insomina" },
+			properties = { screen = 1, tag = "4" } 
+		},
+
 	--Telegram 
 	{ 
 		rule = { class = "TelegramDesktop" },
 		properties = { screen = 1, tag = "4" } 
 	},
-
+	
 	-- clemintine
 	{ 
 		rule = { class = "Clementine" },
