@@ -103,7 +103,7 @@ local globalkeys = gears.table.join(
 
 	awful.key(
     {modkey},
-    'Tab',
+    'w',
     function()
 		awful.spawn('rofi -no-lazy-grab -show window' )
     end,
