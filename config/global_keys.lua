@@ -186,7 +186,33 @@ local globalkeys = gears.table.join(
 		function () awful.spawn('flameshot full -p '..HOME..'/Pictures/Screenshots') end,
 		{description = "flameshot gui", group = "Flamshot"}
 	),
-	
+
+	-- MPD
+	awful.key(
+		{"Control"},
+		'XF86AudioNext',
+		function()
+			awful.spawn('playerctl next -p mpd')
+		end,
+		{description = 'Next', group = 'mpd'}
+	),
+	awful.key(
+		{"Control"},
+		'XF86AudioPrev',
+		function()
+			awful.spawn('playerctl previous -p mpd')
+		end,
+		{description = 'Previous', group = 'mpd'}
+	),
+	awful.key(
+		{"Control"},
+		'XF86AudioPlay',
+		function()
+			awful.spawn('playerctl play-pause -p mpd')
+		end,
+		{description = 'Next', group = 'mpd'}
+	),
+
 	-- Awesome Control 
 	awful.key(
 		{ modkey, "Control" }, "r", 
