@@ -114,11 +114,20 @@ local globalkeys = gears.table.join(
 
   awful.key(
     {modkey},
-    'XF86AudioPlay',
+    's',
     function()
       awful.spawn('smplayer')
     end,
     {description = 'Smplayer', group = 'Programs'}
+  ),
+
+  awful.key(
+    {modkey},
+    'XF86AudioPlay',
+    function()
+      awful.spawn(terminal ..' --class ncmpcpp -e ncmpcpp')
+    end,
+    {description = 'ncmp-worst-name-ever', group = 'Programs'}
   ),
 
   awful.key(
