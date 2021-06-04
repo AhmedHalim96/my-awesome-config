@@ -189,7 +189,7 @@ local globalkeys = gears.table.join(
 
 	-- MPD
 	awful.key(
-		{"Control"},
+		{},
 		'XF86AudioNext',
 		function()
 			awful.spawn('playerctl next -p mpd')
@@ -197,7 +197,7 @@ local globalkeys = gears.table.join(
 		{description = 'Next', group = 'mpd'}
 	),
 	awful.key(
-		{"Control"},
+		{},
 		'XF86AudioPrev',
 		function()
 			awful.spawn('playerctl previous -p mpd')
@@ -205,7 +205,7 @@ local globalkeys = gears.table.join(
 		{description = 'Previous', group = 'mpd'}
 	),
 	awful.key(
-		{"Control"},
+		{},
 		'XF86AudioPlay',
 		function()
 			awful.spawn('playerctl play-pause -p mpd')
@@ -388,14 +388,14 @@ local globalkeys = gears.table.join(
 		{description = 'Brightness -10%', group = 'hotkeys'}
 	),
 
-	-- volume control
+	-- Multimedia 
 	awful.key(
-		{},
+		{"Control"},
 		'XF86AudioRaiseVolume',
 		function()
 			volumecfg:up()
 		end,
-		{description = 'volume up', group = 'hotkeys'}
+		{description = 'volume up', group = 'Multimedia'}
 	),
 	awful.key(
 		{},
@@ -403,7 +403,7 @@ local globalkeys = gears.table.join(
 		function()
 			volumecfg:down()
 		end,
-		{description = 'volume down', group = 'hotkeys'}
+		{description = 'volume down', group = 'Multimedia'}
 	),
 	awful.key(
 		{modkey, "Control"},
@@ -411,7 +411,7 @@ local globalkeys = gears.table.join(
 		function()
 			awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ +10%")
 		end,
-		{description = 'Boooost volume up', group = 'hotkeys'}
+		{description = 'Boooost volume up', group = 'Multimedia'}
 	),
 	awful.key(
 		{modkey, "Control"},
@@ -419,7 +419,7 @@ local globalkeys = gears.table.join(
 		function()
 			awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ -10%")
 		end,
-		{description = 'Boooost volume down', group = 'hotkeys'}
+		{description = 'Boooost volume down', group = 'Multimedia'}
 	),
 	awful.key(
 		{},
@@ -427,31 +427,31 @@ local globalkeys = gears.table.join(
 		function()
 			volumecfg:toggle()
 		end,
-		{description = 'toggle mute', group = 'hotkeys'}
+		{description = 'toggle mute', group = 'Multimedia'}
 	),
 	awful.key(
-		{},
+		{"Control"},
 		'XF86AudioNext',
 		function()
 			awful.spawn('playerctl next')
 		end,
-		{description = 'Next', group = 'hotkeys'}
+		{description = 'Next', group = 'Multimedia'}
 	),
 	awful.key(
-		{},
+		{"Control"},
 		'XF86AudioPrev',
 		function()
 			awful.spawn('playerctl previous')
 		end,
-		{description = 'Previous', group = 'hotkeys'}
+		{description = 'Previous', group = 'Multimedia'}
 	),
 	awful.key(
-		{},
+		{"Control"},
 		'XF86AudioPlay',
 		function()
 			awful.spawn('playerctl play-pause')
 		end,
-		{description = 'Next', group = 'hotkeys'}
+		{description = 'Next', group = 'Multimedia'}
 	),
 	awful.key(
 		{},
