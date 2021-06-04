@@ -15,6 +15,8 @@ return {
     'nm-applet --indicator', 
     -- 'pnmixer',
     'blueberry-tray', 
+    'mpd',
+    'mpDris2',
     'xfce4-power-manager',
     'flameshot',
     'copyq',
