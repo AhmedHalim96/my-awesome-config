@@ -436,7 +436,7 @@ local globalkeys = gears.table.join(
 
   -- Multimedia 
   awful.key(
-    {"Control"},
+    {},
     'XF86AudioRaiseVolume',
     function()
       volumecfg:up()
