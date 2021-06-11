@@ -10,6 +10,8 @@ local beautiful = require("beautiful")
 -- collision
 -- require("modules.collision")()
 
+-- revelation
+revelation = require("modules.revelation")
 
 --Variable definitions
 require("config.preferences")
@@ -21,6 +23,7 @@ beautiful.init(string.format("%s/.config/awesome/themes/neon/theme.lua", os.gete
 -- Modules
 require('modules.notifications')
 require("modules.awesome_menu")
+revelation.init()
 
 -- screen signals
 require("config.screen_signals")

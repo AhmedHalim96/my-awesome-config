@@ -17,6 +17,12 @@ local globalkeys = gears.table.join(
   
   -- Workspace shortcut
   awful.key(
+    {modkey},
+    'Tab',
+    revelation,
+    {description = 'Switch to next window', group = 'client'}
+  ),
+  awful.key(
     { altkey, 'Control'}, "h",   
     awful.tag.viewprev,
     {description = "view previous", group = "tag"}
