@@ -111,15 +111,6 @@ local globalkeys = gears.table.join(
 
   awful.key(
     {modkey},
-    'w',
-    function()
-    awful.spawn('rofi -no-lazy-grab -show window' )
-    end,
-    {description = 'Open Rofi Window mode', group = 'Programs'}
-  ),
-
-  awful.key(
-    {modkey},
     's',
     function()
       awful.spawn('smplayer')
