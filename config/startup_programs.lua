@@ -8,6 +8,7 @@ return {
     -- Credential manager
     'polkit', 
     "albert",
+    "breaktimer",
     -- "plank",
     'touchpad-indicator',
     '/usr/bin/libinput-gestures',
