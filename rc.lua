@@ -12,6 +12,7 @@ local beautiful = require("beautiful")
 
 -- revelation
 revelation = require("modules.revelation")
+revelation.tag_name = "overview"
 
 --Variable definitions
 require("config.preferences")
