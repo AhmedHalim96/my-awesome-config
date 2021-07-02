@@ -170,13 +170,13 @@ local globalkeys = gears.table.join(
   ),
 
   awful.key(
-    { modkey,}, ",", 
+    { modkey, "Shift"}, ".", 
     function () awful.spawn('code ' .. HOME .. '/.config/awesome') end,
     {description = "Open Awesome Config", group = "Programs"}
   ),
 
   awful.key(
-    { modkey, "Shift"}, ",", 
+    { modkey }, ".", 
     function () awful.spawn('dmconf') end,
     {description = "dmconf", group = "Programs"}
   ),
