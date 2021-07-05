@@ -88,7 +88,7 @@ local function net(args)
       if popup.visible then
         popup.visible = not popup.visible
       else
-        awful.spawn.easy_async_with_shell ("vnstat -d 10", function ( stdout,stderr, exitreason, exitcode )
+        awful.spawn.easy_async_with_shell ("vnstat -d 10 | tail -n +4 | cut -c 6-", function ( stdout,stderr, exitreason, exitcode )
           popup.widget.widget.text = stdout
         end)
           popup:move_next_to(mouse.current_widget_geometry)
