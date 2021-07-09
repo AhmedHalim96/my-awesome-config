@@ -1,8 +1,7 @@
 -- Startup Apps
 return {
     "picom-i",
-    'remap', 
-    'numlockx on',
+    "kb-startup-script",
     -- Apply flatpak updates on startup
     "mintinstall-update-flatpak",
     -- Credential manager
