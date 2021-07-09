@@ -67,7 +67,7 @@ theme.taglist_squares_unsel                                    = theme.confdir .
 theme.tasklist_plain_task_name                                 = true
 theme.tasklist_disable_icon                                    = false
 
-theme.useless_gap                                              = dpi(5)
+theme.useless_gap                                              = dpi(3)
 theme.icon_theme                                               = "Papirus-Dark"
 
 theme.snap_border_width                                        = dpi(2)
