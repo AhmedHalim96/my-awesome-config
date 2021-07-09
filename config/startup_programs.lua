@@ -9,6 +9,8 @@ return {
     'polkit', 
     "albert",
     "breaktimer",
+    "mpd",
+    "mpDris2",
     -- "plank",
     'touchpad-indicator',
     '/usr/bin/libinput-gestures',
