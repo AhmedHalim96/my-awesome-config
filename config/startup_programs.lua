@@ -1,6 +1,7 @@
 -- Startup Apps
 return {
     "picom-i",
+    "xrdb -load ~/.config/X11/Xresources",
     "kb-startup-script",
     -- Apply flatpak updates on startup
     "mintinstall-update-flatpak",
