@@ -141,8 +141,8 @@ local globalkeys = gears.table.join(
 
   awful.key(
     { modkey, "Shift"}, "e", 
-    function () awful.spawn("rangerfm") end,
-    {description = "open ranger", group = "Programs"}
+    function () awful.spawn("lf_fm") end,
+    {description = "open lf", group = "Programs"}
   ),
   
   awful.key(
