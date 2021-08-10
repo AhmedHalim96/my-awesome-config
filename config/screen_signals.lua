@@ -37,6 +37,8 @@ local screen = screen
                                         l.tile,
                                         l.tile,
                                         l.tile,
+                                        l.tile,
+                                        l.tile,
                                         l.floating})
 
     -- Systray
