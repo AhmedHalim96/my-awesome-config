@@ -234,6 +234,33 @@ local globalkeys = gears.table.join(
   ),
 
   awful.key(
+    {modkey, 'Control'},
+    '.',
+    function()
+      awful.spawn('mpc seek +00:00:10')
+    end,
+    {description = 'seek +10 seconds', group = 'mpd'}
+  ),
+
+  awful.key(
+    {modkey, 'Control'},
+    ',',
+    function()
+      awful.spawn('mpc seek -00:00:10')
+    end,
+    {description = 'seek -10 seconds', group = 'mpd'}
+  ),
+
+  awful.key(
+    {modkey, 'Control'},
+    'backspace',
+    function()
+      awful.spawn('mpc seek 0')
+    end,
+    {description = 'Rewind Current track', group = 'mpd'}
+  ),
+
+  awful.key(
     {modkey},
     '\\',
     function()
