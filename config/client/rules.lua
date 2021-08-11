@@ -234,7 +234,13 @@ awful.rules.rules = {
 		rule = { class = "Microsoft Teams - Preview" },
 		properties = { screen = 1, tag = "9" }
 	},
-	
+
+	-- chrome devtools, Disgusting! 
+	{ 
+		rule = { class = "Google-chrome", role = "pop-up" },
+		properties = { floating = false }
+	},
+
 	-- Set Firefox to always map on the tag named "2" on screen 1.
 	-- { rule = { class = "Firefox" },
 	--   properties = { screen = 1, tag = "2" } },
