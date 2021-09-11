@@ -60,6 +60,7 @@ awful.rules.rules = {
 				--"Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
 				"Wpa_gui",
 				"veromix",
+				"Qalculate",
 				"Wine",
 				"xtightvncviewer",
 				"java",
@@ -207,7 +208,7 @@ awful.rules.rules = {
 	
 		-- Insomnia 
 		{ 
-			rule = { class = "Insomina" },
+			rule = { class = "Insomnia" },
 			properties = { screen = 1, tag = "4" } 
 		},
 
@@ -227,6 +228,18 @@ awful.rules.rules = {
 	{ 
 		rule = { class = "FreeTube" },
 		properties = { screen = 1, tag = "6" }
+	},
+
+  -- chrome 
+	{ 
+		rule = { class = "Google-chrome" },
+		properties = { screen = 1, tag = "1" }
+	},
+
+  -- Npm Server 
+	{ 
+		rule = { class = "NpmServer" },
+		properties = { screen = 1, tag = "3" }
 	},
 
 	-- teams No, God! please 
