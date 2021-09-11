@@ -3,18 +3,13 @@ return {
     "picom-i",
     "xrdb -load ~/.config/X11/Xresources",
     "kb-startup-script",
-    -- Apply flatpak updates on startup
-    "mintinstall-update-flatpak",
-    -- Credential manager
-    'polkit', 
+    --"mintinstall-update-flatpak", -- Apply flatpak updates on startup -- removed in mint 20.2
+    'polkit', -- Credential manager
     "albert",
     "breaktimer",
     "mpd",
-    "mpDris2",
-    -- "plank",
     'touchpad-indicator',
     '/usr/bin/libinput-gestures',
-    -- wifi
     'nm-applet --indicator', 
     -- 'pnmixer',
     'blueberry-tray', 
@@ -25,6 +20,8 @@ return {
     'mintupdate-launcher',
     'udiskie -t -f nemo',
     'xbanish',
+    'appimagelauncherd',
+    "mpDris2",
     --Xtereme Download Manager
     '"/opt/xdman/jre/bin/java" -Xmx1024m -jar "/opt/xdman/xdman.jar" -m', 
     -- 'cryptomator %F',
