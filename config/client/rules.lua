@@ -30,10 +30,16 @@ awful.rules.rules = {
 		callback = function (c)
             -- adding right_click_menu
 			c.right_click_menu = awful.menu{ items = {
-				{ "on Top",   function() c.ontop    = not c.ontop     end },
-				{ "Sticky",   function() c.sticky   = not c.sticky    end },
-				{ "Floating", function() c.floating = not c.floating  end },
-				{ "Close",    function() c:kill()                     end } 
+				{ "Titlebars", 
+					function() 
+						c.has_titlebar = not c.has_titlebar
+						awful.titlebar.toggle(c)
+					end 
+				},
+				{ "on Top",    function() c.ontop    = not c.ontop     end },
+				{ "Sticky",    function() c.sticky   = not c.sticky    end },
+				{ "Floating",  function() c.floating = not c.floating  end },
+				{ "Close",     function() c:kill()                     end } 
 			}} 
         end
 
