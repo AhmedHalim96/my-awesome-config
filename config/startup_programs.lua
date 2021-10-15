@@ -7,7 +7,6 @@ return {
     'polkit', -- Credential manager
     "albert",
     "breaktimer",
-    "mpd",
     'touchpad-indicator',
     '/usr/bin/libinput-gestures',
     'nm-applet --indicator', 
@@ -21,7 +20,6 @@ return {
     'udiskie -t -f nemo',
     'xbanish',
     'appimagelauncherd',
-    "mpDris2",
     --Xtereme Download Manager
     '"/opt/xdman/jre/bin/java" -Xmx1024m -jar "/opt/xdman/xdman.jar" -m', 
     -- 'cryptomator %F',
