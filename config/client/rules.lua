@@ -68,6 +68,7 @@ awful.rules.rules = {
 				"veromix",
 				"Qalculate",
 				"Wine",
+        "steam_proton",
 				"xtightvncviewer",
 				"java",
 				"Plank",
@@ -248,9 +249,9 @@ awful.rules.rules = {
 		properties = { screen = 1, tag = "6" }
 	},
 
-  -- chrome 
+  -- chrome - brave 
 	{ 
-		rule = { class = "Google-chrome" },
+		rule_any = { class = { "Google-chrome", "Brave-browser" } },
 		properties = { screen = 1, tag = "1" }
 	},
 
@@ -275,6 +276,12 @@ awful.rules.rules = {
   -- wine 
 	{ 
 		rule = { class = "Wine" },
+		properties = { screen = 1, tag = "9" }
+	},
+
+  -- proton 
+	{ 
+		rule = { class = "steam_proton" },
 		properties = { screen = 1, tag = "9" }
 	},
 
