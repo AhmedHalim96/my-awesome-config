@@ -1,9 +1,9 @@
 local awful = require("awful")
 
 -- Default Apps
-terminal="alacritty"
-editor=os.getenv("EDITOR") or "codium"
-browser="firefox"
+terminal = os.getenv('TERMINAL') or 'alacritty'
+editor = os.getenv("EDITOR") or "codium" 
+browser = os.getenv("BROWSER") or 'brave-browser'
 filemanager="nemo"
 terminalFM = "lf"
 
