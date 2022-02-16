@@ -209,7 +209,7 @@ local globalkeys = gears.table.join(
 
   -- MPD
   awful.key(
-    {},
+    {"Control"},
     'XF86AudioNext',
     function()
       awful.spawn('playerctl next -p mpd')
@@ -217,7 +217,7 @@ local globalkeys = gears.table.join(
     {description = 'Next', group = 'mpd'}
   ),
   awful.key(
-    {},
+    {"Control"},
     'XF86AudioPrev',
     function()
       awful.spawn('playerctl previous -p mpd')
@@ -225,7 +225,7 @@ local globalkeys = gears.table.join(
     {description = 'Previous', group = 'mpd'}
   ),
   awful.key(
-    {},
+    {"Control"},
     'XF86AudioPlay',
     function()
       awful.spawn('playerctl play-pause -p mpd')
@@ -505,7 +505,7 @@ local globalkeys = gears.table.join(
   ),
 
   awful.key(
-    {"Control"},
+    {},
     'XF86AudioNext',
     function()
       awful.spawn('playerctl next')
@@ -514,7 +514,7 @@ local globalkeys = gears.table.join(
   ),
   
   awful.key(
-    {"Control"},
+    {},
     'XF86AudioPrev',
     function()
       awful.spawn('playerctl previous')
@@ -523,7 +523,7 @@ local globalkeys = gears.table.join(
   ),
 
   awful.key(
-    {"Control"},
+    {},
     'XF86AudioPlay',
     function()
       awful.spawn('playerctl play-pause')
