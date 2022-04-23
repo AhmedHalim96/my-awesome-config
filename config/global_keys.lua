@@ -214,7 +214,12 @@ local globalkeys = gears.table.join(
     {description = "Opens emoji picker", group = "Programs"}
   ),
 
-
+-- Network Manager dmenu 
+  awful.key(
+    {modkey}, "y", 
+    function () awful.spawn("networkmanager_dmenu") end,
+    {description = "Opens Network Manager dmenu", group = "Programs"}
+  ),
 
   -- MPD
   awful.key(
