@@ -207,6 +207,15 @@ local globalkeys = gears.table.join(
     {description = "flameshot gui", group = "Flamshot"}
   ),
 
+  -- emojii
+  awful.key(
+    {modkey, 'Shift'}, ";", 
+    function () awful.spawn("emoji-picker") end,
+    {description = "Opens emoji picker", group = "Programs"}
+  ),
+
+
+
   -- MPD
   awful.key(
     {"Control"},
