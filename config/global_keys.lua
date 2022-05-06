@@ -153,7 +153,7 @@ local globalkeys = gears.table.join(
 
   awful.key(
     { modkey,}, "Escape", 
-    function () awful.spawn('gnome-system-monitor') end,
+    function () awful.spawn('system-monitoring-center') end,
     {description = "open system monitor", group = "Programs"}
   ),
   
