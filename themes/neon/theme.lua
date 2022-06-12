@@ -130,4 +130,9 @@ theme.widget_border_width                                      = dpi(0)
 theme.widget_border_color                                      = gtk_theme.selected_bg_color
 theme.widget_shape                                             = gears.shape.rounded_rect
 
+theme.wibar_position                                           = 'top'
+theme.wibar_height                                             = dpi(28) 
+theme.wibar_opacity                                            = 0.9 
+theme.wibar_shape                                              = gears.shape.rectangle 
+
 return theme

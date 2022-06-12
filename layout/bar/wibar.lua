@@ -87,13 +87,13 @@ local battery_widget = require("widgets.battery-widget.battery")
 
 local function wibar(s)
     s.wibar = awful.wibar({ 
-        position = "top", 
+        position = beautiful.wibar_position, 
         screen = s, 
-        height = dpi(28), 
+        height = beautiful.wibar_height, 
         bg = beautiful.bg, 
         fg = beautiful.fg_normal , 
-        opacity = 0.9,
-        shape = gears.shape.rectangle,
+        opacity = beautiful.wibar_opacity,
+        shape = beautiful.wibar_shape,
     })
 
     -- Add widgets to the wibox 
