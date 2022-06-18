@@ -134,5 +134,6 @@ theme.wibar_position                                           = 'top'
 theme.wibar_height                                             = dpi(28) 
 theme.wibar_opacity                                            = 0.9 
 theme.wibar_shape                                              = gears.shape.rectangle 
+theme.master_width_factor                                      = 0.6
 
 return theme
