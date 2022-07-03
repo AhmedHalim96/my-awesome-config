@@ -8,7 +8,6 @@ return {
     "albert",
     "breaktimer",
     'touchpad-indicator',
-    '/usr/bin/libinput-gestures',
     'nm-applet --indicator', 
     -- 'pnmixer',
     'blueberry-tray', 
