@@ -3,7 +3,7 @@ local awful = require("awful")
 -- Default Apps
 terminal = os.getenv('TERMINAL') or 'alacritty'
 editor = os.getenv("EDITOR") or "codium" 
-browser = os.getenv("BROWSER") or 'brave-browser'
+browser = os.getenv("BROWSER") or 'brave-browser  --profile-directory="Default"'
 filemanager="nemo"
 terminalFM = "lf"
 
