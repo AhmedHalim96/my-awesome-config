@@ -62,8 +62,6 @@ awful.rules.rules = {
 				"Gpick",
 				"Kruler",
 				"MessageWin",  -- kalarm.
-				"Nsxiv",
-				--"Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
 				"Wpa_gui",
 				"veromix",
 				"Qalculate",
@@ -247,6 +245,12 @@ awful.rules.rules = {
 	{ 
 		rule = { class = "FreeTube" },
 		properties = { screen = 1, tag = "6" }
+	},
+
+	-- Nsxiv 
+	{ 
+		rule = { class = "Nsxiv" },
+		properties = { fullscreen = true, floating = true }
 	},
 
   -- chrome - brave 
