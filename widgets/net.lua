@@ -75,7 +75,7 @@ local function net(args)
     offset = { y = 5, x=300 },
     widget = {
       {
-        font = "JetBrainsMono Nerd Font 10",
+        font = beautiful.font_fixedWidth,
         widget = wibox.widget.textbox
       },
       margins = 8,
