@@ -250,7 +250,7 @@ awful.rules.rules = {
 	-- Nsxiv 
 	{ 
 		rule = { class = "Nsxiv" },
-		properties = { fullscreen = true, floating = true }
+		properties = { fullscreen = true, }
 	},
 
   -- chrome - brave 
