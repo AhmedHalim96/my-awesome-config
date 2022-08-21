@@ -179,13 +179,13 @@ local function wibar(s)
 
             seperator,
 
-        container(
-            battery_widget({
-                show_current_level = true
-            })
-        ),
+        -- container(
+        --     battery_widget({
+        --         show_current_level = true
+        --     })
+        -- ),
 
-            seperator,
+        --     seperator,
 
             s.systray,
     
