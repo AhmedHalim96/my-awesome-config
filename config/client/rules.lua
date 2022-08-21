@@ -58,6 +58,7 @@ awful.rules.rules = {
 			},
 			class = {
 				"Arandr",
+				"com-tonikelope-megabasterd-MainPanel",
 				"Blueman-manager",
 				"Gpick",
 				"Kruler",
