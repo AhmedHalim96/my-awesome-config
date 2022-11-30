@@ -82,7 +82,8 @@ awful.rules.rules = {
 				"Event Tester",  -- xev.
 				"win0",
 				"Cryptomator",
-				"Picture in picture" --freetube
+				"Picture in picture", --freetube
+        "Media viewer"
 			},
 			role = {
 				"AlarmWindow",  -- Thunderbird's calendar.
