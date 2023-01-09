@@ -9,41 +9,66 @@ local gtk = require("beautiful").gtk
 local awful = require("awful")
 local dpi   = require("beautiful.xresources").apply_dpi
 local os = os
+local gfs = require("gears.filesystem")
+local themes_path = gfs.get_themes_dir()
 
-local gtk_theme = gtk.get_theme_variables()
+function dump(o)
+   if type(o) == 'table' then
+      local s = '{ '
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. '['..k..'] = ' .. dump(v) .. ','
+      end
+      return s .. '} '
+   else
+      return tostring(o)
+   end
+end
+
+
+-- inherit xresources theme:
+local theme= dofile(themes_path.."default/theme.lua")
+-- load and prepare for use gtk theme:
+-- gtk_theme = gtk.get_theme_variables()
+-- if not gtk_theme then
+--     local gears_debug = require("gears.debug")
+--     gears_debug.print_warning("Can't load GTK+3 theme. Using 'xresources' theme as a fallback.")
+--     awful.spawn("notify-send '"..dump(gtk_theme) .."'")
+--     return backup 
+-- end
 
 -- ###########################################################
 -- #Theme Variables
 -- ###########################################################
 
-local theme                                                    = {}
+-- local theme                                                    = {}
 theme.confdir                                                  = os.getenv("HOME") .. "/.config/awesome/themes/neon"
 theme.wallpaper                                                = "~/wall.jpg"
-theme.font                                                     = "Noto Sans 10"
+theme.font                                                     = "Ubuntu Regular 10"
 theme.font_fixedWidth                                          = "FiraCode Nerd Font 10"
-theme.font_naughty                                             = "Noto Sans 12"
-theme.bg_normal                                                = gtk_theme.bg_color
-theme.bg_focus                                                 = gtk_theme.selected_bg_color
-theme.bg_urgent                                                = gtk_theme.error_color
-theme.fg_normal                                                = gtk_theme.fg_color
-theme.fg_focus                                                 = gtk_theme.selected_fg_color
-theme.fg_urgent                                                = gtk_theme.error_color
-theme.fg_minimize                                              = gtk_theme.fg_color
+theme.font_naughty                                             = "Ubuntu Regular 12"
+-- theme.bg_normal                                                = gtk_theme.bg_color
+-- theme.bg_focus                                                 = gtk_theme.selected_bg_color
+-- theme.bg_urgent                                                = gtk_theme.error_color
+-- theme.fg_normal                                                = gtk_theme.fg_color
+-- theme.fg_focus                                                 = gtk_theme.selected_fg_color
+-- theme.fg_urgent                                                = gtk_theme.error_color
+-- theme.fg_minimize                                              = gtk_theme.fg_color
 
-theme.border_width                                             = dpi(2)
-theme.border_normal                                            = gtk_theme.wm_border_unfocused_color
-theme.border_focus                                             = gtk_theme.wm_border_focused_color
-theme.border_marked                                            = gtk_theme.wm_border_focused_color
+theme.border_width                                             = dpi(3)
+-- theme.border_normal                                            = gtk_theme.wm_border_unfocused_color
+-- theme.border_focus                                             = gtk_theme.wm_border_focused_color
+-- theme.border_marked                                            = gtk_theme.wm_border_focused_color
 
-theme.menu_bg_focus                                            = gtk_theme.bg_color
-theme.menu_border_width                                        = dpi(2)
-theme.menu_border_color                                        = gtk_theme.wm_border_focused_color
+-- theme.menu_bg_focus                                            = gtk_theme.bg_color
+theme.menu_border_width                                        = dpi(3)
+-- theme.menu_border_color                                        = gtk_theme.wm_border_focused_color
 theme.menu_width                                               = dpi(200)
 theme.menu_submenu_icon                                        = theme.confdir .. "/icons/submenu.png"
-theme.menu_fg_normal                                           = gtk_theme.fg_color
-theme.menu_fg_focus                                            = gtk_theme.selected_fg_color
-theme.menu_bg_normal                                           = gtk_theme.bg_color
-theme.menu_bg_focus                                            = gtk_theme.selected_bg_color
+-- theme.menu_fg_normal                                           = gtk_theme.fg_color
+-- theme.menu_fg_focus                                            = gtk_theme.selected_fg_color
+-- theme.menu_bg_normal                                           = gtk_theme.bg_color
+-- theme.menu_bg_focus                                            = gtk_theme.selected_bg_color
 theme.menu_height                                              = dpi(25)
 
 theme.notification_max_width                                   = dpi(360)
@@ -72,9 +97,9 @@ theme.tasklist_disable_icon                                    = false
 theme.useless_gap                                              = dpi(3)
 theme.icon_theme                                               = "Papirus-Dark"
 
-theme.snap_border_width                                        = dpi(2)
+theme.snap_border_width                                        = dpi(3)
 theme.snapper_gap                                              = dpi(5)
-theme.snap_bg                                                  = gtk_theme.selected_bg_color
+-- theme.snap_bg                                                  = gtk_theme.selected_bg_color
 theme.snap_shape                                               = gears.shape.rectangle
 
 theme.layout_tile                                              = theme.confdir .. "/icons/tile.png"
@@ -91,8 +116,8 @@ theme.layout_fullscreen                                        = theme.confdir .
 theme.layout_magnifier                                         = theme.confdir .. "/icons/magnifier.png"
 theme.layout_floating                                          = theme.confdir .. "/icons/floating.png"
 
-theme.titlebar_bg_normal                                       = gtk_theme.bg_color
-theme.titlebar_bg                                              = gtk_theme.bg_color
+-- theme.titlebar_bg_normal                                       = gtk_theme.bg_color
+-- theme.titlebar_bg                                              = gtk_theme.bg_color
 
 theme.titlebar_close_button_normal                             = theme.confdir .. "/icons/titlebar/close_normal.png"
 theme.titlebar_close_button_focus                              = theme.confdir .. "/icons/titlebar/close_focus.png"
@@ -129,7 +154,7 @@ theme.titlebar_maximized_button_normal_active_hover            = theme.confdir .
 theme.titlebar_maximized_button_focus_active_hover             = theme.confdir .. "/icons/titlebar/maximized_hover.png"
 
 theme.widget_border_width                                      = dpi(0)
-theme.widget_border_color                                      = gtk_theme.selected_bg_color
+-- theme.widget_border_color                                      = gtk_theme.selected_bg_color
 theme.widget_shape                                             = gears.shape.rounded_rect
 
 theme.wibar_position                                           = 'top'
