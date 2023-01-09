@@ -89,19 +89,19 @@ local function tasklist(s)
         },
         
         -- Add support for hover colors
-        create_callback = function(self, c, index, objects)
-            self:connect_signal('mouse::enter', function()
-                self.bg = beautiful.bg_focus
-            end)
-            self:connect_signal('mouse::leave', function()
-                local focused_client = client.focus
-                if c then
-                    if focused_client ~= c then
-                        self.bg = beautiful.bg   
-                    end
-                end 
-            end)
-        end,
+        -- create_callback = function(self, c, index, objects)
+        --     self:connect_signal('mouse::enter', function()
+        --         self.bg = beautiful.bg_focus
+        --     end)
+        --     self:connect_signal('mouse::leave', function()
+        --         local focused_client = client.focus
+        --         if c then
+        --             if focused_client ~= c then
+        --                 self.bg = beautiful.bg   
+        --             end
+        --         end 
+        --     end)
+        -- end,
 
         id     = 'background_role',
         widget = wibox.container.background,

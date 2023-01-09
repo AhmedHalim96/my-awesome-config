@@ -5,10 +5,10 @@ local wibox = require("wibox")
 
 local function container (widget, args)
     args = args or {}
-    local hover = args.hover 
-    if args.hover == nil then
-        hover = true
-    end
+    -- local hover = args.hover 
+    -- if args.hover == nil then
+    --     hover = true
+    -- end
 
     local _container = wibox.widget {
         {
@@ -26,14 +26,14 @@ local function container (widget, args)
             widget             = wibox.container.background
     }
 
-    if hover then
-        _container:connect_signal("mouse::enter", function (args)
-            _container.bg = args.bg_focus or beautiful.bg_focus
-        end)
-        _container:connect_signal("mouse::leave",function ()
-            _container.bg = args.bg_normal or beautiful.bg_normal
-        end)
-    end
+    -- if hover then
+    --     _container:connect_signal("mouse::enter", function (args)
+    --         _container.bg = args.bg_focus or beautiful.bg_focus
+    --     end)
+    --     _container:connect_signal("mouse::leave",function ()
+    --         _container.bg = args.bg_normal or beautiful.bg_normal
+    --     end)
+    -- end
 
     return wibox.widget {
         _container,

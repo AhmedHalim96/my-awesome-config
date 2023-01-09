@@ -48,20 +48,20 @@ local function taglist(s)
         },
         
     -- Add support for hover colors
-    create_callback = function(self, c, index, objects)
-        self:connect_signal('mouse::enter', function()
-            self.bg = beautiful.bg_focus
-        end)
-        self:connect_signal('mouse::leave', function()
-            local selected_tag = mouse.screen.selected_tag
-           if selected_tag then
-                if mouse.screen.selected_tag.index ~= index then
-                    self.bg = beautiful.bg
-                end
-           else  self.bg = beautiful.bg
-           end
-        end)
-    end,
+    -- create_callback = function(self, c, index, objects)
+    --     self:connect_signal('mouse::enter', function()
+    --         self.bg = beautiful.bg_focus
+    --     end)
+    --     self:connect_signal('mouse::leave', function()
+    --         local selected_tag = mouse.screen.selected_tag
+    --        if selected_tag then
+    --             if mouse.screen.selected_tag.index ~= index then
+    --                 self.bg = beautiful.bg
+    --             end
+    --        else  self.bg = beautiful.bg
+    --        end
+    --     end)
+    -- end,
 
         id     = 'background_role',
         widget = wibox.container.background,
