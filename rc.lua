@@ -5,7 +5,7 @@ pcall(require, "luarocks.loader")
 -- Standard awesome library
 local string, os = string, os
 require("awful.autofocus")
-local beautiful = require("beautiful")
+beautiful = require("beautiful")
 
 -- collision
 -- require("modules.collision")()

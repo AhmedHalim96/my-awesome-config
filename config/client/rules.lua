@@ -1,4 +1,4 @@
-local beautiful = require("beautiful")
+
 local awful = require("awful")
 local clientkeys = require('config.client.keys')
 local clientbuttons = require("config.client.buttons")
