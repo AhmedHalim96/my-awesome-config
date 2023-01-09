@@ -19,7 +19,7 @@ local function container (widget, args)
             bottom = dpi(2),
             widget = wibox.container.margin
         },
-            shape              = args.shape or beautiful.widget_shape,
+            shape              = args.shape or gears.shape.rounded_rect,
             shape_border_color = args.border_color or beautiful.widget_border_color,
             shape_border_width = args.border_width or beautiful.widget_border_width,
             bg                 = args.bg or beautiful.bg,

@@ -45,7 +45,7 @@ local function tasklist(s)
     style    = {
         shape_border_width = beautiful.widget_border_width,
         shape_border_color = beautiful.widget_border_color,
-        shape  = beautiful.widget_shape,
+        shape  = gears.shape.rounded_rect,
     },
     layout   = {
         spacing = dpi(5),

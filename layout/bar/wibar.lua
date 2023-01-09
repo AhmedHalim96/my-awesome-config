@@ -6,6 +6,7 @@ local gears = require("gears")
 local lain  = require("lain")
 local markup = lain.util.markup
 local wibox = require("wibox")
+local assets = os.getenv("HOME") .. "/.config/awesome/themes/neon";
 
 -- ###########################################################
 -- # intiating Widgets
@@ -25,7 +26,7 @@ beautiful.cal = lain.widget.cal({
 })
 
 -- Temp
-local temp_widget = require("widgets.temp")
+-- local temp_widget = require("widgets.temp")
 
 -- Weather
 local weathericon = wibox.widget.imagebox(beautiful.widget_weather)
@@ -49,7 +50,7 @@ local net = require("widgets.net")
 local memory = require("widgets.memory")({
     color=colors.neon.yellow, 
     font=beautiful.font, 
-    icon=beautiful.widget_mem
+    icon= assets .. "/icons/mem.svg"
 })
 
 local seperator= require("widgets.seperator")
@@ -89,10 +90,10 @@ local function wibar(s)
     s.wibar = awful.wibar({ 
         position = beautiful.wibar_position, 
         screen = s, 
-        height = beautiful.wibar_height, 
+        height = dpi(28), 
         bg = beautiful.bg, 
         fg = beautiful.fg_normal , 
-        opacity = beautiful.wibar_opacity,
+        opacity = .9,
         shape = beautiful.wibar_shape,
     })
 
@@ -123,8 +124,8 @@ local function wibar(s)
             -- seperator,
 
             net({
-                netdownicon=beautiful.widget_netdown, 
-                netupicon=beautiful.widget_netup, 
+                netdownicon=assets .. "/icons/down.svg", 
+                netupicon=assets .. "/icons/up.svg", 
                 netdowncolor=colors.neon.blue, 
                 netupcolor=colors.neon.fuchsia
             }),
@@ -139,13 +140,13 @@ local function wibar(s)
             
             seperator,
 
-            temp_widget({
-                color=colors.neon.orange,
-                font=beautiful.font,
-                icon=beautiful.widget_temp
-            }),
+            -- temp_widget({
+            --     color=colors.neon.orange,
+            --     font=beautiful.font,
+            --     icon=beautiful.widget_temp
+            -- }),
 
-            seperator,
+            -- seperator,
 
             -- weathericon,
             -- beautiful.weather.widget,

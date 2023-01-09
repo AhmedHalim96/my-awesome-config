@@ -3,7 +3,7 @@ return {
     "picom-i",
     "xrdb -load ~/.config/X11/Xresources",
     "kb-startup-script",
-    'polkit', -- Credential manager
+    --'polkit', -- Credential manager
     "albert",
     "breaktimer",
     'touchpad-indicator',

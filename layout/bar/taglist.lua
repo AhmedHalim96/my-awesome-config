@@ -42,9 +42,12 @@ local function taglist(s)
                 },
                 layout = wibox.layout.fixed.horizontal,
             },
-            left  = dpi(10),
-            right = dpi(10),              
+            left  = dpi(8),
+            right = dpi(8),              
+            top = dpi(4),
+            bottom = dpi(4),
             widget = wibox.container.margin
+
         },
         
     -- Add support for hover colors
