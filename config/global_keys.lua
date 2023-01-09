@@ -120,6 +120,15 @@ local globalkeys = gears.table.join(
 
   awful.key(
     {modkey},
+    'c',
+    function()
+      awful.spawn('copyq toggle')
+    end,
+    {description = 'copyq', group = 'Programs'}
+  ),
+
+  awful.key(
+    {modkey},
     'XF86AudioPlay',
     function()
       awful.spawn(terminal ..' --class ncmpcpp -e ncmpcpp')
