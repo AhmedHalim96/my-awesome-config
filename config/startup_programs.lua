@@ -4,7 +4,7 @@ return {
     "xrdb -load ~/.config/X11/Xresources",
     "kb-startup-script",
     'polkit', -- Credential manager
-    "albert",
+    -- "albert",
     "breaktimer",
     'touchpad-indicator',
     'nm-applet --indicator', 
@@ -13,8 +13,8 @@ return {
     'flameshot',
     'copyq',
     'qbittorrent',
-    'mintupdate-launcher',
-    'udiskie -t -f nemo',
+    -- 'mintupdate-launcher',
+    'skie -t -f nemo',
     'xbanish',
     'appimagelauncherd',
     --Xtereme Download Manager
