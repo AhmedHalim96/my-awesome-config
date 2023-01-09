@@ -297,8 +297,11 @@ local globalkeys = gears.table.join(
     -- function() menubar.show() end,
     -- {description = "show the menubar", group = "Programs"}
 
-    function() awful.spawn('albert toggle') end,
-    {description = "toggle albert", group = "Programs"}
+    -- function() awful.spawn('albert toggle') end,
+    -- {description = "toggle albert", group = "Programs"},
+
+    function() awful.spawn('rofi -show combi') end,
+    {description = "toggle rofi", group = "Programs"}
   ),
 
   awful.key(
