@@ -47,28 +47,28 @@ theme.wallpaper                                                = "~/wall.jpg"
 theme.font                                                     = "Ubuntu Regular 10"
 theme.font_fixedWidth                                          = "FiraCode Nerd Font 10"
 theme.font_naughty                                             = "Ubuntu Regular 12"
--- theme.bg_normal                                                = gtk_theme.bg_color
--- theme.bg_focus                                                 = gtk_theme.selected_bg_color
--- theme.bg_urgent                                                = gtk_theme.error_color
--- theme.fg_normal                                                = gtk_theme.fg_color
--- theme.fg_focus                                                 = gtk_theme.selected_fg_color
--- theme.fg_urgent                                                = gtk_theme.error_color
--- theme.fg_minimize                                              = gtk_theme.fg_color
+theme.bg_normal                                                = "#303030" 
+theme.bg_focus                                                 = "#94EBEB" 
+theme.bg_urgent                                                = "#EA9090" 
+theme.fg_normal                                                = "#cccccc" 
+theme.fg_focus                                                 = "#000000" 
+theme.fg_urgent                                                = theme.bg_urgent 
+theme.fg_minimize                                              = "#000000" 
 
-theme.border_width                                             = dpi(3)
--- theme.border_normal                                            = gtk_theme.wm_border_unfocused_color
--- theme.border_focus                                             = gtk_theme.wm_border_focused_color
--- theme.border_marked                                            = gtk_theme.wm_border_focused_color
+theme.border_width                                             = dpi(2)
+theme.border_normal                                            = '#000000'
+theme.border_focus                                             = theme.bg_focus 
+theme.border_marked                                            = theme.bg_focus 
 
--- theme.menu_bg_focus                                            = gtk_theme.bg_color
-theme.menu_border_width                                        = dpi(3)
--- theme.menu_border_color                                        = gtk_theme.wm_border_focused_color
+theme.menu_bg_focus                                            = theme.bg_normal 
+theme.menu_border_width                                        = dpi(2)
+theme.menu_border_color                                        = theme.border_focus 
 theme.menu_width                                               = dpi(200)
 theme.menu_submenu_icon                                        = theme.confdir .. "/icons/submenu.png"
--- theme.menu_fg_normal                                           = gtk_theme.fg_color
--- theme.menu_fg_focus                                            = gtk_theme.selected_fg_color
--- theme.menu_bg_normal                                           = gtk_theme.bg_color
--- theme.menu_bg_focus                                            = gtk_theme.selected_bg_color
+theme.menu_fg_normal                                           = theme.fg_normal 
+theme.menu_fg_focus                                            = theme.fg_focus 
+theme.menu_bg_normal                                           = theme.bg_normal 
+theme.menu_bg_focus                                            = theme.bg_focus 
 theme.menu_height                                              = dpi(25)
 
 theme.notification_max_width                                   = dpi(360)
@@ -97,7 +97,7 @@ theme.tasklist_disable_icon                                    = false
 theme.useless_gap                                              = dpi(3)
 theme.icon_theme                                               = "Papirus-Dark"
 
-theme.snap_border_width                                        = dpi(3)
+theme.snap_border_width                                        = dpi(2)
 theme.snapper_gap                                              = dpi(5)
 -- theme.snap_bg                                                  = gtk_theme.selected_bg_color
 theme.snap_shape                                               = gears.shape.rectangle
@@ -116,8 +116,8 @@ theme.layout_fullscreen                                        = theme.confdir .
 theme.layout_magnifier                                         = theme.confdir .. "/icons/magnifier.png"
 theme.layout_floating                                          = theme.confdir .. "/icons/floating.png"
 
--- theme.titlebar_bg_normal                                       = gtk_theme.bg_color
--- theme.titlebar_bg                                              = gtk_theme.bg_color
+theme.titlebar_bg_normal                                       = theme.bg_normal 
+theme.titlebar_bg                                              = theme.bg_focus 
 
 theme.titlebar_close_button_normal                             = theme.confdir .. "/icons/titlebar/close_normal.png"
 theme.titlebar_close_button_focus                              = theme.confdir .. "/icons/titlebar/close_focus.png"
@@ -154,12 +154,12 @@ theme.titlebar_maximized_button_normal_active_hover            = theme.confdir .
 theme.titlebar_maximized_button_focus_active_hover             = theme.confdir .. "/icons/titlebar/maximized_hover.png"
 
 theme.widget_border_width                                      = dpi(0)
--- theme.widget_border_color                                      = gtk_theme.selected_bg_color
+theme.widget_border_color                                      = theme.bg_focus 
 theme.widget_shape                                             = gears.shape.rounded_rect
 
 theme.wibar_position                                           = 'top'
 theme.wibar_height                                             = dpi(28) 
-theme.wibar_opacity                                            = 0.9 
+theme.wibar_opacity                                            = 1 
 theme.wibar_shape                                              = gears.shape.rectangle 
 theme.master_width_factor                                      = 0.6
 
