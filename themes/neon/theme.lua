@@ -116,8 +116,10 @@ theme.layout_fullscreen                                        = theme.confdir .
 theme.layout_magnifier                                         = theme.confdir .. "/icons/magnifier.png"
 theme.layout_floating                                          = theme.confdir .. "/icons/floating.png"
 
+theme.titlebar_fg_normal                                       = theme.fg_normal
+theme.titlebar_fg_focus                                        = theme.fg_normal 
 theme.titlebar_bg_normal                                       = theme.bg_normal 
-theme.titlebar_bg                                              = theme.bg_focus 
+theme.titlebar_bg                                              = theme.bg_normal 
 
 theme.titlebar_close_button_normal                             = theme.confdir .. "/icons/titlebar/close_normal.png"
 theme.titlebar_close_button_focus                              = theme.confdir .. "/icons/titlebar/close_focus.png"
@@ -159,7 +161,7 @@ theme.widget_shape                                             = gears.shape.rou
 
 theme.wibar_position                                           = 'top'
 theme.wibar_height                                             = dpi(28) 
-theme.wibar_opacity                                            = 1 
+theme.wibar_opacity                                            = .9 
 theme.wibar_shape                                              = gears.shape.rectangle 
 theme.master_width_factor                                      = 0.6
 
