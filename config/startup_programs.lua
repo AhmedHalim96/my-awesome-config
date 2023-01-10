@@ -1,7 +1,8 @@
 -- Startup Apps
 return {
-    "picom-i",
+    "xrandr --output eDP --set TearFree on",
     "xrdb -load ~/.config/X11/Xresources",
+    "picom-i",
     "kb-startup-script",
     'polkit', -- Credential manager
     -- "albert",
