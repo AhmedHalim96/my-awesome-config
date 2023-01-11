@@ -25,21 +25,21 @@ beautiful.cal = lain.widget.cal({
 })
 
 -- Temp
-local temp_widget = require("widgets.temp")
+-- local temp_widget = require("widgets.temp")
 
 -- Weather
-local weathericon = wibox.widget.imagebox(beautiful.widget_weather)
+-- local weathericon = wibox.widget.imagebox(beautiful.widget_weather)
 
-beautiful.weather = lain.widget.weather({
-    city_id = 360630, -- placeholder (Cairo)
-    notification_preset = { font = "Terminus 10", fg = beautiful.fg_normal },
-    weather_na_markup = markup.fontfg(beautiful.font, "#eca4c4", "N/A "),
-    settings = function()
-        descr = weather_now["weather"][1]["description"]:lower()
-        units = math.floor(weather_now["main"]["temp"])
-        widget:set_markup(markup.fontfg(beautiful.font, "#eca4c4", descr .. " @ " .. units .. "°C "))
-    end
-})
+-- beautiful.weather = lain.widget.weather({
+--     city_id = 360630, -- placeholder (Cairo)
+--     notification_preset = { font = "Terminus 10", fg = beautiful.fg_normal },
+--     weather_na_markup = markup.fontfg(beautiful.font, "#eca4c4", "N/A "),
+--     settings = function()
+--         descr = weather_now["weather"][1]["description"]:lower()
+--         units = math.floor(weather_now["main"]["temp"])
+--         widget:set_markup(markup.fontfg(beautiful.font, "#eca4c4", descr .. " @ " .. units .. "°C "))
+--     end
+-- })
 
 
 -- Net
@@ -139,13 +139,13 @@ local function wibar(s)
             
             seperator,
 
-            temp_widget({
-                color=colors.neon.orange,
-                font=beautiful.font,
-                icon=beautiful.widget_temp
-            }),
+            -- temp_widget({
+            --     color=colors.neon.orange,
+            --     font=beautiful.font,
+            --     icon=beautiful.widget_temp
+            -- }),
 
-            seperator,
+            -- seperator,
 
             -- weathericon,
             -- beautiful.weather.widget,
