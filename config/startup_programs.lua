@@ -15,7 +15,7 @@ return {
     'copyq',
     'qbittorrent',
     -- 'mintupdate-launcher',
-    'skie -t -f nemo',
+    'udiskie -t -f nemo',
     'xbanish',
     'appimagelauncherd',
     --Xtereme Download Manager
