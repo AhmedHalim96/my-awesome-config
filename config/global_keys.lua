@@ -191,9 +191,15 @@ local globalkeys = gears.table.join(
   ),
 
   -- dmenu Run Prompt
+  -- awful.key(
+  --   { modkey },"r",
+  --   function () awful.spawn('dmenu_run_history -f -i -p "Run: "') end,
+  --   {description = "run prompt", group = "Programs"}
+  -- ),
+
   awful.key(
     { modkey },"r",
-    function () awful.spawn('dmenu_run_history -f -i -p "Run: "') end,
+    function () awful.spawn('rofi -show run -i') end,
     {description = "run prompt", group = "Programs"}
   ),
 
