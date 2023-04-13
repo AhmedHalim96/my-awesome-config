@@ -20,7 +20,9 @@ return {
     'appimagelauncherd',
     --Xtereme Download Manager
     '"/opt/xdman/jre/bin/java" -Xmx1024m -jar "/opt/xdman/xdman.jar" -m', 
+    "redshift-location-1", -- Redshift
     -- Add applications that need to be killed between reloads
     -- to avoid multipled instances, inside the awspawn script
     '~/.config/awesome/modules/awspawn' -- Spawn "dirty" apps that can linger between sessions
+    
 }
