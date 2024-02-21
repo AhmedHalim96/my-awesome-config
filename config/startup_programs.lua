@@ -6,6 +6,7 @@ return {
     "kb-startup-script",
     'polkit', -- Credential manager
     -- "albert",
+    "kdeconnect-indicator",
     "breaktimer",
     'touchpad-indicator',
     'nm-applet --indicator', 
