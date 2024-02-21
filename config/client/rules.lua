@@ -7,7 +7,6 @@ local gears = require("gears")
 local screen_width = awful.screen.focused().geometry.width
 local screen_height = awful.screen.focused().geometry.height
 
--- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
 	-- All clients will match this rule.
@@ -207,8 +206,12 @@ awful.rules.rules = {
 				end
 		},
 
+	-- 1st Tag clients [browsers] 
+	{ 
+		rule_any = { class = { "Google-chrome", "Brave-browser" } },
+		properties = { screen = 1, tag = "1" }
+	},
 
-		
 	-- 2nd workspace for Editors and IDEs
 	{ rule_any = { 
 			class = {
@@ -224,29 +227,52 @@ awful.rules.rules = {
 		},
 		properties = { screen = 1, tag = "2" } 
 	},
-	
-		-- Insomnia 
-		{ 
-			rule = { class = "Insomnia" },
-			properties = { screen = 1, tag = "4" } 
-		},
 
-	--Telegram 
+	-- 3rd Tag clients 
 	{ 
-		rule = { class = "TelegramDesktop" },
-		properties = { screen = 1, tag = "4" } 
-	},
-	
-	-- clemintine
-	{ 
-		rule = { class = "Clementine" },
-		properties = { screen = 1, tag = "5" } 
+		rule_any = { class = { "NpmServer" } },
+		properties = { screen = 1, tag = "3" }
 	},
 
-	-- peertube 
+	-- 4th Tag clients 
 	{ 
-		rule = { class = "FreeTube" },
+		rule_any = { class = { "TelegramDesktop", "Insomnia" } },
+		properties = { screen = 1, tag = "4" }
+	},
+
+	-- 5th Tag clients 
+	{ 
+		rule_any = { class = { "clemintine" } },
+		properties = { screen = 1, tag = "5" }
+	},
+
+	-- 6th Tag clients 
+	{ 
+		rule_any = { class = {"FreeTube"} },
 		properties = { screen = 1, tag = "6" }
+	},
+
+	-- 7th Tag clients 
+	{ 
+		rule_any = {  },
+		properties = { screen = 1, tag = "7" }
+	},
+
+	-- 8th Tag clients 
+	{ 
+    rule_any = {
+			instance = {  "www.notion.so" },
+			class = { "ticktick" }
+		},
+		properties = { screen = 1, tag = "8" }
+	},
+
+	-- 9th Tag clients 
+	{ 
+    rule_any = {
+			class = {  "Microsoft Teams - Preview", "Wine" , "steam_proton", 'easyeffects' }
+		},
+		properties = { screen = 1, tag = "9" }
 	},
 
 	-- Nsxiv 
@@ -255,50 +281,10 @@ awful.rules.rules = {
 		properties = { fullscreen = true, }
 	},
 
-	-- chrome - brave 
-	{ 
-		rule_any = { class = { "Google-chrome", "Brave-browser" } },
-		properties = { screen = 1, tag = "1" }
-	},
-
-	-- Npm Server 
-	{ 
-		rule = { class = "NpmServer" },
-		properties = { screen = 1, tag = "3" }
-	},
-
-  -- Notion 
-  { 
-		rule = { instance = "www.notion.so" },
-		properties = { screen = 1, tag = "8" }
-	},
-
-	-- teams No, God! please 
-	{ 
-		rule = { class = "Microsoft Teams - Preview" },
-		properties = { screen = 1, tag = "9" }
-	},
-
 	-- chrome devtools,Disgusting!  & brave devtools  
 	{ 
 		rule_any = { class = { "Google-chromea", "Brave-browser" }, role = "pop-up" },
 		properties = { floating = false }
 	},
-
-	-- wine 
-	{ 
-		rule = { class = "Wine" },
-		properties = { screen = 1, tag = "9" }
-	},
-
-	-- proton 
-	{ 
-		rule = { class = "steam_proton" },
-		properties = { screen = 1, tag = "9" }
-	},
-
-
-	-- Set Firefox to always map on the tag named "2" on screen 1.
-	-- { rule = { class = "Firefox" },
-	--   properties = { screen = 1, tag = "2" } },
+	
 }
