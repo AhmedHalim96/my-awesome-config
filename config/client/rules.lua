@@ -28,7 +28,7 @@ awful.rules.rules = {
 			screen = awful.screen.preferred,
 		},
 		callback = function (c)
-            -- adding right_click_menu
+						-- adding right_click_menu
 			c.right_click_menu = awful.menu({
 				{ "Titlebars", 
 					function() 
@@ -41,7 +41,7 @@ awful.rules.rules = {
 				{ "Floating",  function() c.floating = not c.floating  end },
 				{ "Close",     function() c:kill()                     end } 
 			})
-        end
+				end
 
 	},
 
@@ -67,13 +67,13 @@ awful.rules.rules = {
 				"veromix",
 				"Qalculate",
 				"Wine",
-        "steam_proton",
+				"steam_proton",
 				"xtightvncviewer",
 				"java",
 				"Plank",
 				"Microsoft Teams - Preview",
-        "Yad"
-        
+				"Yad"
+				
 			},
 
 			-- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -83,7 +83,7 @@ awful.rules.rules = {
 				"win0",
 				"Cryptomator",
 				"Picture in picture", --freetube
-        "Media viewer"
+				"Media viewer"
 			},
 			role = {
 				"AlarmWindow",  -- Thunderbird's calendar.
@@ -189,41 +189,41 @@ awful.rules.rules = {
 
 	--  Scratch
 	{
-        rule_any = {
-            instance = { "scratch" },
-            class = { "scratch" },
-        },
-        properties = {
+				rule_any = {
+						instance = { "scratch" },
+						class = { "scratch" },
+				},
+				properties = {
 			scratch_pad = true,
-            floating = true,
-            width = screen_width * 0.6,
-            height = screen_height * 0.65,
-        },
-        callback = function (c)
-            awful.placement.centered(c,{honor_padding = true, honor_workarea=true})
-            gears.timer.delayed_call(function()
-                c.urgent = false
-            end)	
-        end
-    },
+						floating = true,
+						width = screen_width * 0.6,
+						height = screen_height * 0.65,
+				},
+				callback = function (c)
+						awful.placement.centered(c,{honor_padding = true, honor_workarea=true})
+						gears.timer.delayed_call(function()
+								c.urgent = false
+						end)	
+				end
+		},
 
 
 		
 	-- 2nd workspace for Editors and IDEs
 	{ rule_any = { 
-      class = {
-        "VSCodium", 
-        "VSCode",
-        "Code", 
-        "DrRacket", 
-        "jetbrains-phpstorm", 
-        "jetbrains-pycharm-ce", 
-        "jetbrains-studio", 
-        "jetbrains-idea-ce"
-      } 
-    },
-    properties = { screen = 1, tag = "2" } 
-  },
+			class = {
+				"VSCodium", 
+				"VSCode",
+				"Code", 
+				"DrRacket", 
+				"jetbrains-phpstorm", 
+				"jetbrains-pycharm-ce", 
+				"jetbrains-studio", 
+				"jetbrains-idea-ce"
+			} 
+		},
+		properties = { screen = 1, tag = "2" } 
+	},
 	
 		-- Insomnia 
 		{ 
@@ -255,16 +255,22 @@ awful.rules.rules = {
 		properties = { fullscreen = true, }
 	},
 
-  -- chrome - brave 
+	-- chrome - brave 
 	{ 
 		rule_any = { class = { "Google-chrome", "Brave-browser" } },
 		properties = { screen = 1, tag = "1" }
 	},
 
-  -- Npm Server 
+	-- Npm Server 
 	{ 
 		rule = { class = "NpmServer" },
 		properties = { screen = 1, tag = "3" }
+	},
+
+  -- Notion 
+  { 
+		rule = { instance = "www.notion.so" },
+		properties = { screen = 1, tag = "8" }
 	},
 
 	-- teams No, God! please 
@@ -273,19 +279,19 @@ awful.rules.rules = {
 		properties = { screen = 1, tag = "9" }
 	},
 
-	-- chrome devtools, Disgusting! 
+	-- chrome devtools,Disgusting!  & brave devtools  
 	{ 
-		rule = { class = "Google-chrome", role = "pop-up" },
+		rule_any = { class = { "Google-chromea", "Brave-browser" }, role = "pop-up" },
 		properties = { floating = false }
 	},
 
-  -- wine 
+	-- wine 
 	{ 
 		rule = { class = "Wine" },
 		properties = { screen = 1, tag = "9" }
 	},
 
-  -- proton 
+	-- proton 
 	{ 
 		rule = { class = "steam_proton" },
 		properties = { screen = 1, tag = "9" }
