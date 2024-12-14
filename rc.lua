@@ -24,6 +24,7 @@ beautiful.init(string.format("%s/.config/awesome/themes/neon/theme.lua", os.gete
 -- Modules
 require('modules.notifications')
 require("modules.awesome_menu")
+require('awesomewm-micky')
 revelation.init()
 
 -- screen signals

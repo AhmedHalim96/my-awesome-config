@@ -249,7 +249,7 @@ awful.rules.rules = {
 	-- 6th Tag clients 
 	{ 
 		rule_any = { class = {"FreeTube"} },
-		properties = { screen = 1, tag = "6" }
+		properties = { screen = 1, tag = "6", fullscreen= false, maximized=false }
 	},
 
 	-- 7th Tag clients 

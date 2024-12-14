@@ -129,7 +129,8 @@ local globalkeys = gears.table.join(
 
   awful.key(
     {modkey},
-    'XF86AudioPlay',
+    -- 'XF86AudioPlay',
+    'F10',
     function()
       awful.spawn(terminal ..' --class ncmpcpp -e ncmpcpp')
     end,
@@ -666,7 +667,15 @@ for i = 1, 9 do
         end
       end,
       {description = "move focused client and switch to tag #"..i, group = "tag"}
-    )
+        )
+
+  --   awful.key(
+  --     {modkey},
+  --     "'",
+  --     keychords,
+  --     {description = 'keychords', group = 'programms'}
+  -- )
+
 
     -- Toggle tag on focused client.
     -- awful.key(
