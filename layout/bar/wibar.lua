@@ -70,13 +70,14 @@ brightness_widget = require("widgets.brightness-widget.brightness")
 local volume_icon = require("widgets.volume-control.volume-icon")
 local volume_control = require("widgets.volume-control")
 volumecfg = volume_control({
-    device  = "pulse",
     font = beautiful.font,
     colors = {
         on=colors.neon.fuchsia,
         off=colors.danger
     }
 })
+
+
 
 -- CPU widget
 local cpu_widget = require("widgets.cpu-widget.cpu-widget")

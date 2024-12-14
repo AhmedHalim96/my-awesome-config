@@ -209,7 +209,7 @@ awful.rules.rules = {
 	-- 1st Tag clients [browsers] 
 	{ 
 		rule_any = { class = { "Google-chrome", "Brave-browser" } },
-		properties = { screen = 1, tag = "1" }
+		properties = { screen = awful.screen.focused(), tag = "1" }
 	},
 
 	-- 2nd workspace for Editors and IDEs
@@ -225,37 +225,37 @@ awful.rules.rules = {
 				"jetbrains-idea-ce"
 			} 
 		},
-		properties = { screen = 1, tag = "2" } 
+		properties = { screen = awful.screen.focused(), tag = "2" } 
 	},
 
 	-- 3rd Tag clients 
 	{ 
 		rule_any = { class = { "NpmServer" } },
-		properties = { screen = 1, tag = "3" }
+		properties = { screen = awful.screen.focused(), tag = "3" }
 	},
 
 	-- 4th Tag clients 
 	{ 
 		rule_any = { class = { "TelegramDesktop", "Insomnia" } },
-		properties = { screen = 1, tag = "4" }
+		properties = { screen = awful.screen.focused(), tag = "4" }
 	},
 
 	-- 5th Tag clients 
 	{ 
 		rule_any = { class = { "clemintine" } },
-		properties = { screen = 1, tag = "5" }
+		properties = { screen = awful.screen.focused(), tag = "5" }
 	},
 
 	-- 6th Tag clients 
 	{ 
 		rule_any = { class = {"FreeTube"} },
-		properties = { screen = 1, tag = "6", fullscreen= false, maximized=false }
+		properties = { screen = awful.screen.focused(), tag = "6", fullscreen= false, maximized=false }
 	},
 
 	-- 7th Tag clients 
 	{ 
 		rule_any = {  },
-		properties = { screen = 1, tag = "7" }
+		properties = { screen = awful.screen.focused(), tag = "7" }
 	},
 
 	-- 8th Tag clients 
@@ -264,7 +264,7 @@ awful.rules.rules = {
 			instance = {  "www.notion.so" },
 			class = { "ticktick" }
 		},
-		properties = { screen = 1, tag = "8" }
+		properties = { screen = awful.screen.focused(), tag = "8" }
 	},
 
 	-- 9th Tag clients 
@@ -272,7 +272,13 @@ awful.rules.rules = {
     rule_any = {
 			class = {  "Microsoft Teams - Preview", "Wine" , "steam_proton", 'easyeffects' }
 		},
-		properties = { screen = 1, tag = "9" }
+		properties = { screen = awful.screen.focused(), tag = "9" }
+	},
+	
+	-- not urgent 
+	{ 
+		rule_any = { class = {"easyeffects"} },
+		properties = { urgent = false, }
 	},
 
 	-- Nsxiv 
@@ -280,6 +286,8 @@ awful.rules.rules = {
 		rule = { class = "Nsxiv" },
 		properties = { fullscreen = true, }
 	},
+
+	
 
 	-- chrome devtools,Disgusting!  & brave devtools  
 	{ 
