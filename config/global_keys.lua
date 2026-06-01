@@ -38,23 +38,25 @@ local globalkeys = gears.table.join(
   function ()
     local minimize = false
 
-    if mouse.screen.selected_tag then
-      for _, cl in ipairs(mouse.screen.selected_tag:clients()) do
+    for s in screen do
+      for _, cl in ipairs(s.selected_tag:clients()) do
         local c = cl
         if c then
           if c.minimized==false then
             minimize = true
           end
         end
-      end
+    
   
-      for _, cl in ipairs(mouse.screen.selected_tag:clients()) do
+      for _, cl in ipairs(s.selected_tag:clients()) do
   
         local c = cl
         if c then
           c.minimized = minimize
         end
       end
+    end
+
     end
   end,
   {description = "(un)minimize all windows in current tag", group = "client"}),
@@ -336,19 +338,41 @@ local globalkeys = gears.table.join(
     {description = "quit awesome", group = "awesome"}
   ),
 
+  -- Change focus to the client (window) in the direction of the Vim key
+    awful.key({ modkey }, "j",
+        function ()
+            awful.client.focus.byidx( 1)
+        end,
+        {description = "focus next by index", group = "client"}),
+    awful.key({ modkey }, "k",
+        function ()
+            awful.client.focus.byidx(-1)
+        end,
+        {description = "focus previous by index", group = "client"}),
+    awful.key({ modkey }, "l",
+        function ()
+            awful.client.focus.bydirection("right")
+        end,
+        {description = "focus right", group = "client"}),
+    awful.key({ modkey }, "h",
+        function ()
+            awful.client.focus.bydirection("left")
+        end,
+        {description = "focus left", group = "client"}),
+
   awful.key(
-    {modkey}, "l",     
+    {modkey, "Control"}, "l",     
     function () awful.tag.incmwfact( 0.05)          end,
     {description = "increase master width factor", group = "layout"}
   ),
 
   awful.key(
-    {modkey}, "h",     
+    {modkey, "Control"}, "h",     
     function () awful.tag.incmwfact(-0.05)          end,
     {description = "decrease master width factor", group = "layout"}
   ),
   awful.key(
-    {modkey},
+    {modkey, "Control"},
     'j',
     function()
       awful.client.incwfact(-0.05)
@@ -356,7 +380,7 @@ local globalkeys = gears.table.join(
     {description = 'decrease master height factor', group = 'layout'}
   ),
   awful.key(
-    {modkey},
+    {modkey, "Control"},
     'k',
     function()
       awful.client.incwfact(0.05)
@@ -364,29 +388,29 @@ local globalkeys = gears.table.join(
     {description = 'increase master height factor', group = 'layout'}
   ),
 
-  awful.key(
-    { modkey, "Control"   }, "l",     
-    function () awful.tag.incnmaster( 1, nil, true) end,
-    {description = "increase the number of master clients", group = "layout"}
-  ),
+  -- awful.key(
+  --   { modkey, "Control"   }, "l",     
+  --   function () awful.tag.incnmaster( 1, nil, true) end,
+  --   {description = "increase the number of master clients", group = "layout"}
+  -- ),
 
-  awful.key(
-    { modkey, "Control"   }, "h",     
-    function () awful.tag.incnmaster(-1, nil, true) end,
-    {description = "decrease the number of master clients", group = "layout"}
-  ),
+  -- awful.key(
+  --   { modkey, "Control"   }, "h",     
+  --   function () awful.tag.incnmaster(-1, nil, true) end,
+  --   {description = "decrease the number of master clients", group = "layout"}
+  -- ),
 
-  awful.key(
-    { modkey, "Control" }, "k",     
-    function () awful.tag.incncol( 1, nil, true)    end,
-    {description = "increase the number of columns", group = "layout"}
-  ),
+  -- awful.key(
+  --   { modkey, "Control" }, "k",     
+  --   function () awful.tag.incncol( 1, nil, true)    end,
+  --   {description = "increase the number of columns", group = "layout"}
+  -- ),
 
-  awful.key(
-    { modkey, "Control" }, "j",     
-    function () awful.tag.incncol(-1, nil, true)    end,
-    {description = "decrease the number of columns", group = "layout"}
-  ),
+  -- awful.key(
+  --   { modkey, "Control" }, "j",     
+  --   function () awful.tag.incncol(-1, nil, true)    end,
+  --   {description = "decrease the number of columns", group = "layout"}
+  -- ),
 
   awful.key(
     { modkey,}, "space", 
@@ -545,6 +569,8 @@ local globalkeys = gears.table.join(
     end,
     {description = 'Next', group = 'Multimedia'}
   ),
+
+
   
   awful.key(
     {},
@@ -557,6 +583,35 @@ local globalkeys = gears.table.join(
 
   awful.key(
     {},
+    'XF86AudioPlay',
+    function()
+      awful.spawn('playerctl play-pause')
+    end,
+    {description = 'Play-Pause', group = 'Multimedia'}
+  ),
+
+  -- multimedia
+  awful.key(
+    {modkey, 'Control', "Shift"},
+    '>',
+    function()
+      awful.spawn('playerctl next')
+    end,
+    {description = 'Next', group = 'Multimedia'}
+  ),
+
+
+  awful.key(
+    {modkey, 'Control', "Shift"},
+    '<',
+    function()
+      awful.spawn('playerctl previous')
+    end,
+    {description = 'Previous', group = 'Multimedia'}
+  ),
+
+  awful.key(
+    {modkey, "Control", "Shift"},
     'XF86AudioPlay',
     function()
       awful.spawn('playerctl play-pause')

@@ -43,7 +43,7 @@ local theme= dofile(themes_path.."default/theme.lua")
 
 -- local theme                                                    = {}
 theme.confdir                                                  = os.getenv("HOME") .. "/.config/awesome/themes/neon"
-theme.wallpaper                                                = "~/wall.jpg"
+theme.wallpaper                                                = "~/wall.png"
 theme.font                                                     = "Noto Sans 10"
 theme.font_fixedWidth                                          = "Noto Sans Mono 9"
 theme.font_naughty                                             = "Noto Sans 12"
@@ -160,9 +160,10 @@ theme.widget_border_color                                      = theme.bg_focus
 theme.widget_shape                                             = gears.shape.rounded_rect
 
 theme.wibar_position                                           = 'top'
-theme.wibar_height                                             = dpi(28) 
-theme.wibar_opacity                                            = .9 
+theme.wibar_height                                             = dpi(30) 
+theme.wibar_opacity                                            = .8 
 theme.wibar_shape                                              = gears.shape.rectangle 
+
 theme.master_width_factor                                      = 0.6
 
 return theme

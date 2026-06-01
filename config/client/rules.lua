@@ -58,6 +58,7 @@ awful.rules.rules = {
 			class = {
 				"Arandr",
 				"com-tonikelope-megabasterd-MainPanel",
+				"PenTablet",
 				"Blueman-manager",
 				"Gpick",
 				"Kruler",
@@ -209,7 +210,7 @@ awful.rules.rules = {
 	-- 1st Tag clients [browsers] 
 	{ 
 		rule_any = { class = { "Google-chrome", "Brave-browser" } },
-		properties = { screen = awful.screen.focused(), tag = "1" }
+		properties = {  tag = "1" }
 	},
 
 	-- 2nd workspace for Editors and IDEs
@@ -225,37 +226,37 @@ awful.rules.rules = {
 				"jetbrains-idea-ce"
 			} 
 		},
-		properties = { screen = awful.screen.focused(), tag = "2" } 
+		properties = {  tag = "2" } 
 	},
 
 	-- 3rd Tag clients 
 	{ 
 		rule_any = { class = { "NpmServer" } },
-		properties = { screen = awful.screen.focused(), tag = "3" }
+		properties = {  tag = "3" }
 	},
 
 	-- 4th Tag clients 
 	{ 
 		rule_any = { class = { "TelegramDesktop", "Insomnia" } },
-		properties = { screen = awful.screen.focused(), tag = "4" }
+		properties = {  tag = "4" }
 	},
 
 	-- 5th Tag clients 
 	{ 
 		rule_any = { class = { "clemintine" } },
-		properties = { screen = awful.screen.focused(), tag = "5" }
+		properties = {  tag = "5" }
 	},
 
 	-- 6th Tag clients 
 	{ 
 		rule_any = { class = {"FreeTube"} },
-		properties = { screen = awful.screen.focused(), tag = "6", fullscreen= false, maximized=false }
+		properties = {  tag = "6", fullscreen= false, maximized=false }
 	},
 
 	-- 7th Tag clients 
 	{ 
 		rule_any = {  },
-		properties = { screen = awful.screen.focused(), tag = "7" }
+		properties = {  tag = "7" }
 	},
 
 	-- 8th Tag clients 
@@ -264,7 +265,7 @@ awful.rules.rules = {
 			instance = {  "www.notion.so" },
 			class = { "ticktick" }
 		},
-		properties = { screen = awful.screen.focused(), tag = "8" }
+		properties = {  tag = "8" }
 	},
 
 	-- 9th Tag clients 
@@ -272,7 +273,7 @@ awful.rules.rules = {
     rule_any = {
 			class = {  "Microsoft Teams - Preview", "Wine" , "steam_proton", 'easyeffects' }
 		},
-		properties = { screen = awful.screen.focused(), tag = "9" }
+		properties = {  tag = "9" }
 	},
 	
 	-- not urgent 
